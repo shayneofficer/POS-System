@@ -1,0 +1,13 @@
+{
+  "name": "POS-System",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:shayneofficer/POS-System.git",
+  "author": "shayneofficer <shayneofficer@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.4.5",
+    "react-router-dom": "^4.3.1"
+  }
+}
