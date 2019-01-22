@@ -11,8 +11,7 @@
     "seed": "node scripts/seedDB.js",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build",
-    "scrape": "nodemon ./Scraper/index.js"
+    "heroku-postbuild": "npm run build"
   },
   "repository": "git@github.com:shayneofficer/POS-System.git",
   "author": "shayneofficer <shayneofficer@gmail.com>",
