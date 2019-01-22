@@ -11,16 +11,12 @@
     "seed": "node scripts/seedDB.js",
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "scrape": "nodemon ./Scraper/index.js"
   },
   "repository": "git@github.com:shayneofficer/POS-System.git",
   "author": "shayneofficer <shayneofficer@gmail.com>",
   "license": "MIT",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js",
-    "scrape": "nodemon ./Scraper/index.js"
-  },
   "dependencies": {
     "axios": "^0.18.0",
     "cheerio": "^1.0.0-rc.2",
