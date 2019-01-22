@@ -1,5 +1,4 @@
-//collect and export all of your models together here
-
 module.exports = {
-  Example: require("./example")
+  Restaurant: require("./restaurant"),
+  Users: require("./user")
 };
