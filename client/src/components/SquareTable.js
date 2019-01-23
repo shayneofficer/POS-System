@@ -1,5 +1,5 @@
 import React from "react";
-import "tables.css";
+import "./tables.css";
 
 class SquareTable extends React.Component {
   constructor(props) {
