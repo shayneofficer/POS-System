@@ -1,7 +1,7 @@
 import React from "react";
 import RoundTable from "../components/RoundTable";
 import SquareTable from "../components/SquareTable";
-import SeverStation from "../components/ServerStation";
+import ServerStation from "../components/ServerStation";
 
 class FloorPlan extends React.Component {
   constructor(props) {
@@ -12,8 +12,12 @@ class FloorPlan extends React.Component {
   render() {
     return (
       <div>
-        <RoundTable />
-        <SquareTable />
+        <RoundTable tableNumber={1} shape={"round"} />
+        <RoundTable text={"2"} />
+        <RoundTable text={"3"} />
+        <SquareTable text={"4"} />
+        <SquareTable text={"5"} />
+
         <ServerStation />
       </div>
     );
