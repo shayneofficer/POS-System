@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 /**
  * More will be added later. This is just basic to work with menus.
  */
-const billSchema = new Schema({
+const BillSchema = new Schema({
   // Paid or not
   paid: {
     type: Boolean,
@@ -40,6 +40,6 @@ const billSchema = new Schema({
   }
 });
 
-const bill = mongoose.model('bill', billSchema);
+const Bill = mongoose.model('Bill', BillSchema);
 
-module.exports = bill;
+module.exports = Bill;

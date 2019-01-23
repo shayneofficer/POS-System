@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 /**
  * More will be added later. This is just basic to work with menus.
  */
-const tableSchema = new Schema({
+const TableSchema = new Schema({
   // Number corresponding to the table for the hostess
   number: {
     type: Number,
@@ -41,6 +41,6 @@ const tableSchema = new Schema({
   }
 });
 
-const table = mongoose.model('table', tableSchema);
+const Table = mongoose.model('Table', TableSchema);
 
-module.exports = table;
+module.exports = Table;

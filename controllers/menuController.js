@@ -2,9 +2,6 @@ const db = require("../models");
 
 // Defining methods for the POSController
 module.exports = {
-  TEST: function (req, res) {
-    res.send(req.params);
-  },
   findAll: function (req, res) {
     db.Restaurant.Menu
       .find(req.query)

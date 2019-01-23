@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 /**
  * More will be added later. This is just basic to work with menus.
  */
-const restaurantSchema = new Schema({
+const RestaurantSchema = new Schema({
   // Restaurant Name
   name: {
     type: String,
@@ -39,6 +39,6 @@ const restaurantSchema = new Schema({
   }
 });
 
-const restaurant = mongoose.model('restaurant', restaurantSchema);
+const Restaurant = mongoose.model('Restaurant', RestaurantSchema);
 
-module.exports = restaurant;
+module.exports = Restaurant;
