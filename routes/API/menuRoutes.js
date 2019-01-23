@@ -11,7 +11,7 @@ router
   .route('/menus/&menuId=:id')
   .get(menuController.findById)
   .put(menuController.update)
-  .delete(menuController.delete);
+  .delete(menuController.remove);
 
 // Matches with "/api/restaurant/:restId/menu/:menuId/items"
 router
@@ -23,12 +23,12 @@ router
 router
   .route('/menus/&menuId=:menuId/items/&itemId=:itemId')
   .get(menuItemController.findById)
-  .update(menuItemController.update)
-  .delete(menuItemController.delete);
+  .put(menuItemController.update)
+  .delete(menuItemController.remove);
 
 // Matches with "/api/restaurant/:id/menu:/id/items/&cat=:cat"
 router
-  .route('/menus/&menuId=:menuId/items/&itemCat=:itemCat')
-  .get(MenuItemController.findByCategory);
+  .route('/menus/&menuId=:menuId/items/&cat=:cat')
+  .get(menuItemController.findByCategory);
 
 module.exports = router;
