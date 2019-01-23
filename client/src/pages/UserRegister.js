@@ -1,6 +1,7 @@
 import React from "react";
+import RegisterUser from "../components/RegisterUser";
 
-class RoundTable extends React.Component {
+class UserRegister extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -9,10 +10,10 @@ class RoundTable extends React.Component {
   render() {
     return (
       <div>
-        <button className="button round">{this.props.text}</button>
+        <RegisterUser />
       </div>
     );
   }
 }
 
-export default RoundTable;
+export default UserRegister;

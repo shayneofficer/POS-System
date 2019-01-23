@@ -1,0 +1,9 @@
+.round {
+  border-radius: 60%;
+  background-color: lightskyblue;
+}
+
+.square {
+  height: 3rem;
+  width: 3rem;
+}
