@@ -9,7 +9,7 @@
 
 ## Linking
   
-#### To get a Restaurants full menu, you would:
+### To get a Restaurants full menu, you would
   
   1. Populate the Restaurant with it's menu (and any other props you want)
   2. Populate the Menu(s) with Menu Categories

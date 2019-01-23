@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const restaurantController = require("../../controllers/restaurantsController");
 
-
+router.route('/:restId/menus', menuRoutes);
 // Matches with "/api/restaurants"
 router.route("/")
   .get(restaurantController.findAll)

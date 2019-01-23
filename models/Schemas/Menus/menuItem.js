@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const menuItemSchema = new Schema({
+const MenuItemSchema = new Schema({
   // Name of the item as it appears on the menu
   name: {
     type: String,
@@ -19,7 +19,7 @@ const menuItemSchema = new Schema({
   },
   // Price of the item
   price: {
-    type: String,
+    type: Number,
     required: true
   },
   // Amount of the item in inventory, or the amount that can be
@@ -41,6 +41,6 @@ const menuItemSchema = new Schema({
   }
 });
 
-const menuItem = mongoose.model('menuItem', menuItemSchema);
+const MenuItem = mongoose.model('MenuItem', MenuItemSchema);
 
-module.exports = menuItem;
+module.exports = MenuItem;
