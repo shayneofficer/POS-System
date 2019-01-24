@@ -17,6 +17,7 @@ module.exports = {
   },
   create: function (req, res) {
     console.log("Created User", req.body);
+    //add validation for creation
     db.User
       .create(req.body)
       .then(results => res.json(results))
