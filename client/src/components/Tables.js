@@ -6,7 +6,6 @@ class Table extends React.Component {
   // super(props);
   state = {
     tableReady: false,
-    needsCheck: true,
     status: 0
   };
   // }
@@ -46,14 +45,17 @@ class Table extends React.Component {
             ? "red"
             : "green",
         borderStyle: "solid",
-        borderColor: this.props.needsCheck ? "orange" : "blue",
+        borderWidth: ".5rem",
         margin: "10px"
       }
     };
 
     return (
-      <div style={{ display: "inline-block" }} onClick={this.changeStatus}>
-        <div style={myStlye.table} className={this.props.tableShape}>
+      <div style={{ display: "inline-flex" }} onClick={this.changeStatus}>
+        <div
+          style={myStlye.table}
+          className={this.props.tableShape + " " + this.props.serverNumber}
+        >
           {this.props.tableNumber}
         </div>
       </div>
