@@ -1,6 +1,6 @@
 import React from "react";
 
-class Reservations extends React.Component {
+class reservationList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -9,10 +9,10 @@ class Reservations extends React.Component {
     render() {
         return (
             <div>
-                Hello
-                </div>
+                {/* need current reservation list */}
+            </div>
         );
     }
 }
 
-export default Reservations;
+export default reservationList;
