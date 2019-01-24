@@ -6,5 +6,5 @@ module.exports = {
   Bill: require('./Schemas/Restaurants/bill'),
   Menu: require('./Schemas/Menus/menu'),
   MenuItem: require('./Schemas/Menus/menuItem'),
-  Users: require("./user")
+  User: require("./user")
 };

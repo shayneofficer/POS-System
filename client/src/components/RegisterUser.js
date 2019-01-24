@@ -14,24 +14,19 @@ class Register extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
+
     console.log("handleFormSubmit");
     const submit = {
-      name: this.state.name,
-      email: this.state.email
+      username: this.state.username,
+      email: this.state.email,
+      password: this.state.password
     };
     console.log(submit);
-    API.createRestaurant(submit)
-      .then(res => {
-        this.displayRestaurants();
-      })
-      .catch(err => console.log(err));
-  };
 
-  displayRestaurants = () => {
-    API.getRestaurants()
+    API.createUser(submit)
       .then(res => {
         console.log(res);
-        this.setState({ books: res.data, name: "", email: "" });
+        this.setState({ username: "", email: "", password: "", confirm: "" });
       })
       .catch(err => console.log(err));
   };

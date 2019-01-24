@@ -29,7 +29,7 @@ class Register extends Component {
     API.getRestaurants()
       .then(res => {
         console.log(res);
-        this.setState({ books: res.data, name: "", email: "" })
+        this.setState({ name: "", email: "" })
       }).catch(err => console.log(err));
   };
 

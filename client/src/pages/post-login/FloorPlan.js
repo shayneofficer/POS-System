@@ -1,5 +1,5 @@
 import React from "react";
-import Table from "../components/Tables";
+import Table from "../../components/MenuCats";
 
 class FloorPlan extends React.Component {
   // constructor(props) {
