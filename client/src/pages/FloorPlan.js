@@ -11,51 +11,63 @@ class FloorPlan extends React.Component {
     tables: [
       {
         tableNumber: 1,
-        tableShape: "rounded-corner"
+        tableShape: "rounded-corner",
+        server: "server-1"
       },
       {
         tableNumber: 2,
-        tableShape: "square"
+        tableShape: "square",
+        server: "server-3"
       },
       {
         tableNumber: 3,
-        tableShape: "square"
+        tableShape: "square",
+        server: "server-3"
       },
       {
         tableNumber: 4,
-        tableShape: "square"
+        tableShape: "square",
+        server: "server-3"
       },
       {
         tableNumber: 5,
-        tableShape: "square"
+        tableShape: "square",
+        server: "server-4"
       },
       {
         tableNumber: 6,
-        tableShape: "rounded-corner"
+        tableShape: "rounded-corner",
+        server: "server-2"
       },
       {
         tableNumber: 7,
-        tableShape: "round"
+        tableShape: "round",
+        server: "server-1"
       },
       {
         tableNumber: 8,
-        tableShape: "round"
+        tableShape: "round",
+        server: "server-1"
       },
       {
         tableNumber: 9,
-        tableShape: "round"
+        tableShape: "round",
+        server: "server-4"
       },
       {
         tableNumber: 10,
-        tableShape: "round"
+        tableShape: "round",
+        server: "server-4"
       },
       {
         tableNumber: 11,
-        tableShape: "round"
+        tableShape: "round",
+        server: "server-2"
       },
       {
         tableNumber: 12,
-        tableShape: "round"
+        tableShape: "round",
+        server: "server-2"
       }
     ]
   };
@@ -63,14 +75,32 @@ class FloorPlan extends React.Component {
   render() {
     return (
       <div>
-        {this.state.tables.map(table => {
-          return (
-            <Table
-              tableNumber={table.tableNumber}
-              tableShape={table.tableShape}
-            />
-          );
-        })}
+        <div>
+          {this.state.tables
+            .filter(table => table.tableShape !== "round")
+            .map(table => {
+              return (
+                <Table
+                  tableNumber={table.tableNumber}
+                  tableShape={table.tableShape}
+                  serverNumber={table.server}
+                />
+              );
+            })}
+        </div>
+        <div>
+          {this.state.tables
+            .filter(table => table.tableShape === "round")
+            .map(table => {
+              return (
+                <Table
+                  tableNumber={table.tableNumber}
+                  tableShape={table.tableShape}
+                  serverNumber={table.server}
+                />
+              );
+            })}
+        </div>
       </div>
     );
   }

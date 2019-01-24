@@ -9,6 +9,8 @@
   height: 3rem;
   width: 3rem;
   font-size: 2rem;
+  position: relative;
+  top: -1rem;
 }
 
 .rounded-corner {
@@ -23,4 +25,20 @@
 .rounded-corner {
   text-align: center;
   /* font-size: 2rem; */
+}
+
+.server-1 {
+  border-color: rebeccapurple;
+}
+
+.server-2 {
+  border-color: darkblue;
+}
+
+.server-3 {
+  border-color: aqua;
+}
+
+.server-4 {
+  border-color: darkorange;
 }
