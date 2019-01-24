@@ -1,5 +1,5 @@
 import React from 'react';
-import MenuCats from "../components/MenuCats";
+import MenuCats from "../../components/MenuCats"
 
 class Order extends React.Component {
     // constructor(props) {
@@ -17,7 +17,7 @@ class Order extends React.Component {
             row: {
                 display: "flex",
             },
-              
+
             column: {
                 flex: "50%",
             }
@@ -33,19 +33,19 @@ class Order extends React.Component {
                                 <option value="table3">Table 3</option>
                                 <option value="table4">Table 4</option>
                             </select>
-                            <div className ="orderList">
-                            
-                            
-                            
-                            
-                            
-                            
+                            <div className="orderList">
+
+
+
+
+
+
                             </div>
-                                <input type="submit"/>
+                            <input type="submit" />
                         </form>
-                    
+
                     </div>
-                    <div className="column"  style={colSize.column}>
+                    <div className="column" style={colSize.column}>
 
                         {this.state.category.map((category) => {
                             return (<MenuCats category={category} />)
