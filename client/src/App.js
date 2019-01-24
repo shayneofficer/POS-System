@@ -5,6 +5,7 @@ import RegisterRestaurant from "./components/RegisterRestaurant";
 import RegisterUser from "./components/RegisterUser";
 import FloorPlan from "./pages/FloorPlan";
 import Home from "./pages/Home";
+import Order from "./pages/OrderInput";
 
 class App extends Component {
   render() {
@@ -16,6 +17,7 @@ class App extends Component {
           <Route exact path="/register/restaurant" component={RegisterRestaurant} />
           <Route exact path="/register/user" component={RegisterUser} />
           <Route path="/floorplan" component={FloorPlan} />
+          <Route path="/order" component={Order} />
         </div>
       </Router>
     );
