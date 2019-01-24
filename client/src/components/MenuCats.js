@@ -12,6 +12,12 @@ class MenuCats extends React.Component {
                 height: "100px",
                 width: "150px",
                 display: 'inline-block',
+                textAlign: "center",
+                paddingRight: "10px",
+                paddingLeft: "10px",
+                marginLeft: "5px",
+                marginTop: "5px"
+
     
             },
            
