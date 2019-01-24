@@ -22,7 +22,7 @@ class MenuCats extends React.Component {
             },
     }
     return (
-      <div  style={myStyle.box}><h1> {this.props.category}</h1></div>
+      <div onClick={this.props.showItems}   style={myStyle.box}><h1> {this.props.category}</h1></div>
     );
   }
 }
