@@ -1,6 +1,6 @@
 import React from "react";
 
-class Home extends React.Component {
+class home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -31,7 +31,7 @@ class Home extends React.Component {
                         <br />
                         <div class="text-center">
                             {/* <a href="/tables"><button class="btn btn-lg btn-primary"><span class="fa fa-list-alt"></span> View Tables</button></a> */}
-                            <a href="/reserve"><button class="btn btn-lg btn-warning"><span class="fa fa-credit-card"></span> Make
+                            <a href="/Reservations"><button class="btn btn-lg btn-warning"><span class="fa fa-credit-card"></span> Make
                   Reservation</button></a>
                         </div>
                     </div>
@@ -50,4 +50,4 @@ class Home extends React.Component {
     }
 }
 
-export default Home;
+export default home;
