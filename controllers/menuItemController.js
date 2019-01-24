@@ -3,47 +3,41 @@ const db = require('../models');
 // Defining methods for the POSController
 module.exports = {
   findAll: function (req, res) {
-    console.log('menuItemController findAll');
-    db.menuitem
-      .find(req.query)
-      .sort({ date: -1 })
-      .then((dbModel) => res.json(dbModel))
+    db.MenuItem
+      .find({})
+      .sort({ category: 1 })
+      .then((result) => res.json(result))
       .catch((err) => res.status(422).json(err));
   },
   findById: function (req, res) {
-    console.log('menuItemController findById');
-    db.menuitem
+    db.MenuItem
       .findById(req.params.id)
-      .then((dbModel) => res.json(dbModel))
+      .then((result) => res.json(result))
       .catch((err) => res.status(422).json(err));
   },
   findByCategory: function (req, res) {
-    console.log('menuItemController findByCategory');
-    db.menuitem
-      .find({ category: req.params.cat })
-      .then((dbModel) => res.json(dbModel))
+    db.MenuItem
+      .find({ category: req.body.category })
+      .then((result) => res.json(result))
       .catch((err) => res.status(422).json(err));
   },
   create: function (req, res) {
-    console.log('menuItemController create');
-    db.menuitem
+    db.MenuItem
       .create(req.body)
-      .then((dbModel) => res.json(dbModel))
+      .then((result) => res.json(result))
       .catch((err) => res.status(422).json(err));
   },
   update: function (req, res) {
-    console.log('menuItemController update');
-    db.menuitem
+    db.MenuItem
       .findOneAndUpdate({ _id: req.params.id }, req.body)
-      .then((dbModel) => res.json(dbModel))
+      .then((result) => res.json(result))
       .catch((err) => res.status(422).json(err));
   },
   remove: function (req, res) {
-    console.log('menuItemController remove');
-    db.menuitem
+    db.MenuItem
       .findById({ _id: req.params.id })
-      .then((dbModel) => dbModel.remove())
-      .then((dbModel) => res.json(dbModel))
+      .then((result) => result.remove())
+      .then((result) => res.json(result))
       .catch((err) => res.status(422).json(err));
   }
 };

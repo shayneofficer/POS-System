@@ -4,8 +4,9 @@ const db = require('../models/Schemas/Menus/menuItem');
 // This file empties the Books collection and inserts the books below
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/pos-system');
+
 /* 1 */
-const seeds = [
+const items = [
   {
     flags: [],
     name: 'CHEFS SPICY MAKI',
@@ -408,12 +409,8 @@ const seeds = [
 
 db
   .remove({})
-  .then(() => db.collection.insertMany(seeds))
-  .then((data) => {
-    console.log(data.result.n + ' records inserted!');
-    process.exit(0);
-  })
-  .catch((err) => {
-    console.error(err);
-    process.exit(1);
-  });
+  .then()
+// create a restauruant
+  // add a menu
+    // add menu items
+

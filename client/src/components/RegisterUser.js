@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Input, FormBtn } from "./Form";
 import API from "../utils/API";
+const Validator = require("./Validator");
 
 class Register extends Component {
   handleInputChange = event => {
@@ -14,21 +15,37 @@ class Register extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
+    if (Validator.validateEmail(this.state.email)) {
+      if (Validator.validatePassword(this.state.password)) {
+        if (Validator.validateConfirm(this.state.password, this.state.confirm)) {
+          console.log("handleFormSubmit");
+          const submit = {
+            username: this.state.username,
+            email: this.state.email,
+            password: this.state.password
+          };
+          console.log(submit);
 
-    console.log("handleFormSubmit");
-    const submit = {
-      username: this.state.username,
-      email: this.state.email,
-      password: this.state.password
-    };
-    console.log(submit);
+          API.createUser(submit)
+            .then(res => {
+              console.log("res", res);
+              this.setState({ username: "", email: "", password: "", confirm: "" });
+              console.log(this.state);
+            })
+            .catch(err => console.log(err));
+        } else {
+          //user confirm fail
+          console.log("user confirm fail");
+        }
+      } else {
+        //user password fail
+        console.log("user password fail");
+      }
+    } else {
+      //user email fail
+      console.log("user email fail");
+    }
 
-    API.createUser(submit)
-      .then(res => {
-        console.log(res);
-        this.setState({ username: "", email: "", password: "", confirm: "" });
-      })
-      .catch(err => console.log(err));
   };
 
   render() {

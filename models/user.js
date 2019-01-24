@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
   username: { type: String, required: true },
-  restaurantID: { type: String },
-  email: { type: String },
+  restaurantID: { type: String, default: "" },
+  email: { type: String, unique: true },
   password: { type: String },
   manager: { type: Boolean, default: false },
   waiter: { type: Boolean, default: false },
