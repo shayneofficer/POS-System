@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Login from "./pages/UserLogin";
 import RegisterRestaurant from "./components/RegisterRestaurant";
-import RegisterUser from "./pages/UserRegister";
+import RegisterUser from "./components/RegisterUser";
 import FloorPlan from "./pages/FloorPlan";
 import Home from "./pages/Home";
 
