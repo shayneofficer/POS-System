@@ -8,10 +8,12 @@ router.route("/")
   .post(userController.create);
 
 // Matches with "/api/users/:id"
-router
-  .route("/:id")
+router.route("/:id")
   .get(userController.findById)
   .put(userController.update)
   .delete(userController.remove);
 
+// Matches with "/api/users/login"
+router.route("/login")
+  .post(userController.login)
 module.exports = router;
