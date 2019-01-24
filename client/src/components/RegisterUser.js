@@ -9,7 +9,7 @@ class Register extends Component {
     this.setState({
       [name]: value
     });
-    // console.log(`${name}: ${value}`);
+    console.log(`${name}: ${value}`);
   };
 
   handleFormSubmit = event => {
@@ -25,8 +25,9 @@ class Register extends Component {
 
     API.createUser(submit)
       .then(res => {
-        console.log(res);
+        console.log("res", res);
         this.setState({ username: "", email: "", password: "", confirm: "" });
+        console.log(this.state);
       })
       .catch(err => console.log(err));
   };

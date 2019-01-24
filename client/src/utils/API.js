@@ -10,5 +10,9 @@ export default {
   createUser: function(data) {
     console.log("createUser", data);
     return axios.post("/api/users", data);
+  },
+  userLogin: function(data) {
+    console.log("userLogin", data);
+    return axios.post("/api/users/login", data);
   }
 };

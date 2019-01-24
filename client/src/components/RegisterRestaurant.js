@@ -15,13 +15,23 @@ class Register extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     console.log("handleFormSubmit");
-    const submit = {
+    const restSubmit = {
       name: this.state.name,
       email: this.state.email,
     }
-    console.log(submit);
-    API.createRestaurant(submit).then(res => {
-      this.displayRestaurants();
+
+    API.createRestaurant(restSubmit).then(res => {
+      console.log("res", res);
+      const userSubmit = {
+        username: this.state.username,
+        email: this.state.email,
+        password: this.state.password,
+        restaurantID: res.data._id,
+        manager: true
+      }
+      API.createUser(userSubmit).then(res => {
+
+      }).catch(err => console.log(err));
     }).catch(err => console.log(err));
   }
 
@@ -38,8 +48,13 @@ class Register extends Component {
       <div>
         <form>
           <Input onChange={this.handleInputChange} name="name" placeholder="Restaurant Name" />
+          <Input onChange={this.handleInputChange} name="username" placeholder="UserName" />
           <Input onChange={this.handleInputChange} name="email" placeholder="Email" />
-          <FormBtn onClick={this.handleFormSubmit}>Create New Restaurant</FormBtn>
+          <Input onChange={this.handleInputChange} name="password" placeholder="password" />
+          <Input onChange={this.handleInputChange} name="confirm" placeholder="confrim password" />
+          <FormBtn onClick={this.handleFormSubmit}>
+            Create New User
+          </FormBtn>
         </form>
       </div>
     );
