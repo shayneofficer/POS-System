@@ -1,9 +1,26 @@
 .round {
   border-radius: 60%;
-  background-color: lightskyblue;
+  height: 4rem;
+  width: 4rem;
+  font-size: 3rem;
 }
 
 .square {
   height: 3rem;
   width: 3rem;
+  font-size: 2rem;
+}
+
+.rounded-corner {
+  border-radius: 20%;
+  height: 6rem;
+  width: 6rem;
+  font-size: 5rem;
+}
+
+.round,
+.square,
+.rounded-corner {
+  text-align: center;
+  /* font-size: 2rem; */
 }
