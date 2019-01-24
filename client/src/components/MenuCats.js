@@ -4,6 +4,7 @@ class MenuCats extends React.Component {
 //   constructor(props) {
 //     super(props);
 //   }
+
   render() {
 
     const myStyle = {
@@ -17,10 +18,7 @@ class MenuCats extends React.Component {
                 paddingLeft: "10px",
                 marginLeft: "5px",
                 marginTop: "5px"
-
-    
             },
-           
     }
     return (
       <div  style={myStyle.box}><h1> {this.props.category}</h1></div>
