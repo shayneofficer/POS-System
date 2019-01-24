@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const MenuItemSchema = new Schema({
+const menuItemSchema = new Schema({
   // Name of the item as it appears on the menu
   name: {
     type: String,
@@ -12,9 +12,14 @@ const MenuItemSchema = new Schema({
     type: String,
     required: false
   },
+  // Link to parent menu in case item doesn't have a category
+  parentMenu: {
+    type: Schema.Types.ObjectId,
+    ref: 'menu'
+  },
   // Price of the item
   price: {
-    type: Number,
+    type: String,
     required: true
   },
   // Amount of the item in inventory, or the amount that can be
@@ -36,6 +41,6 @@ const MenuItemSchema = new Schema({
   }
 });
 
-const MenuItem = mongoose.model('MenuItem', MenuItemSchema);
+const menuItem = mongoose.model('menuItem', menuItemSchema);
 
-module.exports = MenuItem;
+module.exports = menuItem;
