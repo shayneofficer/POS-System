@@ -4,28 +4,30 @@ const Schema = mongoose.Schema;
 /**
  * More will be added later. This is just basic to work with menus.
  */
-const RestaurantSchema = new Schema({
-  // Restaurant Name
-  name: {
-    type: String,
-    required: true
+const TableSchema = new Schema({
+  // Number corresponding to the table for the hostess
+  number: {
+    type: Number,
+    required: false
   },
-  // Restaurant's Menus
-  menus: [
+  // List of bills assigned to the table
+  bills: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'menu'
+      ref: 'bill'
     }
   ],
   // Street Address preferably, but not required
-  location: {
+  status: {
     type: String,
-    required: false
+    required: true,
+    default: 'open'
   },
-  // Hours of Operation (array of objects most likely)
-  hours: {
-    type: [ Object ],
-    required: false
+  // # of occupants at the table
+  occupants: {
+    type: Number,
+    required: false,
+    default: 0
   },
   // Special conditions
   flags: {
@@ -39,6 +41,6 @@ const RestaurantSchema = new Schema({
   }
 });
 
-const Restaurant = mongoose.model('Restaurant', RestaurantSchema);
+const Table = mongoose.model('Table', TableSchema);
 
-module.exports = Restaurant;
+module.exports = Table;

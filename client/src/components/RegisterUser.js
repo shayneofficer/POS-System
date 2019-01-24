@@ -62,7 +62,7 @@ class Register extends Component {
           />
 
           <FormBtn onClick={this.handleFormSubmit}>
-            Create New Restaurant
+            Create New User
           </FormBtn>
         </form>
       </div>
