@@ -4,8 +4,7 @@ const db = require("../models");
 module.exports = {
   findAll: function (req, res) {
     db.Menu
-      .findById(req.params.menuId)
-      .then((result) => {
+      .find({}, (err, result) => {
         res.json(result.items);
       })
       .catch((err) => res.status(422).json(err));
@@ -39,16 +38,16 @@ module.exports = {
       .catch((err) => res.status(422).json(err));
   },
   update: function (req, res) {
-    db.Menu.findById(req.params.menuId)
-    .then((result) => {
+    db.Menu.findById(req.params.menuId).then((result) => {
       let newItem = req.body;
       newItem.id = req.params.itemId;
       result.items.id(req.param.id).remove();
       result.items.push(newItem);
-      result.save()
-      .then((result) => res.json(result))
-      .catch((err) => res.status(err).json(err));
-    })
+      result
+        .save()
+        .then((result) => res.json(result))
+        .catch((err) => res.status(err).json(err));
+    });
   },
   remove: function (req, res) {
     db.Menu.find({ id: menuId }).then((result) => {
