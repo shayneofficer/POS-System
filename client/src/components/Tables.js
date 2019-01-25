@@ -25,30 +25,23 @@ class Table extends React.Component {
         backgroundColor:
           // 0 = available
           this.state.status === 0
-            ? "green"
-            : // 1 = seated-have not ordered
-            this.state.status === 1
+            ? "#00A82E"
+            : this.state.status === 1
             ? "yellow"
-            : //2 = order has been taken
-            this.state.status === 2
+            : this.state.status === 2
             ? "orange"
-            : // 3 = food has been served
-            this.state.status === 3
-            ? "#32CD32"
-            : // 4 = Needs Check
-            this.state.status === 4
+            : this.state.status === 3
+            ? "#cc00cc"
+            : this.state.status === 4
             ? "#00C5CD"
-            : // 5 = needs bussing
-            this.state.status === 5
-            ? "#a50000"
-            : this.state.status === 6
+            : this.state.status === 5
             ? "red"
-            : "green",
+            : "#00A82E",
         borderStyle: "solid",
         borderWidth: ".5rem",
         margin: "10px"
       }
-    };
+    }; // 1 = seated-have not ordered //2 = order has been taken // 3 = food has been served // 4 = Needs Check // 5 = needs bussing
 
     return (
       <div style={{ display: "inline-flex" }} onClick={this.changeStatus}>
