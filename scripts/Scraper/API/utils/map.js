@@ -11,6 +11,6 @@
 // Deconstructs array, recursively loops through,
 // calling the 'fn' function on each. 
 const mapRec = ([i, ...t], fn) => i ? [fn(i), ...mapRec(t, fn)] : [];
-module.exports = mapRec;
+export default mapRec;
 // /* Example Usage: */
 // const logExample = mapRec([1,2,3], (head) => console.log(head));
