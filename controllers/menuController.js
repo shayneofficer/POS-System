@@ -28,8 +28,7 @@ module.exports = {
   },
   remove: function (req, res) {
     db.Menu
-      .findById({ _id: req.params.id })
-      .then((result) => result.remove())
+      .findByIdAndDelete({ _id: req.params.id })
       .then((result) => res.json(result))
       .catch((err) => res.status(422).json(err));
   }
