@@ -1,8 +1,6 @@
 import axios from "axios";
 
 export default {
-  /*************** User Login Methods *****************/
-
   createUser: function (data) {
     console.log("createUser", data);
     return axios.post("/api/users", data);
@@ -10,6 +8,10 @@ export default {
   userLogin: function (data) {
     console.log("userLogin", data);
     return axios.post("/api/users/login", data);
+  },
+  createReservation: function (data) {
+    console.log("createReservation", data);
+    return axios.post("/api/reservations")
   },
 
   /*************** Restaurant Methods *****************/
