@@ -26,7 +26,7 @@ const style = {
 
 class FloorPlan extends React.Component {
   state = {
-    role: 1,
+    role: "host",
     tables: [
       {
         tableNumber: 1,
@@ -105,7 +105,7 @@ class FloorPlan extends React.Component {
 
   changeRole = role => {
     // sessionStorage.setItem("role", role);
-    this.setState({ role: role });
+    this.setState({ role });
   };
 
   render() {
@@ -118,18 +118,18 @@ class FloorPlan extends React.Component {
         <div>
           <div style={{ display: "inline-flex" }}>
             <button
-              onClick={() => this.changeRole(1)}
+              onClick={() => this.changeRole("host")}
               style={style.buttons}
               type="button"
-              class="btn btn-warning"
+              className="btn btn-warning"
             >
               Host
             </button>
             <button
-              onClick={() => this.changeRole(2)}
+              onClick={() => this.changeRole("server")}
               style={style.buttons}
               type="button"
-              class="btn btn-warning"
+              className="btn btn-warning"
             >
               Waitor
             </button>
@@ -140,6 +140,8 @@ class FloorPlan extends React.Component {
               .map(table => {
                 return (
                   <Table
+                    key={table.tableNumber}
+                    roleView={this.state.role}
                     tableNumber={table.tableNumber}
                     tableShape={table.tableShape}
                     serverNumber={table.server}
@@ -154,6 +156,7 @@ class FloorPlan extends React.Component {
               .map(table => {
                 return (
                   <Table
+                    key={table.tableNumber}
                     tableNumber={table.tableNumber}
                     tableShape={table.tableShape}
                     serverNumber={table.server}
@@ -165,12 +168,20 @@ class FloorPlan extends React.Component {
         </div>
         <div style={style.buttons}>
           <Link to={`/order`}>
-            <button style={style.buttons} type="button" class="btn btn-warning">
+            <button
+              style={style.buttons}
+              type="button"
+              className="btn btn-warning"
+            >
               Enter Order
             </button>
           </Link>
           <Link to={`/home`}>
-            <button style={style.buttons} type="button" class="btn btn-warning">
+            <button
+              style={style.buttons}
+              type="button"
+              className="btn btn-warning"
+            >
               Get Check
             </button>
           </Link>
