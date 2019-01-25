@@ -1,6 +1,7 @@
 
 module.exports = {
   // Restaurant: require("./restaurant"),
+  resList: require('./Schemas/reservations'),
   Restaurant: require('./Schemas/Restaurants/Restaurant'),
   Table: require('./Schemas/Restaurants/table'),
   Bill: require('./Schemas/Restaurants/bill'),

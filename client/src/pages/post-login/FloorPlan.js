@@ -3,14 +3,7 @@ import Table from "../../components/Tables";
 import FloorPlanDesc from "../post-login/FloorPlan_desc";
 import { Link } from "react-router-dom";
 
-const style = {
-  buttons: {
-    margin: "10px",
-    fontSize: "1.3rem",
-    display: "flex",
-    justifyContent: "center"
-  }
-};
+
 
 class FloorPlan extends React.Component {
   // constructor(props) {
@@ -90,6 +83,16 @@ class FloorPlan extends React.Component {
   };
 
   render() {
+
+    const style = {
+      buttons: {
+        margin: "10px",
+        fontSize: "1.3rem",
+        display: "flex",
+        justifyContent: "center"
+      }
+    };
+    
     return (
       <div style={{ textAlign: "center" }}>
         <FloorPlanDesc />

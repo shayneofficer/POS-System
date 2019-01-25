@@ -34,7 +34,7 @@ class Register extends Component {
               manager: true
             }
             API.createUser(userSubmit).then(res => {
-
+              console.log(res.data);
             }).catch(err => console.log(err));
           }).catch(err => console.log(err));
         } else {
