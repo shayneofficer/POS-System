@@ -356,6 +356,17 @@ const itemSeed = [
   }
 ];
 
+const tableSeead = [
+  {
+
+  }
+]
+
+const billSeed = [
+  {
+    
+  }
+]
 // Menu documents have menuItems as sub-documents.
 const menuSeed = new db.Menu({
   name: "Shine Main Menu",

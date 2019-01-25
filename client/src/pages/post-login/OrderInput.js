@@ -1,6 +1,6 @@
-import React from 'react';
-import MenuCats from "../../components/MenuCats"
-
+import React from "react";
+import MenuCats from "../../components/MenuCats";
+import API from "../../utils/API";
 
 class Order extends React.Component {
   // constructor(props) {
@@ -8,25 +8,48 @@ class Order extends React.Component {
   // }
 
   state = {
-    category: ["Apps", "Entrees", "Sushi", "Etc"],
-    tableNo: ["1", "2", "3", "4", "5", "7", "8", "9", "10", "11", "12"]
+    category: [
+      "Cold Apps",
+      "Hot Apps",
+      "Noodles & Rice",
+      "Chef's Special Rolls",
+      "House Specials"
+    ],
+    tableNo: [ "1", "2", "3", "4", "5", "7", "8", "9", "10", "11", "12" ],
+    items: [],
+    menu: {}
   };
-  showItems=()=> {
+  componentDidMount = () => {
+    this.getMenu();
+  };
+  getMenu = () => {
+    API.getMenus({ name: "Shine Main Menu" }).then((result) => {
+      this.setState({
+        menu: result.data[0],
+        items: result.data[0].items
+      });
+    });
+  };
+  getItems = (menuId) => {
+    API.getMenuById(menuId).then((result) => {
+      this.setState({ items: result.data.items });
+      console.log(result);
+    });
+  };
+  showItems = () => {
     // alert("YO LOOK AT THESE DISHES");
-    console.log("AM I WORKING ")
-    alert("hi")
-  }
+    console.log("AM I WORKING ");
+    alert("hi");
+  };
 
-  render() {
-
+  render () {
     const colSize = {
       row: {
-        display: "flex",
+        display: "flex"
       },
 
       column: {
-        flex: "50%",
-
+        flex: "50%"
       },
 
       ticket: {
@@ -43,8 +66,7 @@ class Order extends React.Component {
         borderStyle: "solid",
         borderColor: "grey",
         textAlign: "left",
-        padding: "10px",
-
+        padding: "10px"
       },
 
       th: {
@@ -52,17 +74,16 @@ class Order extends React.Component {
         borderStyle: "solid",
         borderColor: "grey",
         textAlign: "left",
-        padding: "10px",
+        padding: "10px"
       }
-    }
+    };
     return (
       <div>
         <div className="row" style={colSize.row}>
           <div className="column" style={colSize.column}>
-            <form >
+            <form>
               Order for Table:
-                            <select name="table-no">
-
+              <select name="table-no">
                 <option value="table1">1</option>
                 <option value="table2">2</option>
                 <option value="table3">3</option>
@@ -85,24 +106,21 @@ class Order extends React.Component {
                     <td>qweqwe</td>
                     <td>qweqwe</td>
                     <td>qweqwe</td>
+                    <h1>{this.state.items.length}</h1>
                   </tr>
-
                 </table>
                 <input type="submit" />
               </div>
-
             </form>
-
           </div>
           <div className="column" style={colSize.column}>
-
             {this.state.category.map((category) => {
-              return (<MenuCats category={category} showItems={this.showItems} />)
+              return (
+                <MenuCats category={category} showItems={this.showItems} />
+              );
             })}
           </div>
           <hr />
-
-
         </div>
       </div>
     );
