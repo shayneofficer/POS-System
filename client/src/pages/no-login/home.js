@@ -1,4 +1,7 @@
 import React from "react";
+import shine from "../../Images/shine.jpg"
+import shine2 from "../../Images/shine2.jpg"
+import shine3 from "../../Images/shine3.jpg"
 
 class home extends React.Component {
     constructor(props) {
@@ -9,9 +12,9 @@ class home extends React.Component {
     render() {
         return (
             <div>
-                <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <a className="navbar-brand" href="#">POS</a>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="/">POS</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
                         aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -29,15 +32,19 @@ class home extends React.Component {
                         <hr />
                         <h2 className="text-center">Book your seat at our exclusive POS restaurants!</h2>
                         <br />
+
                         <div className="text-center">
                             {/* <a href="/tables"><button className="btn btn-lg btn-primary"><span className="fa fa-list-alt"></span> View Tables</button></a> */}
                             <a href="/Reservations"><button className="btn btn-lg btn-warning"><span className="fa fa-credit-card"></span> Make
-                  Reservation</button></a>
+                     Reservation</button></a>
                         </div>
                     </div>
-                    {/* <br />
-                    <h3>POPULAR RESTAURANTS</h3> */}
-
+                    <div>
+                        <img src={shine} alt={"logo"} width="250px" height="250px"></img>
+                        <img src={shine2} alt={"logo"} width="250px" height="250px"></img>
+                        <img src={shine3} alt={"logo"} width="250px" height="250px"></img>
+                        <img src={shine3} alt={"logo"} width="250px" height="250px"></img>
+                    </div>
                 </div>
                 <footer className="footer">
                     {/* <div className="container">
@@ -45,7 +52,7 @@ class home extends React.Component {
                     </div> */}
                 </footer>
 
-            </div>
+            </div >
         );
     }
 }
