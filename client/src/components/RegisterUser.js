@@ -4,6 +4,13 @@ import API from "../utils/API";
 const Validator = require("./Validator");
 
 class Register extends Component {
+  submit = {
+    username: "",
+    email: "",
+    password: "",
+    confirm: ""
+  }
+
   handleInputChange = event => {
     const name = event.target.name;
     const value = event.target.value;
@@ -28,9 +35,9 @@ class Register extends Component {
 
           API.createUser(submit)
             .then(res => {
-              console.log("res", res);
+              // console.log("res", res.data);
               this.setState({ username: "", email: "", password: "", confirm: "" });
-              console.log(this.state);
+              // console.log(this.state);
             })
             .catch(err => console.log(err));
         } else {
@@ -56,21 +63,25 @@ class Register extends Component {
             onChange={this.handleInputChange}
             name="username"
             placeholder="Username"
+            value={this.state.name}
           />
           <Input
             onChange={this.handleInputChange}
             name="email"
             placeholder="Email"
+            value={this.state.email}
           />
           <Input
             onChange={this.handleInputChange}
             name="password"
             placeholder="Password"
+            value={this.state.password}
           />
           <Input
             onChange={this.handleInputChange}
             name="confirm"
             placeholder="Confirm password"
+            value={this.state.confirm}
           />
 
           <FormBtn onClick={this.handleFormSubmit}>
