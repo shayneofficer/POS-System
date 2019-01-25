@@ -11,7 +11,11 @@ class Order extends React.Component {
     category: ["Apps", "Entrees", "Sushi", "Etc"],
     tableNo: ["1", "2", "3", "4", "5", "7", "8", "9", "10", "11", "12"]
   };
-
+  showItems=()=> {
+    // alert("YO LOOK AT THESE DISHES");
+    console.log("AM I WORKING ")
+    alert("hi")
+  }
 
   render() {
 
@@ -91,8 +95,9 @@ class Order extends React.Component {
 
           </div>
           <div className="column" style={colSize.column}>
+
             {this.state.category.map((category) => {
-              return (<MenuCats category={category} />)
+              return (<MenuCats category={category} showItems={this.showItems} />)
             })}
           </div>
           <hr />
