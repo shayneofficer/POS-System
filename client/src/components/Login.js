@@ -15,14 +15,19 @@ class Login extends Component {
     event.preventDefault();
     console.log("handleFormSubmit");
     const submit = {
-      restaurantID: this.state.restaurantID,
-      username: this.state.username,
+      email: this.state.email,
       password: this.state.password,
     }
     API.userLogin(submit).then(res => {
-      console.log("res.data", res.data);
-      sessionStorage.setItem("userID", res.data._id);
-      sessionStorage.setItem("restID", res.data.restaurantID);
+      // console.log("res.data", res.data);
+      if (res.data.err) {
+        console.log("Error: ", res.data.err);
+      } else if (res.data.login) {
+        sessionStorage.setItem("userID", res.data._id);
+        sessionStorage.setItem("restID", res.data.restaurantID);
+        sessionStorage.setItem("login", res.data.login);
+      }
+
     }).catch(err => console.log(err));
   }
 
@@ -30,12 +35,9 @@ class Login extends Component {
     return (
       <div>
         <form action="/action_page.php">
-          Restaurant Code: <br />
-          <input onChange={this.handleInputChange} type="text" name="restaurantID" />
+          Email:
           <br />
-          Username:
-          <br />
-          <input onChange={this.handleInputChange} type="text" name="username" />
+          <input onChange={this.handleInputChange} type="text" name="email" />
           <br />
           Password:
           <br />

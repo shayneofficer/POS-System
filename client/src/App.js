@@ -9,25 +9,32 @@ import Home from "./pages/post-login/Home";
 import Order from "./pages/post-login/OrderInput";
 import reservationList from "./pages/post-login/reservationlist";
 import Reservations from "./pages/no-login/reservations";
+import menuTest from "./pages/no-login/menuTest";
+import NavBar from "./components/NavBar";
+
 
 class App extends Component {
   render() {
     return (
       <Router>
         <div>
-          <Route exact path="/" component={home} />
-          <Route exact path="/login" component={Login} />
-          <Route
-            exact
-            path="/register/restaurant"
-            component={RegisterRestaurant}
-          />
-          <Route exact path="/register/user" component={RegisterUser} />
-          <Route path="/floorplan" component={FloorPlan} />
-          <Route path="/order" component={Order} />
-          <Route path="/restlogin" component={Home} />
-          <Route path="/reservations" component={Reservations} />
-          <Route path="/reservationlist" component={reservationList} />
+          <NavBar />
+          <div className="container">
+            <Route exact path="/" component={home} />
+            <Route exact path="/login" component={Login} />
+            <Route
+              exact
+              path="/register/restaurant"
+              component={RegisterRestaurant}
+            />
+            <Route exact path="/register/user" component={RegisterUser} />
+            <Route path="/floorplan" component={FloorPlan} />
+            <Route path="/order" component={Order} />
+            <Route path="/restlogin" component={Home} />
+            <Route path="/reservations" component={Reservations} />
+            <Route path="/reservationlist" component={reservationList} />
+            <Route path="/menutest" component={menuTest} />
+          </div>
         </div>
       </Router>
     );
