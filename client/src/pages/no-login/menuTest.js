@@ -2,9 +2,6 @@
 // import React from "react";
 
 // class menuTest extends React.Component {
-//   state = {
-//     restaurantId = 
-//   }
 //   render() {
 //     return (
 //       <div>

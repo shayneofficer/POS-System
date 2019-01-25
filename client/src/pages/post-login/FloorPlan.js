@@ -128,9 +128,11 @@ class FloorPlan extends React.Component {
           </div>
         </div>
         <div style={style.buttons}>
+        <Link to={`/order`} >
           <button style={style.buttons} type="button" class="btn btn-warning">
             Enter Order
           </button>
+          </Link>
           <Link to={`/home`}>
             <button style={style.buttons} type="button" class="btn btn-warning">
               Get Check
