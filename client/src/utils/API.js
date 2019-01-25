@@ -1,17 +1,8 @@
 import axios from "axios";
 
 export default {
-<<<<<<< HEAD
-  createRestaurant: function (data) {
-    return axios.post("/api/restaurants", data);
-  },
-  getRestaurants: function () {
-    return axios.get("/api/restaurants");
-  },
-=======
   /*************** User Login Methods *****************/
 
->>>>>>> a6ac80433306ad1765d455a371204713d4a0697f
   createUser: function (data) {
     console.log("createUser", data);
     return axios.post("/api/users", data);
@@ -20,11 +11,6 @@ export default {
     console.log("userLogin", data);
     return axios.post("/api/users/login", data);
   },
-<<<<<<< HEAD
-  createReservation: function (data) {
-    console.log("createReservation", data);
-    return axios.post("/api/reservations")
-=======
 
   /*************** Restaurant Methods *****************/
 
@@ -96,6 +82,5 @@ export default {
     return axios.delete(
       `/api/restaurants/${restId}/menus/&id=${menuId}/items/&id=${itemId}`
     );
->>>>>>> a6ac80433306ad1765d455a371204713d4a0697f
   }
 };
