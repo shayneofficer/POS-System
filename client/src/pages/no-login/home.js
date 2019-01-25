@@ -31,7 +31,7 @@ class home extends React.Component {
                 <a href="/restlogin"><nav
                     style={style.navbar}
                     type="navbar"
-                    class="navbar navbar-expand-lg navbar-light bg-light">
+                    className="navbar navbar-expand-lg navbar-light bg-light">
                     Restaurant Login</nav></a>
                 {/* <a class="navbar-brand" href="/">POS</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
@@ -57,7 +57,7 @@ class home extends React.Component {
                             <a href="/Reservations"><button
                                 style={style.buttons}
                                 type="button"
-                                class="btn btn-warning">
+                                className="btn btn-warning">
                                 Reservation</button></a>
                         </div>
                     </div>
