@@ -14,7 +14,7 @@ const MenuItemSchema = new Schema({
   },
   // Price of the item
   price: {
-    type: Number,
+    type: String,
     required: true
   },
   // Amount of the item in inventory, or the amount that can be
@@ -36,6 +36,4 @@ const MenuItemSchema = new Schema({
   }
 });
 
-const MenuItem = mongoose.model('MenuItem', MenuItemSchema);
-
-module.exports = MenuItem;
+module.exports = MenuItemSchema;
