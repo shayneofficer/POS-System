@@ -4,7 +4,7 @@ const db = require('../models');
 module.exports = {
   findAll: function (req, res) {
     db.MenuItem
-      .find({})
+      .find(req.query)
       .sort({ category: 1 })
       .then((result) => res.json(result))
       .catch((err) => res.status(422).json(err));
@@ -17,7 +17,7 @@ module.exports = {
   },
   findByCategory: function (req, res) {
     db.MenuItem
-      .find({ category: req.body.category })
+      .find({ category: req.params.cat })
       .then((result) => res.json(result))
       .catch((err) => res.status(422).json(err));
   },

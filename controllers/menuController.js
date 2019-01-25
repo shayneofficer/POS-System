@@ -4,7 +4,7 @@ const db = require('../models');
 module.exports = {
   findAll: function (req, res) {
     db.Menu
-      .find({})
+      .find(req.query)
       .then((result) => res.json(result))
       .catch((err) => res.status(422).json(err));
   },
