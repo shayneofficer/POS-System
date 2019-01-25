@@ -42,3 +42,8 @@
 .server-4 {
   border-color: darkorange;
 }
+
+body:hover {
+  cursor: pointer;
+  user-select: none;
+}
