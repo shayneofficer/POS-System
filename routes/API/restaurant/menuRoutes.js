@@ -10,14 +10,14 @@ router
   .put(menuController.create);
 // Matches with "/api/restaurant/:restId/menu/:d"
 router
-  .route('/&id=:id')
+  .route('/&id=:menuId')
   .get(menuController.findById)
   .put(menuController.update)
   .delete(menuController.remove);
 
 // Matches with "/api/restaurant/:restId/menu/:menuId/items"
 router
-  .route('/&id=:id/items')
+  .route('/&id=:menuId/items')
   .get(menuItemController.findAll)
   .put(menuItemController.create);
 
