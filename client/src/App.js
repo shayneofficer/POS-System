@@ -9,7 +9,6 @@ import Home from "./pages/post-login/Home";
 import Order from "./pages/post-login/OrderInput";
 import reservationList from "./pages/post-login/reservationlist";
 import Reservations from "./pages/no-login/reservations";
-import menuTest from "./pages/no-login/menuTest";
 
 
 class App extends Component {
