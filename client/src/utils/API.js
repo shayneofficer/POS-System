@@ -24,6 +24,7 @@ export default {
     return axios.post("http://localhost:3001/api/restaurants", data);
   },
   getRestaurants: function (query) {
+    console.log("Get Restaurants")
     return axios.get("http://localhost:3001/api/restaurants", query);
   },
   getRestaurantById: function (restId) {
