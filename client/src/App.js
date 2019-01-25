@@ -30,7 +30,6 @@ class App extends Component {
           <Route path="/restlogin" component={Home} />
           <Route path="/reservations" component={Reservations} />
           <Route path="/reservationlist" component={reservationList} />
-          <Route path="/menutest" component={menuTest} />
         </div>
       </Router>
     );
