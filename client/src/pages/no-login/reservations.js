@@ -9,7 +9,7 @@ class Reservations extends React.Component {
         this.setState({
             [name]: value
         });
-        console.log(`${name}: ${value}`);
+        // console.log(`${name}: ${value}`);
     };
 
     handleFormSubmit = event => {
@@ -23,15 +23,16 @@ class Reservations extends React.Component {
             phone: this.state.phone,
             partySize: this.state.partySize
         };
-        console.log(submit);
+        // console.log(submit);
 
         API.createReservation(submit)
             .then(res => {
                 console.log("res", res);
-                this.setState({ restaurantName: "", name: "", email: "", phone: "", partySize: "" });
-                console.log(this.state);
-            })
-            .catch(err => console.log(err));
+                this.setState({ restaurantName: "", name: "", email: "", phone: 0, partySize: 0 });
+                // console.log(this.state);
+            }).catch(err => console.log("err", err));
+
+        // API.getReservation().then(res => console.log("res", res)).catch(err => console.log("err", err));
     };
 
     render() {
@@ -40,33 +41,35 @@ class Reservations extends React.Component {
                 <form>
                     <Input
                         onChange={this.handleInputChange}
-                        restaurantName="Shine"
-                        placeholder="Shine"
+                        name="restaurantName"
+                        placeholder="Restaurant Name"
                     />
                     <Input
                         onChange={this.handleInputChange}
                         name="name"
-                        placeholder="TeamGroupSquad"
+                        placeholder="First & Last Name"
                     />
                     <Input
                         onChange={this.handleInputChange}
-                        e-mail="email"
+                        name="email"
                         placeholder="Email"
                     />
                     <Input
                         onChange={this.handleInputChange}
-                        phone="012345678"
-                        placeholder="012345678"
+                        name="phone"
+                        type="number"
+                        placeholder="phone"
                     />
                     <Input
                         onChange={this.handleInputChange}
-                        partySize="#"
-                        placeholder="5"
+                        name="partySize"
+                        type="number"
+                        placeholder="partySize"
                     />
 
                     <FormBtn onClick={this.handleFormSubmit}>
                         Create New Reservation
-              </FormBtn>
+                    </FormBtn>
                 </form>
             </div>
         );
