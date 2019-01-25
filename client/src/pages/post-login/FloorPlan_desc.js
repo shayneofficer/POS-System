@@ -1,14 +1,12 @@
 import React from "react";
 const myStyles = {
   key: {
-    // display: "flex",
-    // flexDirection: "column",
-    width: "25%",
-    position: "relative",
-    top: "250px",
+    flexDirection: "column",
+    width: "20%",
     marginLeft: "10px",
     fontSize: "1.5rem",
-    fontWeight: "400"
+    fontWeight: "400",
+    textAlign: "center"
   }
 };
 
