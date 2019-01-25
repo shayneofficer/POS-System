@@ -104,15 +104,10 @@ class FloorPlan extends React.Component {
   };
 
   changeRole = role => {
-    // sessionStorage.setItem("role", role);
     this.setState({ role });
   };
 
   render() {
-    // if (sessionStorage.getItem("role")) {
-    //   sessionStorage.setItem("role", 1);
-    //   this.setState({ role: sessionStorage.getItem("role") });
-    // }
     return (
       <div>
         <div>
@@ -145,7 +140,6 @@ class FloorPlan extends React.Component {
                     tableNumber={table.tableNumber}
                     tableShape={table.tableShape}
                     serverNumber={table.server}
-                    role={this.state.role}
                   />
                 );
               })}
@@ -160,7 +154,7 @@ class FloorPlan extends React.Component {
                     tableNumber={table.tableNumber}
                     tableShape={table.tableShape}
                     serverNumber={table.server}
-                    role={this.state.role}
+                    roleView={this.state.role}
                   />
                 );
               })}
