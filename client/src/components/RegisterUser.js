@@ -55,7 +55,7 @@ class Register extends Component {
           <Input
             onChange={this.handleInputChange}
             name="username"
-            placeholder="UserName"
+            placeholder="Username"
           />
           <Input
             onChange={this.handleInputChange}
@@ -65,12 +65,12 @@ class Register extends Component {
           <Input
             onChange={this.handleInputChange}
             name="password"
-            placeholder="password"
+            placeholder="Password"
           />
           <Input
             onChange={this.handleInputChange}
             name="confirm"
-            placeholder="confrim password"
+            placeholder="Confirm password"
           />
 
           <FormBtn onClick={this.handleFormSubmit}>
