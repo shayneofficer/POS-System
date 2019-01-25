@@ -2,6 +2,8 @@ import React from "react";
 import MenuCats from "../../components/MenuCats";
 import API from "../../utils/API";
 
+import { Row, Col } from "../../components/Grid";
+
 class Order extends React.Component {
   // constructor(props) {
   //     super(props);
@@ -112,13 +114,6 @@ class Order extends React.Component {
                 <input type="submit" />
               </div>
             </form>
-          </div>
-          <div className="column" style={colSize.column}>
-            {this.state.category.map((category) => {
-              return (
-                <MenuCats category={category} showItems={this.showItems} />
-              );
-            })}
           </div>
           <hr />
         </div>

@@ -1,5 +1,6 @@
 import React from "react";
-import { List, ListItem } from "../List";
+import List from "./List";
+import ListItem from "./ListItem";
 import { Row, Col } from "../Grid";
 
 class ItemList extends React.Component {
@@ -7,14 +8,15 @@ class ItemList extends React.Component {
     return (
       <div>
         <List>
-          {this.props.items.map((item) => {
+          {this.props.items.map((item, i) => {
             return (
-              <ListItem key={item._id}>
+              <ListItem key={i}>
                 <Row>
-                  <Col size="sm-5 md-3">
-                    <p>
-                      {item.name} - {item.price}
-                    </p>
+                  <Col size="sm-8">
+                    <h3>{item.name}</h3>
+                  </Col>
+                  <Col size="sm-3">
+                    <h3>{item.price}</h3>
                   </Col>
                 </Row>
               </ListItem>
