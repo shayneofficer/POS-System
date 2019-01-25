@@ -4,8 +4,8 @@ const db = require("../models");
 module.exports = {
   findAll: function (req, res) {
     db.Menu
-      .find({}, (err, result) => {
-        res.json(result.items);
+      .findById(req.params.menuId, (err, result) => {
+        res.json(result);
       })
       .catch((err) => res.status(422).json(err));
   },
