@@ -12,7 +12,7 @@
     "install": "cd client && yarn install",
     "build": "cd client && yarn build",
     "heroku-postbuild": "yarn build",
-    "scrape": "nodemon ./Scraper/index.js"
+    "scrape": "cd scripts/Scraper && yarn scrape"
   },
   "repository": "git@github.com:shayneofficer/POS-System.git",
   "author": "shayneofficer <shayneofficer@gmail.com>",

@@ -10,7 +10,6 @@ import Order from "./pages/post-login/OrderInput";
 import reservationList from "./pages/post-login/reservationlist";
 import Reservations from "./pages/no-login/reservations";
 
-
 class App extends Component {
   render() {
     return (

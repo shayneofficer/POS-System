@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
+const MenuItemSchema = require('./menuItem');
 
 const MenuSchema = new Schema({
   // Name of the menu, in case a restaurant has multiple (ex. 'Lunch')
@@ -8,16 +8,12 @@ const MenuSchema = new Schema({
     type: String,
     required: false
   },
-  // Ref to parent restaurant for convenience.
-  parentRestaurant: {
-    type: Schema.Types.ObjectId,
-    ref: 'restaurant'
-  },
   // 'not served before 11am', etc.
   flags: {
-    type: [String],
+    type: [ String ],
     required: false
   },
+  items: [MenuItemSchema],
   // Date that the document was created or last updated
   dateUpdated: {
     type: Date,
@@ -25,6 +21,6 @@ const MenuSchema = new Schema({
   }
 });
 
-const Menu = mongoose.model('Menu', MenuSchema);
+const Menu = mongoose.model("Menu", MenuSchema);
 
 module.exports = Menu;
