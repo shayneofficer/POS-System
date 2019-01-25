@@ -3,7 +3,7 @@ import React from "react";
 
 class menuTest extends React.Component {
   state = {
-    restaurantId = 
+    // restaurantId = 
   }
   render() {
     return (
