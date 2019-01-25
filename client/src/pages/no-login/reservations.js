@@ -10,7 +10,7 @@ class Reservations extends React.Component {
         return (
             <div>
                 Hello
-                </div>
+            </div>
         );
     }
 }
