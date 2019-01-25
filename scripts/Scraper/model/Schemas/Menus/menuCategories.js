@@ -1,28 +1,19 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const MenuItemSchema = new Schema({
+const menuCategorySchema = new Schema({
   // Name of the item as it appears on the menu
   name: {
     type: String,
     required: true
   },
-  // Menu Category (Appetizer, Entree, Sushi, Beverage, etc.)
-  category: {
-    type: String,
-    required: false
-  },
-  // Price of the item
-  price: {
-    type: String,
-    required: true
-  },
-  // Amount of the item in inventory, or the amount that can be
-  // served with the current inventory of ingrediants.
-  inventory: {
-    type: Number,
-    required: false
-  },
+  // Ref to items in the menu category
+  menuItems: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'menuItem'
+    }
+  ],
   // Special conditions, such as 'Dinner only', 'happy hour pricing',
   // 'not served before 11am', etc.
   flags: {
@@ -36,4 +27,6 @@ const MenuItemSchema = new Schema({
   }
 });
 
-module.exports = MenuItemSchema;
+const menuCategory = mongoose.model('menuCategory', menuCategorySchema);
+
+module.exports = menuCategory;

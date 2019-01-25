@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Input, FormBtn } from './Form';
 import API from "../utils/API";
+const Validator = require("./Validator");
 
 class Register extends Component {
   handleInputChange = event => {
@@ -14,25 +15,40 @@ class Register extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    console.log("handleFormSubmit");
-    const restSubmit = {
-      name: this.state.name,
-      email: this.state.email,
-    }
+    if (Validator.validateEmail(this.state.email)) {
+      if (Validator.validatePassword(this.state.password)) {
+        if (Validator.validateConfirm(this.state.password, this.state.confirm)) {
+          console.log("handleFormSubmit");
+          const restSubmit = {
+            name: this.state.name,
+            email: this.state.email,
+          }
 
-    API.createRestaurant(restSubmit).then(res => {
-      console.log("res", res);
-      const userSubmit = {
-        username: this.state.username,
-        email: this.state.email,
-        password: this.state.password,
-        restaurantID: res.data._id,
-        manager: true
+          API.createRestaurant(restSubmit).then(res => {
+            console.log("res", res);
+            const userSubmit = {
+              username: this.state.username,
+              email: this.state.email,
+              password: this.state.password,
+              restaurantID: res.data._id,
+              manager: true
+            }
+            API.createUser(userSubmit).then(res => {
+
+            }).catch(err => console.log(err));
+          }).catch(err => console.log(err));
+        } else {
+          //user confirm fail
+          console.log("user confirm fail");
+        }
+      } else {
+        //user password fail
+        console.log("user password fail");
       }
-      API.createUser(userSubmit).then(res => {
-
-      }).catch(err => console.log(err));
-    }).catch(err => console.log(err));
+    } else {
+      //user email fail
+      console.log("user email fail");
+    }
   }
 
   displayRestaurants = () => {

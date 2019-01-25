@@ -1,5 +1,16 @@
 import React from "react";
 import Table from "../../components/Tables";
+import FloorPlanDesc from "../post-login/FloorPlan_desc";
+import { Link } from "react-router-dom";
+
+const style = {
+  buttons: {
+    margin: "10px",
+    fontSize: "1.3rem",
+    display: "flex",
+    justifyContent: "center"
+  }
+};
 
 class FloorPlan extends React.Component {
   // constructor(props) {
@@ -8,6 +19,7 @@ class FloorPlan extends React.Component {
   // }
 
   state = {
+    role: 1,
     tables: [
       {
         tableNumber: 1,
@@ -72,34 +84,75 @@ class FloorPlan extends React.Component {
     ]
   };
 
+  changeRole = role => {
+    this.setState({ role: role });
+    console.log("hit change role");
+  };
+
   render() {
     return (
-      <div>
+      <div style={{ textAlign: "center" }}>
+        <FloorPlanDesc />
+
         <div>
-          {this.state.tables
-            .filter(table => table.tableShape !== "round")
-            .map(table => {
-              return (
-                <Table
-                  tableNumber={table.tableNumber}
-                  tableShape={table.tableShape}
-                  serverNumber={table.server}
-                />
-              );
-            })}
+          <div>
+            <div>
+              {this.state.tables
+                .filter(table => table.tableShape !== "round")
+                .map(table => {
+                  return (
+                    <Table
+                      tableNumber={table.tableNumber}
+                      tableShape={table.tableShape}
+                      serverNumber={table.server}
+                      role={this.state.role}
+                    />
+                  );
+                })}
+            </div>
+
+            <div>
+              {this.state.tables
+                .filter(table => table.tableShape === "round")
+                .map(table => {
+                  return (
+                    <Table
+                      tableNumber={table.tableNumber}
+                      tableShape={table.tableShape}
+                      serverNumber={table.server}
+                      role={this.state.role}
+                    />
+                  );
+                })}
+            </div>
+          </div>
         </div>
-        <div>
-          {this.state.tables
-            .filter(table => table.tableShape === "round")
-            .map(table => {
-              return (
-                <Table
-                  tableNumber={table.tableNumber}
-                  tableShape={table.tableShape}
-                  serverNumber={table.server}
-                />
-              );
-            })}
+        <div style={style.buttons}>
+          <button style={style.buttons} type="button" class="btn btn-warning">
+            Enter Order
+          </button>
+          <Link to={`/home`}>
+            <button style={style.buttons} type="button" class="btn btn-warning">
+              Get Check
+            </button>
+          </Link>
+
+          <button
+            onClick={() => this.changeRole(1)}
+            style={style.buttons}
+            type="button"
+            class="btn btn-warning"
+          >
+            Host
+          </button>
+          <button
+            onClick={() => this.changeRole(2)}
+            style={style.buttons}
+            type="button"
+            class="btn btn-warning"
+          >
+            Waitor
+          </button>
         </div>
       </div>
     );
