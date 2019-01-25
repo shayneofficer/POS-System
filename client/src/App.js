@@ -12,6 +12,7 @@ import Reservations from "./pages/no-login/reservations";
 import menuTest from "./pages/no-login/menuTest";
 import NavBar from "./components/NavBar";
 
+
 class App extends Component {
   render() {
     return (

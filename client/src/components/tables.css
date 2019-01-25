@@ -10,7 +10,7 @@
   width: 4rem;
   font-size: 2rem;
   position: relative;
-  top: -1rem;
+  top: 1.2rem;
 }
 
 .rounded-corner {
@@ -36,7 +36,7 @@
 }
 
 .server-3 {
-  border-color: aqua;
+  border-color: darkgreen;
 }
 
 .server-4 {

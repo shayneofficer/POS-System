@@ -3,6 +3,22 @@ import shine from "../../Images/shine.jpg"
 import shine2 from "../../Images/shine2.jpg"
 import shine3 from "../../Images/shine3.jpg"
 
+
+const style = {
+    buttons: {
+        margin: "10px",
+        fontSize: "1.3rem",
+        display: "flex",
+        justifyContent: "center"
+    },
+    navbar: {
+        marginLeft: "1150px",
+        align: "right",
+        fontSize: "1.3rem",
+        color: "red"
+    }
+};
+
 class home extends React.Component {
     constructor(props) {
         super(props);
@@ -21,8 +37,11 @@ class home extends React.Component {
 
                         <div className="text-center">
                             {/* <a href="/tables"><button className="btn btn-lg btn-primary"><span className="fa fa-list-alt"></span> View Tables</button></a> */}
-                            <a href="/Reservations"><button className="btn btn-lg btn-warning"><span className="fa fa-credit-card"></span> Make
-                     Reservation</button></a>
+                            <a href="/Reservations"><button
+                                style={style.buttons}
+                                type="button"
+                                className="btn btn-warning">
+                                Reservation</button></a>
                         </div>
                     </div>
                     <div>

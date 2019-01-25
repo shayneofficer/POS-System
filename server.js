@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3001;
 
 
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/pos");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/pos-system");
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));

@@ -4,7 +4,7 @@ import API from "../utils/API";
 const Validator = require("./Validator");
 
 class Register extends Component {
-  submit = {
+  state = {
     username: "",
     email: "",
     password: "",
@@ -73,11 +73,11 @@ class Register extends Component {
     return (
       <div>
         <form>
-          <Input onChange={this.handleInputChange} name="name" placeholder="Restaurant Name" value={this.state.name} />
-          <Input onChange={this.handleInputChange} name="username" placeholder="UserName" value={this.state.username} />
-          <Input onChange={this.handleInputChange} name="email" placeholder="Email" value={this.state.email} />
-          <Input onChange={this.handleInputChange} name="password" placeholder="password" value={this.state.password} />
-          <Input onChange={this.handleInputChange} name="confirm" placeholder="confrim password" value={this.state.confirm} />
+          <Input onChange={this.handleInputChange} type="text" name="name" placeholder="Restaurant Name" value={this.state.name} />
+          <Input onChange={this.handleInputChange} type="text" name="username" placeholder="Username" value={this.state.username} />
+          <Input onChange={this.handleInputChange} type="email" name="email" placeholder="Email" value={this.state.email} />
+          <Input onChange={this.handleInputChange} type="password" name="password" placeholder="Password" value={this.state.password} />
+          <Input onChange={this.handleInputChange} type="password" name="confirm" placeholder="Confirm password" value={this.state.confirm} />
           <FormBtn onClick={this.handleFormSubmit}>
             Create New User
           </FormBtn>

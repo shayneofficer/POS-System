@@ -1,12 +1,16 @@
-const db = require('../models');
+const db = require("../models");
 
 // Defining methods for the POSController
 module.exports = {
   findAll: function (req, res) {
     db.Menu
-      .find(req.query)
-      .then((result) => res.json(result))
-      .catch((err) => res.status(422).json(err));
+      .find({})
+      .then((result) => {
+        res.json(result);
+      })
+      .catch((err) => {
+        res.status(422).json(err);
+      });
   },
   findById: function (req, res) {
     db.Menu
