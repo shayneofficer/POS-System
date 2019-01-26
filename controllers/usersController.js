@@ -41,14 +41,14 @@ module.exports = {
   },
 
   login: function (req, res) {
-    if(req.body.username == null || req.body.password == null) {
-      res.json({error: "Fill in Username/Password"})
+    if(req.body.email == null || req.body.password == null) {
+      res.json({error: "Fill in Email/Password"})
     }
     db.User
-      .findOne({ username: req.body.username })
+      .findOne({ email: req.body.email })
       .then(results => {
-        console.log("results", results);
-        console.log("req.body", req.body);
+        // console.log("results", results);
+        // console.log("req.body", req.body);
         if(results === null) {
           res.json({error: "User not found!", login: false})
         } else if(req.body.password == results.password) {

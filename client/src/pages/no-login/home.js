@@ -28,23 +28,6 @@ class home extends React.Component {
     render() {
         return (
             <div>
-                <a href="/restlogin"><nav
-                    style={style.navbar}
-                    type="navbar"
-                    class="navbar navbar-expand-lg navbar-light bg-light">
-                    Restaurant Login</nav></a>
-                {/* <a class="navbar-brand" href="/">POS</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav">
-                        <li className="nav-item active">
-                            <a className="nav-link" href="/restlogin">Restaurant Login<span className="sr-only">(current)</span></a>
-                        </li>
-                    </ul>
-                //  */}
                 <div className="container">
                     <div className="jumbotron">
                         <h1 className="text-center"><span className="fa fa-fire"></span>Webster Halsted</h1>
@@ -57,7 +40,7 @@ class home extends React.Component {
                             <a href="/Reservations"><button
                                 style={style.buttons}
                                 type="button"
-                                class="btn btn-warning">
+                                className="btn btn-warning">
                                 Reservation</button></a>
                         </div>
                     </div>
