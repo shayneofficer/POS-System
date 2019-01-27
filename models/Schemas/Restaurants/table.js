@@ -10,18 +10,17 @@ const TableSchema = new Schema({
     type: Number,
   },
   // List of bills assigned to the table
-  Bills: [ BillSchema ],
+  Bill: BillSchema,
   // Street Address preferably, but not required
   status: {
     type: String,
     required: true,
     default: 'open'
   },
-  // # of occupants at the table
-  occupants: {
+  capacity: {
     type: Number,
     required: false,
-    default: 0
+    default: 4
   },
   // Special conditions
   flags: {

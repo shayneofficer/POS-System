@@ -19,7 +19,7 @@ const RestaurantSchema = new Schema({
   Tables: [ TableSchema ],
   // All bills for the restaurant (for easy calculations)
   // Bills are also children of the specific table they are linked to
-  Bills: [ BillSchema ],
+  Receipts: [ BillSchema ],
   // Reservations made for the restaurant
   // Linked to Restaurant instead of tables so the table can easily be changed
   Reservations: [ ReservationSchema ],

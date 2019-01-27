@@ -20,6 +20,10 @@ const EmployeeSchema = new Schema({
     type: Number,
     default: 0
   },
+  tips: {
+    type: Number,
+    default: 0
+  },
   dateUpdated: {
     type: Date,
     required: true,

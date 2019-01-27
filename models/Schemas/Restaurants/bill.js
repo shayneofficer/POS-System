@@ -8,7 +8,7 @@ const BillSchema = new Schema({
   // Paid or not
   isPaid: {
     type: Boolean,
-    required: true,
+    required: false,
     default: false
   },
   // Total $ amount the bill is for (after tax)
@@ -22,11 +22,6 @@ const BillSchema = new Schema({
     type: Number,
     required: true,
     default: 0.00
-  },
-  // Table the bill is associated with
-  table: {
-    type: Schema.Types.ObjectId,
-    ref: 'table'
   },
   // Special conditions
   flags: {
