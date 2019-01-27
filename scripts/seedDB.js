@@ -38,7 +38,7 @@ const categorySeed = [
 
 // Menu documents have menuItems as sub-documents.
 const menuSeed = new db.Menu({
-  name: "Shine Main Menu",
+  name: "Main Menu",
   date: new Date(Date.now()),
   categories: categorySeed
 });

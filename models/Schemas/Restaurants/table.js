@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
+const BillSchema = require('./Bill');
 /**
  * More will be added later. This is just basic to work with menus.
  */
@@ -8,15 +8,9 @@ const TableSchema = new Schema({
   // Number corresponding to the table for the hostess
   number: {
     type: Number,
-    required: false
   },
   // List of bills assigned to the table
-  bills: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'bill'
-    }
-  ],
+  Bills: [ BillSchema ],
   // Street Address preferably, but not required
   status: {
     type: String,
@@ -41,6 +35,4 @@ const TableSchema = new Schema({
   }
 });
 
-const Table = mongoose.model('Table', TableSchema);
-
-module.exports = Table;
+module.exports = TableSchema;

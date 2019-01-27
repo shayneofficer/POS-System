@@ -11,7 +11,7 @@ const MenuSchema = new Schema({
   flags: {
     type: [ String ],
   },
-  categories: [ MenuCategorySchema ],
+  Categories: [ MenuCategorySchema ],
   // Date that the document was created or last updated
   dateUpdated: {
     type: Date,
@@ -19,6 +19,4 @@ const MenuSchema = new Schema({
   }
 });
 
-const Menu = mongoose.model("Menu", MenuSchema);
-
-module.exports = Menu;
+module.exports = MenuSchema;

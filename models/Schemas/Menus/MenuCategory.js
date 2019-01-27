@@ -13,7 +13,7 @@ const MenuCategorySchema = new Schema({
     type: [ String ],
   },
   // Items in the category
-  items: {
+  Items: {
     type: [ MenuItemSchema ],
     required: true
   },
