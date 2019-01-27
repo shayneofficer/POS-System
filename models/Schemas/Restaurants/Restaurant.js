@@ -1,9 +1,9 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const MenuSchema = require('../Menus');
-const BillSchema = require('./Bill');
-const TableSchema = require('./Table');
-const EmployeeSchema = require('./Employee');
+const MenuSchema = require("../Menus");
+const BillSchema = require("./Bill");
+const TableSchema = require("./Table");
+const EmployeeSchema = require("./Employee");
 /**
  * More will be added later. This is just basic to work with menus.
  */
@@ -48,6 +48,6 @@ const RestaurantSchema = new Schema({
   }
 });
 
-const Restaurant = mongoose.model('Restaurant', RestaurantSchema);
+const Restaurant = mongoose.model("Restaurant", RestaurantSchema);
 
 module.exports = Restaurant;

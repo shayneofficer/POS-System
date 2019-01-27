@@ -4,45 +4,14 @@ const db = require("../models");
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/pos-system");
 
-const categorySeed = [
-  {
-    name: "Cold Apps",
-    items: require("./Items/ColdApps")
-  },
-  {
-    name: "Hot Apps",
-    items: require("./Items/HotApps")
-  },
-  {
-    name: "Soups",
-    items: require("./Items/Soups")
-  },
-  {
-    name: "House Specials",
-    items: require("./Items/HouseSpecials")
-  },
-  {
-    name: "Sushi",
-    items: require("./Items/Sushi")
-  },
-  {
-    name: "Noodles & Rice",
-    items: require("./Items/NoodlesAndRice")
-  },
-  {
-    name: "OTHER",
-    items: require("./Items/Other"),
-    flags: [ "Price Varies" ]
-  }
-];
-
-// Menu documents have menuItems as sub-documents.
-const menuSeed = new db.Menu({
-  name: "Main Menu",
-  date: new Date(Date.now()),
-  categories: categorySeed
-});
-
+const RestaurantSeed = {
+  name: "Shine",
+  location: "Chicago, IL",
+  Menus: MenusSeed,
+  Tables: TablesSeed,
+  Bills: BillsSeed,
+  Employees: EmployeesSeed
+}
 db.Menu
   .deleteMany({})
   .then(() => {
