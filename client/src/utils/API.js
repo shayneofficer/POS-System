@@ -38,20 +38,20 @@ export default {
   },
 
   /*************** Menu Methods *****************/
-  createMenu: function (restId, data) {
-    return axios.post(`http://localhost:3001/api/restaurants/${restId}/menus`, data);
+  createMenu: function (data) {
+    return axios.post(`http://localhost:3001/api/menus`, data);
   },
-  getMenus: function (restId, query) {
-    return axios.get(`http://localhost:3001/api/restaurants/${restId}/menus`, query);
+  getMenus: function (query) {
+    return axios.get(`http://localhost:3001/api/menus`, query);
   },
-  getMenuById: function (restId, menuId) {
-    return axios.get(`http://localhost:3001/api/restaurants/${restId}/menus/&id=${menuId}`);
+  getMenuById: function (menuId) {
+    return axios.get(`http://localhost:3001/api/menus/&id=${menuId}`);
   },
-  updateMenu: function (restId, menuId, data) {
-    return axios.put(`http://localhost:3001/api/restaurants/${restId}/menus/&id=${menuId}`, data);
+  updateMenu: function (menuId, data) {
+    return axios.put(`http://localhost:3001/api/menus/&id=${menuId}`, data);
   },
-  removeMenu: function (restId, menuId) {
-    return axios.delete(`http://localhost:3001/api/restaurants/${restId}/menus/&id=${menuId}`);
+  removeMenu: function (menuId) {
+    return axios.delete(`http://localhost:3001/api/menus/&id=${menuId}`);
   },
 
   /*************** Menu Item Methods *****************/

@@ -1,22 +1,27 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const MenuCategorySchema = require("./MenuCategory");
+const MenuItemSchema = require("./MenuItem");
 
-const MenuSchema = new Schema({
+const MenuCategorySchema = new Schema({
   // Name of the menu, in case a restaurant has multiple (ex. 'Lunch')
   name: {
     type: String,
+    required: true,
   },
   // 'not served before 11am', etc.
   flags: {
     type: [ String ],
   },
-  Categories: [ MenuCategorySchema ],
+  // Items in the category
+  Items: {
+    type: [ MenuItemSchema ],
+    required: true
+  },
   // Date that the document was created or last updated
-  dateUpdated: {
+  date: {
     type: Date,
     default: Date.now
   }
 });
 
-module.exports = MenuSchema;
+module.exports = MenuCategorySchema;

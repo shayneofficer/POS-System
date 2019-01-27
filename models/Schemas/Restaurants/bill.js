@@ -6,40 +6,38 @@ const Schema = mongoose.Schema;
  */
 const BillSchema = new Schema({
   // Paid or not
-  paid: {
+  isPaid: {
     type: Boolean,
-    required: true,
+    required: false,
     default: false
   },
   // Total $ amount the bill is for (after tax)
-  total: {
+  amountCharged: {
     type: Number,
     required: true,
     default: 0.00
   },
   // $ Amount that has been paid already
-  paid: {
+  amountPaid: {
     type: Number,
     required: true,
     default: 0.00
-  },
-  // Table the bill is associated with
-  table: {
-    type: Schema.Types.ObjectId,
-    ref: 'table'
   },
   // Special conditions
   flags: {
     type: [ String ],
     required: false
   },
+  dateAdded: {
+    type: Date,
+    default: Date.now
+  },
   // Date that the document was created or last updated
   dateUpdated: {
     type: Date,
+    required: true,
     default: Date.now
   }
 });
 
-const Bill = mongoose.model('Bill', BillSchema);
-
-module.exports = Bill;
+module.exports = BillSchema;

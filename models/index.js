@@ -1,11 +1,12 @@
 
 module.exports = {
-  // Restaurant: require("./restaurant"),
-  resList: require('./Schemas/reservations'),
+  Reservations: require('./Schemas/reservations'),
   Restaurant: require('./Schemas/Restaurants/Restaurant'),
-  Table: require('./Schemas/Restaurants/table'),
-  Bill: require('./Schemas/Restaurants/bill'),
-  Menu: require('./Schemas/Menus/menu.js'),
-  MenuItem: require('./Schemas/Menus/menuItem'),
+  Table: require('./Schemas/Restaurants/Table'),
+  Bill: require('./Schemas/Restaurants/Bill'),
+  Menu: require('./Schemas/Menus/Menu'),
+  MenuCategory: require('./Schemas/Menus/MenuCategory'),
+  MenuItem: require('./Schemas/Menus/MenuItem'),
+  Employee: require('./Schemas/Restaurants/Employee'),
   User: require("./user")
 };

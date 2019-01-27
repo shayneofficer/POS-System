@@ -12,6 +12,15 @@ module.exports = {
         res.status(422).json(err);
       });
   },
+  findByQuery: function(req, res ) {
+    db.Menu.findMany(query)
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      res.status(422).json(err);
+    })
+  },
   findById: function (req, res) {
     db.Menu
       .findById(req.params.id)

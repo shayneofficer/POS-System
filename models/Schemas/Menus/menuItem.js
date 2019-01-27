@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const MenuItemSchema = new Schema({
@@ -7,30 +7,22 @@ const MenuItemSchema = new Schema({
     type: String,
     required: true
   },
-  // Menu Category (Appetizer, Entree, Sushi, Beverage, etc.)
-  category: {
-    type: String,
-    required: false
-  },
   // Price of the item
   price: {
-    type: String,
-    required: true
+    type: Number,
   },
   // Amount of the item in inventory, or the amount that can be
   // served with the current inventory of ingrediants.
   inventory: {
     type: Number,
-    required: false
   },
   // Special conditions, such as 'Dinner only', 'happy hour pricing',
   // 'not served before 11am', etc.
   flags: {
-    type: [String],
-    required: false
+    type: [ String ],
   },
   // Date that the document was created or last updated
-  dateUpdated: {
+  date: {
     type: Date,
     default: Date.now
   }
