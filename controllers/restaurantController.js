@@ -16,6 +16,7 @@ module.exports = {
   },
   create: function (req, res) {
     //add validation for creation
+    console.log("restaurant create: ",req.body)
     db.Restaurant
       .create(req.body)
       .then(restaurant => res.json(restaurant))

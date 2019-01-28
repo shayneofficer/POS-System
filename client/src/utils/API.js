@@ -21,20 +21,20 @@ export default {
   /*************** Restaurant Methods *****************/
 
   createRestaurant: function (data) {
-    return axios.post("http://localhost:3001/api/restaurants", data);
+    return axios.post("http://localhost:3001/api/&rest=", data);
   },
   getRestaurants: function (query) {
     console.log("Get Restaurants")
-    return axios.get("http://localhost:3001/api/restaurants", query);
+    return axios.get("http://localhost:3001/api/&rest=", query);
   },
   getRestaurantById: function (restId) {
-    return axios.get(`http://localhost:3001/api/restaurants/${restId}`);
+    return axios.get(`http://localhost:3001/api/&rest=/${restId}`);
   },
   updateRestaurant: function (restId, data) {
-    return axios.put(`http://localhost:3001/api/restaurants/${restId}`, data);
+    return axios.put(`http://localhost:3001/api/&rest=/${restId}`, data);
   },
   removeRestaurant: function (restId) {
-    return axios.delete(`http://localhost:3001/api/restaurants/${restId}`);
+    return axios.delete(`http://localhost:3001/api/&rest=/${restId}`);
   },
 
   /*************** Menu Methods *****************/
@@ -58,36 +58,36 @@ export default {
 
   createMenuItem: function (restId, menuId, data) {
     return axios.post(
-      `http://localhost:3001/api/restaurants/${restId}/menus/&id=${menuId}/items`,
+      `http://localhost:3001/api/&rest=/${restId}/menus/&id=${menuId}/items`,
       data
     );
   },
   getMenuItems: function (restId, menuId, query) {
     return axios.get(
-      `http://localhost:3001/api/restaurants/${restId}/menus/&id=${menuId}/items`,
+      `http://localhost:3001/api/&rest=/${restId}/menus/&id=${menuId}/items`,
       query
     );
   },
   getMenuItemsByCategory: function (restId, menuId, cat, query) {
     return axios.get(
-      `http://localhost:3001/api/restaurants/${restId}/menus/&id=${menuId}/items/&cat=${cat}`,
+      `http://localhost:3001/api/&rest=/${restId}/menus/&id=${menuId}/items/&cat=${cat}`,
       query
     );
   },
   getMenuItemById: function (restId, menuId, itemId) {
     return axios.get(
-      `http://localhost:3001/api/restaurants/${restId}/menus/&id=${menuId}/items/&id=${itemId}`
+      `http://localhost:3001/api/&rest=/${restId}/menus/&id=${menuId}/items/&id=${itemId}`
     );
   },
   updateMenuItem: function (restId, menuId, itemId, data) {
     return axios.put(
-      `http://localhost:3001/api/restaurants/${restId}/menus/&id=${menuId}/items/&id=${itemId}`,
+      `http://localhost:3001/api/&rest=/${restId}/menus/&id=${menuId}/items/&id=${itemId}`,
       data
     );
   },
   removeMenuItem: function (restId, menuId, itemId) {
     return axios.delete(
-      `http://localhost:3001/api/restaurants/${restId}/menus/&id=${menuId}/items/&id=${itemId}`
+      `http://localhost:3001/api/&rest=/${restId}/menus/&id=${menuId}/items/&id=${itemId}`
     );
   }
 };

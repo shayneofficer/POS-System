@@ -7,13 +7,13 @@ const receiptRoutes = require("./receiptRoutes");
 const employeeRoutes = require("./employeeRoutes");
 const receiptRoutes = require("./receiptRoutes");
 
-// Matches with "/api/restaurants"
+// Matches with "/api/&rest="
 router
   .route("/")
   .get(restaurantController.findAll)
   .post(restaurantController.create);
 
-// Matches with "/api/restaurants/:id"
+// Matches with "/api/&rest=/:id"
 router
   .route("/=:id")
   .get(restaurantController.findById)

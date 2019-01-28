@@ -47,13 +47,16 @@ module.exports = {
     db.User
       .findOne({ email: req.body.email })
       .then(results => {
-        // console.log("results", results);
-        // console.log("req.body", req.body);
+        console.log("results", results);
+        console.log("req.body", req.body);
         if(results === null) {
+          console.log("User not found!");
           res.json({error: "User not found!", login: false})
         } else if(req.body.password == results.password) {
+          console.log("User logged in: " + results._id);
           res.json({login: true, _id: results._id, restaurantID: results.restaurantID});
         } else {
+          console.log("Incorrect password!");
           res.json({error: "Incorrect password!", login: false})
         }
       })
