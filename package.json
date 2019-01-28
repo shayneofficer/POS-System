@@ -11,8 +11,7 @@
     "seed": "node scripts/seedDB.js",
     "install": "cd client && yarn install",
     "build": "cd client && yarn build",
-    "heroku-postbuild": "yarn build",
-    "scrape": "cd scripts/Scraper && yarn scrape"
+    "heroku-postbuild": "yarn build"
   },
   "repository": "git@github.com:shayneofficer/POS-System.git",
   "author": "shayneofficer <shayneofficer@gmail.com>",
