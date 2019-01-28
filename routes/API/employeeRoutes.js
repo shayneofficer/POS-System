@@ -7,7 +7,7 @@ router
   .post(controller.create)
 
 router
-  .route("/&employee=:employeeId")
+  .route("/=:employeeId")
   .get(controller.findById)
   .post(controller.delete)
   .delete(controller.delete)

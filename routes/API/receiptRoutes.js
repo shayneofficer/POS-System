@@ -7,7 +7,7 @@ router
   .post(controller.create)
 
 router
-  .route("/&receipt=:receiptId")
+  .route("/=:receiptId")
   .get(controller.findById)
   .post(controller.delete)
   .delete(controller.delete)

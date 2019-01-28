@@ -5,8 +5,7 @@ const reservationRoutes = require("./reservationRoute");
 const tableRoutes = require("./tableRoutes");
 const receiptRoutes = require("./receiptRoutes");
 const employeeRoutes = require("./employeeRoutes");
-const receiptRoutes = require("./receiptRoutes");
-
+  
 // Matches with "/api/&rest="
 router
   .route("/")
@@ -20,10 +19,10 @@ router
   .put(restaurantController.update)
   .delete(restaurantController.remove);
 
-router.use("/=:id/menus", menuRoutes);
-router.use("/=:id/tables", tableRoutes);
-router.use("/=:id/reservations", reservationRoutes);
-router.use("/=:id/employees", employeeRoutes);
-router.use("/=:id/receipts", receiptRoutes);
+router.use("/=:id/&menus", menuRoutes);
+router.use("/=:id/&tables", tableRoutes);
+router.use("/=:id/&reservations", reservationRoutes);
+router.use("/=:id/&employees", employeeRoutes);
+router.use("/=:id/&receipts", receiptRoutes);
 
 module.exports = router;

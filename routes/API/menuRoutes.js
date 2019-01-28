@@ -1,34 +1,34 @@
 const router = require("express").Router();
 const menuController = require("../../controllers/menuController");
-const categoryController = require("../../controllers/categoryController");
-const itemController = require("../../controllers/itemController");
+const categoryController = require("../../controllers/menuCategoryController");
+const itemController = require("../../controllers/menuItemController");
 
 router.route("/").get(menuController.find).post(menuController.create);
 
 router
-  .route("/&menu=:menuId")
+  .route("=:menuId")
   .get(menuController.findById)
   .put(menuController.update)
   .delete(menuController.delete);
 
 router
-  .route("/&menu=:menuId/&cat")
+  .route("=:menuId/&cat")
   .get(categoryController.find)
   .post(categoryController.create);
 
 router
-  .route("/&menu=:menuId/&cat=:catId")
+  .route("=:menuId/&cat=:catId")
   .get(categoryController.findById)
   .put(categoryController.update)
   .delete(categoryController.delete);
 
 router
-  .route("/&menu=:menuId/&cat=:catId/&item")
+  .route("=:menuId/&cat=:catId/&items")
   .get(itemController.find)
   .post(itemController.create);
 
 router
-  .route("/&menu=:menuId/&cat=:catId/&item=:itemId")
+  .route("=:menuId/&cat=:catId/&items=:itemId")
   .get(itemController.findById)
   .put(itemController.update)
   .delete(itemController.delete);
