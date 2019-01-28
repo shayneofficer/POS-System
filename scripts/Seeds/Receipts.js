@@ -15,7 +15,7 @@ module.exports = [
     amountCharged: 18,
     amountPaid: 25,
     isPaid: true,
-    dateAdded: new Data("January 12, 2019 23:32:00"),
+    dateAdded: new Date("January 12, 2019 23:32:00"),
     dateUpdated: new Date("January 13, 2019 00:23:00")
   },
   {
