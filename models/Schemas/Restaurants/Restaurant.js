@@ -38,10 +38,6 @@ const RestaurantSchema = new Schema({
   flags: {
     type: [ String ]
   },
-  // Employee Usernames
-  employees: {
-    type: [ String ]
-  },
   // Date that the document was created or last updated
   dateUpdated: {
     type: Date,
