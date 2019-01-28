@@ -1,93 +1,92 @@
 import axios from "axios";
+const base = `http://localhost:3001/api/`;
 
 export default {
   createUser: function (data) {
-    console.log("createUser", data);
-    return axios.post("http://localhost:3001/api/users", data);
+    console.log(`createUser`, data);
+    return axios.post(`${base}users`, data);
   },
   userLogin: function (data) {
     console.log("userLogin", data);
-    return axios.post("http://localhost:3001/api/users/login", data);
+    return axios.post(`${base}users/login`, data);
   },
-  createReservation: function (data) {
-    console.log("createReservation", data);
-    return axios.post("http://localhost:3001/api/reservations", data);
+  createReservation: function (restId, data) {
+    console.log(`createReservation`, data);
+    return axios.post(`${base}&rest=${restId}/&reservations`, data);
   },
-  getReservation: function () {
-    console.log("getReservation");
-    return axios.get("http://localhost:3001/api/reservations");
+  getReservations: function (restId) {
+    return axios.get(`${base}&rest=${restId}/&reservations`);
   },
-
   /*************** Restaurant Methods *****************/
 
   createRestaurant: function (data) {
-    return axios.post("http://localhost:3001/api/&rest=", data);
+    return axios.post(`${base}&rest`, data);
   },
   getRestaurants: function (query) {
-    console.log("Get Restaurants")
-    return axios.get("http://localhost:3001/api/&rest=", query);
+    return axios.get(`${base}&rest`, query);
   },
   getRestaurantById: function (restId) {
-    return axios.get(`http://localhost:3001/api/&rest=/${restId}`);
+    return axios.get(`${base}&rest=${restId}`);
   },
   updateRestaurant: function (restId, data) {
-    return axios.put(`http://localhost:3001/api/&rest=/${restId}`, data);
+    return axios.put(`${base}&rest=${restId}`, data);
   },
   removeRestaurant: function (restId) {
-    return axios.delete(`http://localhost:3001/api/&rest=/${restId}`);
+    return axios.delete(`${base}&rest=${restId}`);
   },
 
   /*************** Menu Methods *****************/
-  createMenu: function (data) {
-    return axios.post(`http://localhost:3001/api/menus`, data);
+
+  createMenu: function (restId, data) {
+    return axios.post(`${base}&rest=${restId}/&menus/`, data);
   },
-  getMenus: function (query) {
-    return axios.get(`http://localhost:3001/api/menus`, query);
+  getMenus: function (restId) {
+    return axios.get(`${base}&rest=${restId}/&menus/`);
   },
-  getMenuById: function (menuId) {
-    return axios.get(`http://localhost:3001/api/menus/&id=${menuId}`);
+  getMenuById: function (restId, menuId) {
+    return axios.get(`${base}&rest=${restId}/&menus=${menuId}`);
   },
-  updateMenu: function (menuId, data) {
-    return axios.put(`http://localhost:3001/api/menus/&id=${menuId}`, data);
+  updateMenu: function (restId, menuId, data) {
+    return axios.put(`${base}&rest=${restId}/&menus=${menuId}`, data);
   },
-  removeMenu: function (menuId) {
-    return axios.delete(`http://localhost:3001/api/menus/&id=${menuId}`);
+  removeMenu: function (restId, menuId) {
+    return axios.delete(`${base}&rest=${restId}/&menus=${menuId}`);
   },
 
   /*************** Menu Item Methods *****************/
 
-  createMenuItem: function (restId, menuId, data) {
-    return axios.post(
-      `http://localhost:3001/api/&rest=/${restId}/menus/&id=${menuId}/items`,
-      data
-    );
+  createCategory: function (restId, menuId, data) {
+    return axios.post(`${base}&rest=${restId}/&menus=${menuId}`, data);
   },
-  getMenuItems: function (restId, menuId, query) {
+  getCategories: function (restId, menuId) {
+    return axios.get(`${base}&rest=${restId}/&menus=${menuId}/&cat/`);
+  },
+  getCategoryById: function (restId, menuId, catId) {
+    return axios.get(`${base}&rest=${restId}/&menus=${menuId}/&cat=${catId}`);
+  },
+  updateCategory: function (restId, menuId, catId, data) {
+    return axios.put(`${base}&rest=${restId}/&menus=${menuId}/&cat=${catId}`, data)
+  },
+  removeCategory: function (restId, menuId, catId) {
+    return axios.delete(`${base}&rest=${restId}/&menus=${menuId}/&cat=${catId}`)
+  },
+  createMenuItem: function (restId, menuId, catId, data) {
+    return axios.post(`${base}$rest=${restId}/&menus=${menuId}/&cat=${catId}/&items/`, data);
+  },
+  getMenuItemsByCat: function (restId, menuId, catId) {
     return axios.get(
-      `http://localhost:3001/api/&rest=/${restId}/menus/&id=${menuId}/items`,
-      query
+      `${base}&rest=${restId}/&menus=${menuId}/&cat=${catId}/&items/`
     );
   },
-  getMenuItemsByCategory: function (restId, menuId, cat, query) {
-    return axios.get(
-      `http://localhost:3001/api/&rest=/${restId}/menus/&id=${menuId}/items/&cat=${cat}`,
-      query
-    );
-  },
-  getMenuItemById: function (restId, menuId, itemId) {
-    return axios.get(
-      `http://localhost:3001/api/&rest=/${restId}/menus/&id=${menuId}/items/&id=${itemId}`
-    );
-  },
-  updateMenuItem: function (restId, menuId, itemId, data) {
+  updateMenuItem: function (restId, menuId, catId, itemId, data) {
     return axios.put(
-      `http://localhost:3001/api/&rest=/${restId}/menus/&id=${menuId}/items/&id=${itemId}`,
+      `${base}&rest=${restId}/&menus=${menuId}/&cat=${catId}/&items=${itemId}`,
       data
     );
   },
-  removeMenuItem: function (restId, menuId, itemId) {
+  removeMenuItem: function (restId, menuId, catId, itemId) {
     return axios.delete(
-      `http://localhost:3001/api/&rest=/${restId}/menus/&id=${menuId}/items/&id=${itemId}`
+      `${base}&rest=${restId}/&menus=${menuId}/&cat=${catId}/&items=${itemId}`
     );
   }
 };
