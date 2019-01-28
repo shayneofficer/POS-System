@@ -31,7 +31,7 @@ class App extends Component {
             <Route path="/reservationlist" component={reservationList} />
           </div>
         </div>
-      </Router>
+      </Router >
     );
   }
 }
