@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const controller = require("../../controllers/reservationController");
+const controller = require("../../controllers/receiptController");
 
 router
   .route("/")
@@ -7,9 +7,9 @@ router
   .post(controller.create)
 
 router
-  .route("/&reservation=:rsvId")
+  .route("/&receipt=:receiptId")
   .get(controller.findById)
-  .put(controller.update)
+  .post(controller.delete)
   .delete(controller.delete)
 
 module.exports = router;
