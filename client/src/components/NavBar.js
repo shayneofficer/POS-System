@@ -4,6 +4,10 @@ import LogoutButton from "./NavBarButtons/LogoutButton";
 
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
 function Navbar() {
+  if (sessionStorage.getItem("login") == null) {
+    sessionStorage.setItem("login", undefined);
+  }
+
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <a className="navbar-brand" href="/">POS</a>
