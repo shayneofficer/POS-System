@@ -4,6 +4,7 @@ const MenuSchema = require("../Menus");
 const BillSchema = require("./Bill");
 const TableSchema = require("./Table");
 const EmployeeSchema = require("./Employee");
+const ReservationSchema = require("../reservations");
 /**
  * More will be added later. This is just basic to work with menus.
  */
@@ -35,10 +36,6 @@ const RestaurantSchema = new Schema({
   },
   // Special conditions
   flags: {
-    type: [ String ]
-  },
-  // Employee Usernames
-  employees: {
     type: [ String ]
   },
   // Date that the document was created or last updated

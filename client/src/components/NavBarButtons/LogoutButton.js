@@ -1,5 +1,12 @@
 import React, { Component } from "react";
 
+const style = {
+  login: {
+    fontSize: "1.3rem",
+    color: "#ffc107"
+  },
+};
+
 class LoginButton extends Component {
   LogOut = event => {
     event.preventDefault();
@@ -12,10 +19,10 @@ class LoginButton extends Component {
 
   render() {
     return (
-      <div className="collapse navbar-collapse" id="navbarNav">
+      <div className="collapse navbar-collapse" id="navbarNav" style={style.navbar}>
         <ul className="navbar-nav">
           <li className="nav-item active">
-            <a onClick={this.LogOut} className="nav-link" href="/">Log Out<span className="sr-only">(current)</span></a>
+            <a onClick={this.LogOut} className="nav-link" href="/" style={style.login}>Log Out<span className="sr-only">(current)</span></a>
           </li>
         </ul>
       </div>

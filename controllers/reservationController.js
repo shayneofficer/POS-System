@@ -6,7 +6,7 @@ module.exports = {
     db.Restaurant
       .findById(req.params.id)
       .then((restaurant) => {
-        res.json(restaurant.Tables.sort({ date: -1 }));
+        res.json(restaurant.Reservations.sort({ date: -1 }));
       })
       .catch((err) => res.status(422).json(err));
   },
@@ -14,7 +14,7 @@ module.exports = {
     db.Restaurant
       .findById(req.params.id)
       .then((restaurant) =>
-        res.json(restaurant.Tables.id(req.params.tableId))
+        res.json(restaurant.Reservations.id(req.params.rsvId))
       )
       .catch((err) => res.status(422).json(err));
   },
@@ -22,10 +22,10 @@ module.exports = {
     db.Restaurant
       .findById(req.params.id)
       .then((restaurant) => {
-        restaurant.Tables.push(req.body);
+        restaurant.Reservations.push(req.body);
         restaurant.save((err, restaurant) => {
           if (err) res.status(422).json(err);
-          res.json(restaurant.Tables);
+          res.json(restaurant.Reservations);
         });
       })
       .catch((err) => res.status(422).json(err));
@@ -34,22 +34,22 @@ module.exports = {
     db.Restaurant
       .findById(req.params.id)
       .then((restaurant) => {
-        const tables = restaurant.Tables;
-        table.set(req.body);
+        const reservations = restaurant.Reservations;
+        reservations.set(req.body);
         return restaurant.save((err, restaurant) => {
           if (err) res.status(422).json(err);
-          res.json(restaurant.Tables);
+          res.json(restaurant.Reservations);
         });
       })
       .catch((err) => res.status(422).json(err));
   },
   updateOne: function (req, res) {
     db.Restaurants.findById(req.params.id).then((restaurant) => {
-      const table = restaurant.Tables.id(req.params.tableId)
-      table.set(req.body);
+      const reservation = restaurant.Reservations.id(req.params.tableId)
+      reservation.set(req.body);
       restaurant.save((err) => {
         if (err) res.status(422).json(err);
-        res.json(restaurant.Tables);
+        res.json(restaurant.Reservations);
       })
     })
   },
@@ -57,8 +57,8 @@ module.exports = {
     db.Restaurant
       .findById(req.params.id)
       .then((restaurant) => {
-        restaurant.Tables
-          .id(req.params.tableId)
+        restaurant.Reservations
+          .id(req.params.rsvId)
           .remove();
         restaurant.save((err) => {
           if (err) res.status(422).json(err);

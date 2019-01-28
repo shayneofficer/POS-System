@@ -1,7 +1,13 @@
 import React, { Component } from "react";
 import API from '../utils/API';
+import { Input, FormBtn } from './Form';
 
 class Login extends Component {
+  state = {
+    email: "",
+    password: "",
+  };
+
   handleInputChange = event => {
     const name = event.target.name;
     const value = event.target.value;
@@ -19,10 +25,11 @@ class Login extends Component {
       password: this.state.password,
     }
     API.userLogin(submit).then(res => {
-      // console.log("res.data", res.data);
+      console.log("res.data", res.data);
       if (res.data.err) {
         console.log("Error: ", res.data.err);
       } else if (res.data.login) {
+        console.log(res.data);
         sessionStorage.setItem("userID", res.data._id);
         sessionStorage.setItem("restID", res.data.restaurantID);
         sessionStorage.setItem("login", res.data.login);
@@ -35,17 +42,14 @@ class Login extends Component {
     return (
       <div>
         <form action="/action_page.php">
-          Email:
           <br />
-          <input onChange={this.handleInputChange} type="text" name="email" />
+          <Input onChange={this.handleInputChange} type="text" placeholder="Email" />
           <br />
-          Password:
+          <Input onChange={this.handleInputChange} type="password" placeholder="Password" />
           <br />
-          <input onChange={this.handleInputChange} type="text" name="password" />
-          <br />
-          <br />
-          <button onClick={this.handleFormSubmit}>Submit</button>
+          <FormBtn onClick={this.handleFormSubmit}>Submit</FormBtn>
         </form>
+        <p id="loginError"></p>
       </div>
     );
   }

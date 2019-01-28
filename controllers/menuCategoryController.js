@@ -5,10 +5,7 @@ module.exports = {
     db.Restaurant
       .findById(req.params.id)
       .then((restaurant) =>
-        res.json(
-          restaurant.Menus.id(req.params.menuId).Categories.id(req.params.catId)
-            .Items
-        )
+        res.json(restaurant.Menus.id(req.params.menuId).Categories)
       )
       .catch((err) => res.status(422).json(err));
   },
@@ -17,10 +14,7 @@ module.exports = {
       .findById(req.params.id)
       .then((restaurant) =>
         res.json(
-          restaurant.Menus
-            .id(req.params.menuId)
-            .Categories.id(req.params.catId)
-            .Items.id(req.params.itemId)
+          restaurant.Menus.id(req.params.menuId).Categories.id(req.params.catId)
         )
       )
       .catch((err) => res.status(422).json(err));
@@ -29,10 +23,7 @@ module.exports = {
     db.Restaurant
       .findById(req.params.id)
       .then((restaurant) => {
-        Restaraunt.Menus
-          .id(req.params.menuId)
-          .Categories.id(req.params.catId)
-          .Items.push(req.body);
+        restaurant.Menus.id(req.params.menuId).Categories.push(req.body);
         restaurant.save(function (err, restaurant) {
           if (err) res.status(422).json(err);
           res.json(restaurant);
@@ -45,10 +36,10 @@ module.exports = {
       .findById(req.params.id)
       .then((restaurant) => {
         const rest = restaurant;
-        const items = rest.Menus
+        const item = rest.menus
           .id(req.params.menuId)
-          .Categories.id(req.params.catId).Items;
-        items.set(req.body);
+          .Items.id(req.params.itemId);
+        item.set(req.body);
         return rest.save();
       })
       .then((menu) => res.send(menu))
@@ -58,13 +49,12 @@ module.exports = {
     db.Restaurant
       .findById(req.params.id)
       .then((restaurant) => {
-        const rest = restaurant;
-        const item = rest.Menus
+        const res = restaurant;
+        const category = res.Menus
           .id(req.params.menuId)
-          .Categories.id(req.params.catId)
-          .Items.id(req.params.itemId);
-        item.set(req.body);
-        return rest.save();
+          .Categories.id(req.params.catId);
+        category.set(req.body);
+        return res.save();
       })
       .then((menu) => res.send(menu))
       .catch((err) => res.status(422).json(err));
@@ -73,10 +63,9 @@ module.exports = {
     db.Restaurant
       .findById(req.params.id)
       .then((restaurant) => {
-        Restaraunt.Menus
+        restaurant.Menus
           .id(req.params.menuId)
           .Categories.id(req.params.catId)
-          .Items.id(req.params.itemId)
           .remove();
         restaurant.save((err) => {
           if (err) res.status(422).json(err);

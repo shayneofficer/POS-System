@@ -1,21 +1,29 @@
 import React from "react";
-import shine from "../../Images/shine.jpg"
-import shine2 from "../../Images/shine2.jpg"
-import shine3 from "../../Images/shine3.jpg"
+import Background from "../../Images/Picture1.jpg"
+
 
 
 const style = {
     buttons: {
-        margin: "10px",
         fontSize: "1.3rem",
         display: "flex",
-        justifyContent: "center"
+        justifyContent: "center",
+        margin: "0 auto"
     },
-    navbar: {
-        marginLeft: "1150px",
-        align: "right",
-        fontSize: "1.3rem",
-        color: "red"
+    header: {
+        color: "#ffc107",
+        fontSize: "2.5rem",
+        textAlign: "center"
+    }
+};
+
+const section = {
+    background: {
+        width: "100%",
+        height: "500px",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundImage: `url(${Background})`
     }
 };
 
@@ -27,35 +35,17 @@ class home extends React.Component {
 
     render() {
         return (
-            <div>
-                <div className="container">
-                    <div className="jumbotron">
-                        <h1 className="text-center"><span className="fa fa-fire"></span>Webster Halsted</h1>
-                        <hr />
-                        <h2 className="text-center">Book your seat at our exclusive POS restaurants!</h2>
-                        <br />
+            <div style={section.background}>
+                <br />
+                <h1 style={style.header}>Book your seat at Shine, our exclusive POS restaurant!</h1>
+                <br />
+                <br />
 
-                        <div className="text-center">
-                            {/* <a href="/tables"><button className="btn btn-lg btn-primary"><span className="fa fa-list-alt"></span> View Tables</button></a> */}
-                            <a href="/Reservations"><button
-                                style={style.buttons}
-                                type="button"
-                                className="btn btn-warning">
-                                Reservation</button></a>
-                        </div>
-                    </div>
-                    <div>
-                        <img src={shine} alt={"logo"} width="250px" height="250px"></img>
-                        <img src={shine2} alt={"logo"} width="250px" height="250px"></img>
-                        <img src={shine3} alt={"logo"} width="250px" height="250px"></img>
-                        <img src={shine3} alt={"logo"} width="250px" height="250px"></img>
-                    </div>
-                </div>
-                <footer className="footer">
-                    {/* <div className="container">
-                        <p><a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a></p>
-                    </div> */}
-                </footer>
+                <a href="/Reservations"><button
+                    style={style.buttons}
+                    type="button"
+                    className="btn btn-warning">
+                    Make a Reservation</button></a>
 
             </div >
         );
