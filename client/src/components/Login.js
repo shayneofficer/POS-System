@@ -41,14 +41,10 @@ class Login extends Component {
     return (
       <div>
         <form action="/action_page.php">
-          Email:
           <br />
-          <input onChange={this.handleInputChange} type="text" name="email" />
+          <input onChange={this.handleInputChange} type="text" placeholder="Email" />
           <br />
-          Password:
-          <br />
-          <input onChange={this.handleInputChange} type="text" name="password" />
-          <br />
+          <input onChange={this.handleInputChange} type="password" placeholder="Password" />
           <br />
           <button onClick={this.handleFormSubmit}>Submit</button>
         </form>
