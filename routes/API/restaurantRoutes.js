@@ -1,9 +1,12 @@
 const router = require("express").Router();
 const restaurantController = require("../../controllers/restaurantsController");
-
+// const menuRoutes = require("./menuRoutes");
+// const reservationRoutes = require("./reservationRoute");
+// const tableRoutes = require("./tableRoutes");
 
 // Matches with "/api/restaurants"
-router.route("/")
+router
+  .route("/")
   .get(restaurantController.findAll)
   .post(restaurantController.create);
 
