@@ -134,7 +134,7 @@ class Order extends React.Component {
                     <h1>{this.state.items.length}</h1>
                   </tr>
                 </table>
-                <input type="submit" />
+                <input className="btn btn-warning" type="submit" />
               </div>
             </form>
 
