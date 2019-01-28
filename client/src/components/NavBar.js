@@ -22,15 +22,17 @@ function Navbar() {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <div className="container">
-        <a className="navbar-brand" href="/"><img src={logo} style={style.logo} alt="logo"></img></a>
-        <a className="navbar-brand" id="nameH" href="/" style={style.name}>Webster Halsted</a>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-          aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
+      <a className="navbar-brand" href="/"><img src={logo} style={style.logo} alt="logo"></img></a>
+      <a className="navbar-brand" id="nameH" href="/" style={style.name}>Webster Halsted</a>
+      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon"></span>
+      </button>
+
+      <div className="ml-auto">
         {sessionStorage.getItem("login") ? <LoginButton /> : <LogoutButton />}
       </div>
+
     </nav>
   );
 }
