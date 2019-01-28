@@ -9,7 +9,7 @@ const style = {
     flexDirection: "column",
     justifyContent: "flex-end",
     alignItems: "flex-end",
-    marginTop: "100px",
+    marginTop: "60px",
     marginRight: "100px"
   },
   buttons: {
@@ -109,7 +109,7 @@ class FloorPlan extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="wrapper">
         <div>
           <div style={{ display: "inline-flex" }}>
             <button
@@ -126,7 +126,7 @@ class FloorPlan extends React.Component {
               type="button"
               className="btn btn-warning"
             >
-              Waitor
+              Server
             </button>
           </div>
           <div style={style.tables}>
@@ -181,7 +181,7 @@ class FloorPlan extends React.Component {
           </Link>
         </div>
         <div style={style.colorKey}>
-          <FloorPlanDesc />
+          <FloorPlanDesc roleView={this.state.role} />
         </div>
       </div>
     );

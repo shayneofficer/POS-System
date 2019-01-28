@@ -17,8 +17,12 @@ class FloorPlan_desc extends React.Component {
   }
 
   render() {
+    let hidden = false;
+    if (this.props.roleView === "host") {
+      hidden = true;
+    }
     return (
-      <div style={myStyles.key}>
+      <div style={myStyles.key} className={`${hidden ? "d-none" : ""}`}>
         <div style={{ backgroundColor: "#00A82E" }}>Table Available</div>
         <div style={{ backgroundColor: "yellow" }}>Table Seated</div>
         <div style={{ backgroundColor: "orange" }}>Has Ordered</div>

@@ -4,6 +4,13 @@ import API from "../utils/API";
 const Validator = require("./Validator");
 
 class Register extends Component {
+  state = {
+    username: "",
+    email: "",
+    password: "",
+    confirm: ""
+  }
+  
   submit = {
     username: "",
     email: "",
@@ -63,7 +70,7 @@ class Register extends Component {
             onChange={this.handleInputChange}
             name="username"
             placeholder="Username"
-            value={this.state.name}
+            value={this.state.username}
           />
           <Input
             onChange={this.handleInputChange}

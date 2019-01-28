@@ -15,5 +15,6 @@ router.route("/:id")
 
 // Matches with "/api/users/login"
 router.route("/login")
-  .post(userController.login)
+  .post(userController.login);
+  
 module.exports = router;
