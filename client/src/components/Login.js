@@ -42,11 +42,8 @@ class Login extends Component {
     return (
       <div>
         <form action="/action_page.php">
-          <br />
-          <Input onChange={this.handleInputChange} type="text" name="email" placeholder="Email" />
-          <br />
-          <Input onChange={this.handleInputChange} type="password" name="password" placeholder="Password" />
-          <br />
+          <Input onChange={this.handleInputChange} type="text" placeholder="Email" />
+          <Input onChange={this.handleInputChange} type="password" placeholder="Password" />
           <FormBtn onClick={this.handleFormSubmit}>Submit</FormBtn>
         </form>
         <p id="loginError"></p>

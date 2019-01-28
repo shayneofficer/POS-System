@@ -1,48 +1,55 @@
 const db = require("../models");
 
-// Defining methods for the POSController
 module.exports = {
-  findAll: function (req, res) {
-    db.Menu
-      .find({})
-      .then((result) => {
-        res.json(result);
+  find: function (req, res) {
+    db.Restaurant
+      .findById(req.params.id)
+      .then((restaurant) => {
+        res.json(restaurant.menus);
       })
       .catch((err) => {
         res.status(422).json(err);
       });
   },
-  findByQuery: function(req, res ) {
-    db.Menu.findMany(query)
-    .then((result) => {
-      res.json(result);
-    })
-    .catch((err) => {
-      res.status(422).json(err);
-    })
-  },
   findById: function (req, res) {
-    db.Menu
+    db.Restaurant
       .findById(req.params.id)
-      .then((result) => res.json(result))
+      .then((restaurant) => res.json(restaurant.menus.id(req.params.menuId)))
       .catch((err) => res.status(422).json(err));
   },
   create: function (req, res) {
-    db.Menu
-      .create(req.body)
-      .then((result) => res.json(result))
+    db.Restaurant
+      .findById(req.params.id)
+      .then((restaurant) => {
+        restaurant.menus.push(req.body);
+        restaurant.save(function (err, restaurant) {
+          if (err) res.status(422).json(err);
+          res.json(restaurant);
+        });
+      })
       .catch((err) => res.status(422).json(err));
   },
   update: function (req, res) {
-    db.Menu
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
-      .then((result) => res.json(result))
+    db.Restaurant
+      .findById(req.params.id)
+      .then((restaurant) => {
+        const menu = restaurant.menus.id(req.params.menuId);
+        menu.set(req.body);
+        return menu.save();
+      })
+      .then((menu) => res.send(menu))
       .catch((err) => res.status(422).json(err));
   },
   remove: function (req, res) {
-    db.Menu
-      .findByIdAndDelete({ _id: req.params.id })
-      .then((result) => res.json(result))
+    db.Restaurant
+      .findById(req.params.id)
+      .then((restaurant) => {
+        restaurant.menus.id(req.params.menuId).remove();
+        restaurant.save((err) => {
+          if (err) res.status(422).json(err);
+          res.json(restaurant);
+        });
+      })
       .catch((err) => res.status(422).json(err));
   }
 };
