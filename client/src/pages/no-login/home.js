@@ -5,10 +5,10 @@ import Background from "../../Images/Picture1.jpg"
 
 const style = {
     buttons: {
-        marginLeft: "550px",
         fontSize: "1.3rem",
-        display: "inline-flex",
-        justifyContent: "center"
+        display: "flex",
+        justifyContent: "center",
+        margin: "0 auto"
     },
     header: {
         color: "#ffc107",
