@@ -1,6 +1,7 @@
 const router = require("express").Router();
-const restaurantController = require("../../controllers/restaurantsController");
+const restaurantController = require("../../controllers/restaurantController");
 const menuRoutes = require("./menuRoutes");
+const menuController = require("../../controllers/menuController")
 // const reservationRoutes = require("./reservationRoutes");
 // const tableRoutes = require("./tableRoutes");
 // const receiptRoutes = require("./receiptRoutes");
@@ -9,10 +10,10 @@ const menuRoutes = require("./menuRoutes");
 // Matches with "/api/&rest="
 router
   .route("/")
-  .get(restaurantController.findAll)
+  .get(restaurantController.find)
   .post(restaurantController.create);
 
-// Matches with "/api/&rest=/:id"
+// Matches with "/api/&rest=:id"
 router
   .route("/=:id")
   .get(restaurantController.findById)
@@ -20,6 +21,8 @@ router
   .delete(restaurantController.remove);
 
 router.use("/=:id/&menus", menuRoutes);
+
+
 // router.use("/=:id/&tables", tableRoutes);
 // router.use("/=:id/&reservations", reservationRoutes);
 // router.use("/=:id/&employees", employeeRoutes);

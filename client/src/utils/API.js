@@ -22,8 +22,8 @@ export default {
   createRestaurant: function (data) {
     return axios.post(`${base}&rest`, data);
   },
-  getRestaurants: function (query) {
-    return axios.get(`${base}&rest`, query);
+  getRestaurants: function () {
+    return axios.get(`${base}&rest`);
   },
   getRestaurantById: function (restId) {
     return axios.get(`${base}&rest=${restId}`);
@@ -41,6 +41,7 @@ export default {
     return axios.post(`${base}&rest=${restId}/&menus/`, data);
   },
   getMenus: function (restId) {
+    console.log(restId);
     return axios.get(`${base}&rest=${restId}/&menus/`);
   },
   getMenuById: function (restId, menuId) {
@@ -59,6 +60,7 @@ export default {
     return axios.post(`${base}&rest=${restId}/&menus=${menuId}`, data);
   },
   getCategories: function (restId, menuId) {
+    console.log(restId, menuId)
     return axios.get(`${base}&rest=${restId}/&menus=${menuId}/&cat/`);
   },
   getCategoryById: function (restId, menuId, catId) {

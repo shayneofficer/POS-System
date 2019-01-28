@@ -4,8 +4,10 @@ const db = require('../models');
 module.exports = {
   find: function (req, res) {
     db.Restaurant
-      .find(req.query)
-      .then(restaurant => res.json(restaurant))
+      .find({})
+      .then(restaurant => {
+        res.json(restaurant)
+      })
       .catch(err => res.status(422).json(err));
   },
   findById: function (req, res) {
@@ -16,7 +18,6 @@ module.exports = {
   },
   create: function (req, res) {
     //add validation for creation
-    console.log("restaurant create: ",req.body)
     db.Restaurant
       .create(req.body)
       .then(restaurant => res.json(restaurant))

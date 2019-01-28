@@ -2,31 +2,31 @@
 module.exports = [
   {
     name: "Cold Apps",
-    items: require("./Items/ColdApps")
+    Items: require("./Items/ColdApps")
   },
   {
     name: "Hot Apps",
-    items: require("./Items/HotApps")
+    Items: require("./Items/HotApps")
   },
   {
     name: "Soups",
-    items: require("./Items/Soups")
+    Items: require("./Items/Soups")
   },
   {
     name: "House Specials",
-    items: require("./Items/HouseSpecials")
+    Items: require("./Items/HouseSpecials")
   },
   {
     name: "Sushi",
-    items: require("./Items/Sushi")
+    Items: require("./Items/Sushi")
   },
   {
     name: "Noodles & Rice",
-    items: require("./Items/NoodlesAndRice")
+    Items: require("./Items/NoodlesAndRice")
   },
   {
     name: "OTHER",
-    items: require("./Items/Other"),
+    Items: require("./Items/Other"),
     flags: [ "Price Varies" ]
   }
 ];
