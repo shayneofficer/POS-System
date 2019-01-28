@@ -126,7 +126,7 @@ class FloorPlan extends React.Component {
               type="button"
               className="btn btn-warning"
             >
-              Waitor
+              Server
             </button>
           </div>
           <div style={style.tables}>
@@ -181,7 +181,7 @@ class FloorPlan extends React.Component {
           </Link>
         </div>
         <div style={style.colorKey}>
-          <FloorPlanDesc />
+          <FloorPlanDesc roleView={this.state.role} />
         </div>
       </div>
     );
