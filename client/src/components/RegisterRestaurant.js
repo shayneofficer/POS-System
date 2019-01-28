@@ -31,7 +31,7 @@ class Register extends Component {
             name: this.state.name,
             email: this.state.email,
           }
-
+          // console.log(restSubmit);
           API.createRestaurant(restSubmit).then(res => {
             console.log("res", res);
             const userSubmit = {
@@ -42,7 +42,7 @@ class Register extends Component {
               manager: true
             }
             API.createUser(userSubmit).then(res => {
-              // console.log("res", res.data);
+              console.log("res", res.data);
               this.setState({ username: "", email: "", password: "", confirm: "", name: "" });
               // console.log(this.state);
             }).catch(err => console.log(err));
