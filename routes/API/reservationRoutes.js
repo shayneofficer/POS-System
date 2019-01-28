@@ -10,6 +10,6 @@ router
   .route("/=:rsvId")
   .get(controller.findById)
   .put(controller.update)
-  .delete(controller.delete)
+  .delete(controller.remove)
 
-module.exports = router;
+module.exports = router; 

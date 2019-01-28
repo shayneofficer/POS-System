@@ -9,7 +9,7 @@ router
   .route("=:menuId")
   .get(menuController.findById)
   .put(menuController.update)
-  .delete(menuController.delete);
+  .delete(menuController.remove);
 
 router
   .route("=:menuId/&cat")
@@ -20,7 +20,7 @@ router
   .route("=:menuId/&cat=:catId")
   .get(categoryController.findById)
   .put(categoryController.update)
-  .delete(categoryController.delete);
+  .delete(categoryController.remove);
 
 router
   .route("=:menuId/&cat=:catId/&items")
@@ -31,6 +31,6 @@ router
   .route("=:menuId/&cat=:catId/&items=:itemId")
   .get(itemController.findById)
   .put(itemController.update)
-  .delete(itemController.delete);
+  .delete(itemController.remove);
 
 module.exports = router;
