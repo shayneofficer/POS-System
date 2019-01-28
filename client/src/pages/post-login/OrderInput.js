@@ -17,12 +17,16 @@ class Order extends React.Component {
       "Chef's Special Rolls",
       "House Specials"
     ],
-    tableNo: ["1", "2", "3", "4", "5", "7", "8", "9", "10", "11", "12"],
+    tableNo: [ "1", "2", "3", "4", "5", "7", "8", "9", "10", "11", "12" ],
     items: [],
-    menu: {}
+    menu: {},
+    categoryNames: [],
+    categoryItems: [],
+    restaurant: {}
   };
+
   componentDidMount = () => {
-    this.getMenu();
+    this.getRestaurants();
   };
   getMenu = () => {
     API.getMenus({ name: "Shine Main Menu" }).then((result) => {
@@ -40,13 +44,32 @@ class Order extends React.Component {
     });
   };
 
-  showItems = () => {
-    // alert("YO LOOK AT THESE DISHES");
-    console.log("AM I WORKING ");
-    alert("hi");
+  getRestaurants = () => {
+    API.getRestaurants().then((restaurants) => {
+      const restaurant = restaurants.data[0]
+      API.getMenus(restaurant._id).then((result) => {
+        const menus = result.data;
+        const Categories = menus[0].Categories;
+        const CategoryNames = [];
+        Categories.map(cat => {
+          CategoryNames.push(cat.name);
+        })
+        this.setState({
+          categoryNames: CategoryNames,
+        })
+        this.showItems();
+      });
+    });
   };
 
-  render() {
+  showItems = () => {
+    // alert("YO LOOK AT THESE DISHES");
+    this.state.categories.map(cat => {
+      console.log(cat.Items);
+    })
+  };
+
+  render () {
     const colSize = {
       row: {
         display: "flex"
@@ -82,9 +105,8 @@ class Order extends React.Component {
       },
 
       catbtn: {
-
         width: "150px",
-        display: 'inline-block',
+        display: "inline-block",
         textAlign: "center",
         paddingRight: "10px",
         paddingLeft: "10px",
@@ -92,7 +114,6 @@ class Order extends React.Component {
         marginTop: "5px"
       }
     };
-
 
     return (
       <div>
@@ -115,7 +136,6 @@ class Order extends React.Component {
                 <option value="table12">Table 12</option>
               </select>
               <div style={colSize.ticket} className="orderList">
-
                 <table>
                   <tr>
                     <th>Item</th>
@@ -137,16 +157,15 @@ class Order extends React.Component {
                 <input className="btn btn-warning" type="submit" />
               </div>
             </form>
-
           </div>
           <div className="column" style={colSize.column}>
-
-            {this.state.category.map((category) => {
-              return (<MenuCats category={category} showItems={this.showItems} />)
-            })}
-
+          <p>{this.state.categoryNames}</p>
+            {/* {this.state.categories.map((category) => {
+              return (
+                <MenuCats category={category} showItems={this.showItems} />
+              );
+            })} */}
           </div>
-
 
           <hr />
         </div>

@@ -2,10 +2,14 @@ const db = require("../models");
 
 module.exports = {
   find: function (req, res) {
+    console.log(req.params.id)
     db.Restaurant
       .findById(req.params.id)
-      .then((restaurant) => {
-        res.json(restaurant.menus);
+      .then((result) => {
+        const restaurant = result
+        const menus = restaurant.Menus;
+        console.log(menus);
+        res.json(menus);
       })
       .catch((err) => {
         res.status(422).json(err);
@@ -14,14 +18,14 @@ module.exports = {
   findById: function (req, res) {
     db.Restaurant
       .findById(req.params.id)
-      .then((restaurant) => res.json(restaurant.menus.id(req.params.menuId)))
+      .then((restaurant) => res.json(restaurant.Menus.id(req.params.menuId)))
       .catch((err) => res.status(422).json(err));
   },
   create: function (req, res) {
     db.Restaurant
       .findById(req.params.id)
       .then((restaurant) => {
-        restaurant.menus.push(req.body);
+        restaurant.Menus.push(req.body);
         restaurant.save(function (err, restaurant) {
           if (err) res.status(422).json(err);
           res.json(restaurant);
@@ -32,8 +36,9 @@ module.exports = {
   update: function (req, res) {
     db.Restaurant
       .findById(req.params.id)
-      .then((restaurant) => {
-        const menu = restaurant.menus.id(req.params.menuId);
+      .then((result) => {
+        const restaurant = result.data[0]
+        const menu = restaurant.Menus.id(req.params.menuId);
         menu.set(req.body);
         return menu.save();
       })
@@ -44,7 +49,7 @@ module.exports = {
     db.Restaurant
       .findById(req.params.id)
       .then((restaurant) => {
-        restaurant.menus.id(req.params.menuId).remove();
+        restaurant.Menus.id(req.params.menuId).remove();
         restaurant.save((err) => {
           if (err) res.status(422).json(err);
           res.json(restaurant);
