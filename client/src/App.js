@@ -9,9 +9,7 @@ import Home from "./pages/post-login/Home";
 import Order from "./pages/post-login/OrderInput";
 import reservationList from "./pages/post-login/reservationlist";
 import Reservations from "./pages/no-login/reservations";
-import menuTest from "./pages/no-login/menuTest";
 import NavBar from "./components/NavBar";
-
 
 class App extends Component {
   render() {
@@ -33,7 +31,6 @@ class App extends Component {
             <Route path="/restlogin" component={Home} />
             <Route path="/reservations" component={Reservations} />
             <Route path="/reservationlist" component={reservationList} />
-            <Route path="/menutest" component={menuTest} />
           </div>
         </div>
       </Router>

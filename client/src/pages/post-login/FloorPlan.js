@@ -9,7 +9,7 @@ const style = {
     flexDirection: "column",
     justifyContent: "flex-end",
     alignItems: "flex-end",
-    marginTop: "100px",
+    marginTop: "60px",
     marginRight: "100px"
   },
   buttons: {
@@ -109,7 +109,7 @@ class FloorPlan extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="wrapper">
         <div>
           <div style={{ display: "inline-flex" }}>
             <button
