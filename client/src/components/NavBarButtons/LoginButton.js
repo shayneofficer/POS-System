@@ -15,7 +15,7 @@ class LoginButton extends Component {
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item active">
-            <a className="nav-link" href="/login" style={style.login}>Restaurant Login<span className="sr-only">(current)</span></a>
+            <a className="nav-link" href="/login" style={style.login}>Login<span className="sr-only">(current)</span></a>
           </li>
         </ul>
       </div>

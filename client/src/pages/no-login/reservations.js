@@ -55,7 +55,7 @@ class Reservations extends React.Component {
                     <Input
                         onChange={this.handleInputChange}
                         name="name"
-                        placeholder="First & Last Name"
+                        placeholder="First &amp; Last Name"
                         value={this.state.name}
                     />
                     <Input
@@ -68,14 +68,14 @@ class Reservations extends React.Component {
                         onChange={this.handleInputChange}
                         name="phone"
                         type="number"
-                        placeholder="phone"
+                        placeholder="Phone"
                         value={this.state.phone}
                     />
                     <Input
                         onChange={this.handleInputChange}
                         name="partySize"
                         type="number"
-                        placeholder="partySize"
+                        placeholder="Party Size"
                         value={this.state.partySize}
                     />
 
