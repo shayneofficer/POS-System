@@ -5,7 +5,7 @@ import Background from "../../Images/shine4.jpg"
 
 const style = {
     buttons: {
-        margin: "10px",
+        marginLeft: "450px",
         fontSize: "1.3rem",
         display: "flex",
         justifyContent: "center"
@@ -16,6 +16,10 @@ const style = {
         fontSize: "1.3rem",
         color: "red"
     },
+    header: {
+        color: "#ffc107",
+        fontSize: "2.5rem"
+    }
 };
 
 const section = {
@@ -38,9 +42,9 @@ class home extends React.Component {
                 <section style={section.background}>
                     <div className="container">
                         <div className="header">
-                            <h1 className="text-center"><span className="fa fa-fire"></span>Webster Halsted</h1>
+                            <h1 className="text-center" style={style.header}><span className="fa fa-fire"></span>Webster Halsted</h1>
                             <hr />
-                            <h2 className="text-center">Book your seat at our exclusive POS restaurants!</h2>
+                            <h2 className="text-center" style={style.header}>Book your seat at Shine, our exclusive POS restaurant!</h2>
                             <br />
 
                             <div className="text-center">
