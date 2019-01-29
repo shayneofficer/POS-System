@@ -64,20 +64,22 @@ class OrderPage extends React.Component {
                     <tbody className='text-left'>  
                     <tr>
                       <th>Item</th>
-                      <th>Cost</th>
+                      <th className='text-right'>Cost</th>
                     </tr>
                     {this.state.orderedItems.map((item, i) => {
                       return (
                         <tr  key={i}>
                           <td>{item.name}</td>
-                          <td>{item.price}</td>
+                          <td className='text-right'>{item.price}</td>
                         </tr>
                       );
                     })}
                     </tbody>
                   </table>
                 </Row>
+                
               </Container>
+              <button className="btn btn-warning"> Submit Order</button>
             </div>
           </Col>
           <Col size="sm-8">
