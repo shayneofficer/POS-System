@@ -113,9 +113,7 @@ class OrderPage extends React.Component {
                     Save Tickets
                   </Button>
                 </Row>
-                
               </Container>
-              <button className="btn btn-warning"> Save Order</button>
             </div>
           </Col>
           <Col size="sm-8">
