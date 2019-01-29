@@ -9,16 +9,18 @@ class MenuCats extends React.Component {
     const myStyle = {
       catbtn:{
         
-          width: "150px",
+          height: "75px",
           display: 'inline-block',
           textAlign: "center",
           paddingRight: "10px",
           paddingLeft: "10px",
           marginLeft: "5px",
-          marginTop: "5px"
+          marginTop: "5px",
+          textTransform: "uppercase"
       },
 }
     return (
+      // <button className="btn btn-light" onClick={this.props.getItems} style={myStyle.catbtn}> {this.props.category}</button>
       <button className="btn btn-light" onClick={this.props.showItems} style={myStyle.catbtn}> {this.props.category}</button>
     );
   }

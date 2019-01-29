@@ -2,7 +2,7 @@ import React from "react";
 import MenuCats from "../../components/MenuCats";
 import API from "../../utils/API";
 
-import { Row, Col } from "../../components/Grid";
+// import { Row, Col } from "../../components/Grid";
 
 class Order extends React.Component {
   // constructor(props) {
@@ -33,18 +33,30 @@ class Order extends React.Component {
     });
   };
 
-  getItems = (menuId) => {
-    API.getMenuById(menuId).then((result) => {
-      this.setState({ items: result.data.items });
-      console.log(result);
-    });
-  };
+  // getItems = (menuId) => {
+  //   API.getMenuById(menuId).then((result) => {
+  //     this.setState({ items: result.data.items });
+  //     console.log(result);
+  //     console.log("hey shit face")
+  //     alert("helllooooo")
+  //   });
+  // };
 
   showItems = () => {
     // alert("YO LOOK AT THESE DISHES");
     console.log("AM I WORKING ");
     alert("hi");
+   
   };
+
+
+  // showItems = (menuId) => {
+  //   API.getMenuById(menuId).then((result) => {
+  //     this.setState({ items: result.data.items });
+  //     console.log(result);
+  //     console.log("hey shit face")
+  //   });
+  // };
 
   render() {
     const colSize = {
@@ -81,16 +93,6 @@ class Order extends React.Component {
         padding: "10px"
       },
 
-      catbtn: {
-
-        width: "150px",
-        display: 'inline-block',
-        textAlign: "center",
-        paddingRight: "10px",
-        paddingLeft: "10px",
-        marginLeft: "5px",
-        marginTop: "5px"
-      }
     };
 
 
@@ -131,7 +133,7 @@ class Order extends React.Component {
                     <td>qweqwe</td>
                     <td>qweqwe</td>
                     <td>qweqwe</td>
-                    <h1>{this.state.items.length}</h1>
+                    {/* <h1>{this.state.items.length}</h1> */}
                   </tr>
                 </table>
                 <input className="btn btn-warning" type="submit" />
