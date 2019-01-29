@@ -1,8 +1,9 @@
 import React from "react";
 import MenuCats from "../../components/MenuCats";
 import API from "../../utils/API";
+import Menu from "../../components/Menu/index.jsx";
 
-import { Row, Col } from "../../components/Grid";
+import { Row, Col } from "react-bootstrap";
 
 class Order extends React.Component {
   // constructor(props) {
@@ -17,36 +18,39 @@ class Order extends React.Component {
       "Chef's Special Rolls",
       "House Specials"
     ],
-    tableNo: ["1", "2", "3", "4", "5", "7", "8", "9", "10", "11", "12"],
-    items: [],
-    menu: {}
+    tableNo: [ "1", "2", "3", "4", "5", "7", "8", "9", "10", "11", "12" ],
+    restaurant: {},
+    categories: []
   };
+
   componentDidMount = () => {
-    this.getMenu();
+    this.showItems();
   };
+
   getMenu = () => {
-    API.getMenus({ name: "Shine Main Menu" }).then((result) => {
+    this.getRestaurant((result) => {
+      const Restaurant = result.data[0];
+      const Menu = Restaurant.Menus[0];
+      const Categories = Menu.Categories;
       this.setState({
-        menu: result.data[0],
-        items: result.data[0].items
+        restaurant: Restaurant,
+        categories: Categories
       });
     });
   };
 
-  getItems = (menuId) => {
-    API.getMenuById(menuId).then((result) => {
-      this.setState({ items: result.data.items });
-      console.log(result);
+  getRestaurant = (callback) => {
+    API.getRestaurants().then((restaurants) => {
+      const restaurant = restaurants.data[0];
+      callback(restaurant);
     });
   };
 
   showItems = () => {
-    // alert("YO LOOK AT THESE DISHES");
-    console.log("AM I WORKING ");
-    alert("hi");
+    this.getMenu();
   };
 
-  render() {
+  render () {
     const colSize = {
       row: {
         display: "flex"
@@ -82,9 +86,8 @@ class Order extends React.Component {
       },
 
       catbtn: {
-
         width: "150px",
-        display: 'inline-block',
+        display: "inline-block",
         textAlign: "center",
         paddingRight: "10px",
         paddingLeft: "10px",
@@ -92,7 +95,6 @@ class Order extends React.Component {
         marginTop: "5px"
       }
     };
-
 
     return (
       <div>
@@ -115,7 +117,6 @@ class Order extends React.Component {
                 <option value="table12">Table 12</option>
               </select>
               <div style={colSize.ticket} className="orderList">
-
                 <table>
                   <tr>
                     <th>Item</th>
@@ -131,22 +132,15 @@ class Order extends React.Component {
                     <td>qweqwe</td>
                     <td>qweqwe</td>
                     <td>qweqwe</td>
-                    <h1>{this.state.items.length}</h1>
                   </tr>
                 </table>
                 <input className="btn btn-warning" type="submit" />
               </div>
             </form>
-
           </div>
           <div className="column" style={colSize.column}>
-
-            {this.state.category.map((category) => {
-              return (<MenuCats category={category} showItems={this.showItems} />)
-            })}
-
+            <Menu categories={this.state.categories} />
           </div>
-
 
           <hr />
         </div>

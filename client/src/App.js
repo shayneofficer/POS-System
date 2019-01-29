@@ -7,10 +7,11 @@ import FloorPlan from "./pages/post-login/FloorPlan";
 import home from "./pages/no-login/home";
 import Home from "./pages/post-login/Home";
 import Order from "./pages/post-login/OrderInput";
-// import OrderPage from "./pages/post-login/OrderPage/index";
+import OrderPage from "./pages/post-login/OrderPage/index";
 import reservationList from "./pages/post-login/reservationlist";
 import Reservations from "./pages/no-login/reservations";
 import NavBar from "./components/NavBar";
+
 
 class App extends Component {
   render() {
@@ -31,6 +32,7 @@ class App extends Component {
           <Route path="/reservationlist" component={reservationList} />
 
         </div>
+
       </Router >
     );
   }

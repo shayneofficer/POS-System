@@ -31,3 +31,14 @@
 .list-overflow-container li:last-child {
   border-bottom: none;
 }
+.list-group-item {
+  display: flex;
+  text-align: left;
+  justify-content: space-between;
+}
+
+.text-left {
+  text-align: left !important;
+  width: 100%;
+  margin-left: 2rem;
+}

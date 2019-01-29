@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const controller = require("../../controllers/tableController");
+const controller = require("../../controllers/employeeController");
 
 router
   .route("/")
@@ -7,9 +7,9 @@ router
   .post(controller.create)
 
 router
-  .route("/=:tableId")
+  .route("/=:employeeId")
   .get(controller.findById)
-  .put(controller.update)
+  .post(controller.update)
   .delete(controller.remove)
 
 module.exports = router;
