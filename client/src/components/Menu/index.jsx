@@ -45,7 +45,7 @@ class Menu extends React.Component {
         </Row>
         <Row>
           <Col size="sm-12">
-            <ItemList className="itemList" items={this.state.activeItems} />
+            <ItemList className="itemList" orderItem={this.props.orderItem} items={this.state.activeItems} />
           </Col>
         </Row>
       </Container>
