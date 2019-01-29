@@ -60,15 +60,15 @@ class OrderPage extends React.Component {
                   <h3>Placeholder</h3>
                 </Row>
                 <Row>
-                  <table>
-                    <tbody>
+                  <table >
+                    <tbody className='text-left'>  
                     <tr>
                       <th>Item</th>
                       <th>Cost</th>
                     </tr>
                     {this.state.orderedItems.map((item, i) => {
                       return (
-                        <tr key={i}>
+                        <tr  key={i}>
                           <td>{item.name}</td>
                           <td>{item.price}</td>
                         </tr>
