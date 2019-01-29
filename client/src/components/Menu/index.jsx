@@ -23,14 +23,11 @@ class Menu extends React.Component {
           <Col size="md-12 sm-10">
             <h3>Menu Items</h3>
             {this.props.categories.map((cat, i) => {
-              {
-                var btnState = "";
-              }
-              {
-                this.state.activeCat === i
-                  ? (btnState = "active")
-                  : (btnState = "");
-              }
+              var btnState = "";
+              this.state.activeCat === i
+                ? (btnState = "active")
+                : (btnState = "");
+
               return (
                 <Button
                   onClick={() => this.handleClick(i)}
@@ -46,7 +43,11 @@ class Menu extends React.Component {
         </Row>
         <Row>
           <Col size="sm-12">
-            <ItemList className="itemList" orderItem={this.props.orderItem} items={this.state.activeItems} />
+            <ItemList
+              className="itemList"
+              orderItem={this.props.orderItem}
+              items={this.state.activeItems}
+            />
           </Col>
           
         </Row>

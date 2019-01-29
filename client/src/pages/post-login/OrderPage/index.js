@@ -7,19 +7,20 @@ import "./index.css";
 
 class OrderPage extends React.Component {
   state = {
+    restaurantId: sessionStorage.getItem("restID"),
     restaurant: {},
     categories: [],
     orderedItems: []
   };
 
   componentDidMount = () => {
+    console.log(this.state.restaurantId);
     this.showItems();
   };
 
   getMenu = () => {
     this.getRestaurant((result) => {
       const Restaurant = result;
-      console.log(Restaurant);
       const Menu = Restaurant.Menus[0];
       const Categories = Menu.Categories;
       this.setState({
