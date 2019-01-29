@@ -41,7 +41,6 @@ class OrderPage extends React.Component {
   };
 
   orderItem = (i) => {
-    console.log(i);
     let array = this.state.orderedItems;
     array.push(i);
     this.setState({
@@ -52,31 +51,40 @@ class OrderPage extends React.Component {
   render () {
     return (
       <Container>
-      <Row>
-        <Col size="sm-4">
-          <div className="box">
-            <h3>Placeholder</h3>
-            <ul>
-              {this.state.orderedItems.map((item, i) => {
-                return (
-                  <li key={i}>
-                    {item.name} + {item.price}
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        </Col>
-        <Col size="sm-8">
-          <div className="box">
-            <Menu
-              categories={this.state.categories}
-              orderItem={this.orderItem}
-            />
-          </div>
-        </Col>
-      </Row>
-    </Container>
+        <Row>
+          <Col size="sm-4">
+            <div className="box">
+              <Container>
+                <Row>
+                  <h3>Placeholder</h3>
+                </Row>
+                <Row>
+                  <table>
+                    <th>Item</th>
+                    <th>Cost</th>
+                    {this.state.orderedItems.map((item, i) => {
+                      return (
+                        <tr key={i}>
+                          <td>{item.name}</td>
+                          <td>{item.price}</td>
+                        </tr>
+                      );
+                    })}
+                  </table>
+                </Row>
+              </Container>
+            </div>
+          </Col>
+          <Col size="sm-8">
+            <div className="box">
+              <Menu
+                categories={this.state.categories}
+                orderItem={this.orderItem}
+              />
+            </div>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

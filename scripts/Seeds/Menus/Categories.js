@@ -23,10 +23,5 @@ module.exports = [
   {
     name: "Noodles & Rice",
     Items: require("./Items/NoodlesAndRice")
-  },
-  {
-    name: "OTHER",
-    Items: require("./Items/Other"),
-    flags: [ "Price Varies" ]
   }
 ];
