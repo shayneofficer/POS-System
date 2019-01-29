@@ -6,7 +6,6 @@ import RegisterUser from "./components/RegisterUser";
 import FloorPlan from "./pages/post-login/FloorPlan";
 import home from "./pages/no-login/home";
 import Home from "./pages/post-login/Home";
-import Order from "./pages/post-login/OrderInput";
 import OrderPage from "./pages/post-login/OrderPage/index";
 import reservationList from "./pages/post-login/reservationlist";
 import Reservations from "./pages/no-login/reservations";
@@ -25,8 +24,7 @@ class App extends Component {
           <Route exact path="/register/restaurant" component={RegisterRestaurant} />
           <Route exact path="/register/user" component={RegisterUser} />
           <Route path="/floorplan" component={FloorPlan} />
-          <Route path="/order" component={Order} />
-          {/* <Route path="/order" component={OrderPage} /> */}
+          <Route path="/order" component={OrderPage} />
           <Route path="/restlogin" component={Home} />
           <Route path="/reservations" component={Reservations} />
           <Route path="/reservationlist" component={reservationList} />
