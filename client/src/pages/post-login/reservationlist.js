@@ -1,18 +1,14 @@
 import React from "react";
 
-class reservationList extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
+class ReservationList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
-    render() {
-        return (
-            <div>
-                {/* need current reservation list */}
-            </div>
-        );
-    }
+  render() {
+    return <div>{/* Need to put reservation list here */}</div>;
+  }
 }
 
-export default reservationList;
+export default ReservationList;

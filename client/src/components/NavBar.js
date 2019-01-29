@@ -3,7 +3,6 @@ import LoginButton from "./NavBarButtons/LoginButton";
 import LogoutButton from "./NavBarButtons/LogoutButton";
 import logo from "../Images/WHlogo.jpg";
 
-
 const style = {
   logo: {
     height: "55px",
@@ -22,17 +21,27 @@ function Navbar() {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <a className="navbar-brand" href="/"><img src={logo} style={style.logo} alt="logo"></img></a>
-      <a className="navbar-brand" id="nameH" href="/" style={style.name}>Webster Halsted</a>
-      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-        aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon"></span>
+      <a className="navbar-brand" href="/">
+        <img src={logo} style={style.logo} alt="logo" />
+      </a>
+      <a className="navbar-brand" id="nameH" href="/" style={style.name}>
+        Webster Halsted
+      </a>
+      <button
+        className="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span className="navbar-toggler-icon" />
       </button>
 
       <div className="ml-auto">
         {sessionStorage.getItem("login") ? <LoginButton /> : <LogoutButton />}
       </div>
-
     </nav>
   );
 }

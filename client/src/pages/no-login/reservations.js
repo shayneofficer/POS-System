@@ -3,45 +3,51 @@ import { Input, FormBtn } from "../../components/Form";
 import API from "../../utils/API";
 
 class Reservations extends React.Component {
-    state = {
-        restaurantName: "",
-        name: "",
-        email: "",
-        phone: "",
-        partySize: ""
-    }
-    handleInputChange = event => {
-        const name = event.target.name;
-        const value = event.target.value;
+  state = {
+    restaurantName: "",
+    name: "",
+    email: "",
+    phone: "",
+    partySize: ""
+  };
+  handleInputChange = event => {
+    const name = event.target.name;
+    const value = event.target.value;
+    this.setState({
+      [name]: value
+    });
+    // console.log(`${name}: ${value}`);
+  };
+
+  handleFormSubmit = event => {
+    event.preventDefault();
+
+    console.log("handleFormSubmit");
+    const submit = {
+      restaurantName: this.state.restaurantName,
+      name: this.state.name,
+      email: this.state.email,
+      phone: this.state.phone,
+      partySize: this.state.partySize
+    };
+    // console.log(submit);
+
+    API.createReservation(submit)
+      .then(res => {
+        console.log("res", res);
         this.setState({
-            [name]: value
+          restaurantName: "",
+          name: "",
+          email: "",
+          phone: "",
+          partySize: ""
         });
-        // console.log(`${name}: ${value}`);
-    };
+        console.log(this.state);
+      })
+      .catch(err => console.log("err", err));
 
-    handleFormSubmit = event => {
-        event.preventDefault();
-
-        console.log("handleFormSubmit");
-        const submit = {
-            restaurantName: this.state.restaurantName,
-            name: this.state.name,
-            email: this.state.email,
-            phone: this.state.phone,
-            partySize: this.state.partySize
-        };
-        // console.log(submit);
-
-        API.createReservation(submit)
-            .then(res => {
-                console.log("res", res);
-                this.setState({ restaurantName: "", name: "", email: "", phone: "", partySize: "" });
-                console.log(this.state);
-            }).catch(err => console.log("err", err));
-
-        // API.getReservation().then(res => console.log("res", res)).catch(err => console.log("err", err));
-    };
-
+    // API.getReservation().then(res => console.log("res", res)).catch(err => console.log("err", err));
+  };
     render() {
         return (
             <div>
@@ -78,14 +84,13 @@ class Reservations extends React.Component {
                         placeholder="Party Size"
                         value={this.state.partySize}
                     />
-
-                    <FormBtn onClick={this.handleFormSubmit}>
-                        Create New Reservation
-                    </FormBtn>
-                </form>
-            </div>
-        );
-    }
+          <FormBtn onClick={this.handleFormSubmit}>
+            Create New Reservation
+          </FormBtn>
+        </form>
+      </div>
+    );
+  }
 }
 
 export default Reservations;

@@ -4,7 +4,7 @@ import Login from "./pages/UserLogin";
 import RegisterRestaurant from "./components/RegisterRestaurant";
 import RegisterUser from "./components/RegisterUser";
 import FloorPlan from "./pages/post-login/FloorPlan";
-import home from "./pages/no-login/home";
+import HomeNoLogin from "./pages/no-login/Home";
 import Home from "./pages/post-login/Home";
 import OrderPage from "./pages/post-login/OrderPage/index";
 import reservationList from "./pages/post-login/reservationlist";
@@ -19,9 +19,13 @@ class App extends Component {
       <Router>
         <div>
           <NavBar />
-          <Route exact path="/" component={home} />
+          <Route exact path="/" component={HomeNoLogin} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/register/restaurant" component={RegisterRestaurant} />
+          <Route
+            exact
+            path="/register/restaurant"
+            component={RegisterRestaurant}
+          />
           <Route exact path="/register/user" component={RegisterUser} />
           <Route path="/floorplan" component={FloorPlan} />
           <Route path="/order" component={OrderPage} />
@@ -29,10 +33,8 @@ class App extends Component {
           <Route path="/reservations" component={Reservations} />
           <Route path="/reservationlist" component={reservationList} />
           <Route path="/restaurantHome" component={restaurantHome} />
-
         </div>
-
-      </Router >
+      </Router>
     );
   }
 }
