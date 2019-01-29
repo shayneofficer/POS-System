@@ -60,8 +60,11 @@ class OrderPage extends React.Component {
                 </Row>
                 <Row>
                   <table>
-                    <th>Item</th>
-                    <th>Cost</th>
+                    <tbody>
+                    <tr>
+                      <th>Item</th>
+                      <th>Cost</th>
+                    </tr>
                     {this.state.orderedItems.map((item, i) => {
                       return (
                         <tr key={i}>
@@ -70,6 +73,7 @@ class OrderPage extends React.Component {
                         </tr>
                       );
                     })}
+                    </tbody>
                   </table>
                 </Row>
               </Container>
