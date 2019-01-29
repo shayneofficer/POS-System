@@ -20,10 +20,11 @@ const style = {
 const section = {
     background: {
         width: "100%",
-        height: "500px",
+        height: "700px",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
-        backgroundImage: `url(${Background})`
+        backgroundImage: `url(${Background})`,
+        backgroundPosition: "center"
     }
 };
 
