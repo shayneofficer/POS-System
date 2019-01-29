@@ -25,3 +25,11 @@ table {
   align-items: left;
   width: 100%;
 }
+
+.btn {
+  font-weight: bold;
+}
+th {
+  padding-bottom: 0.5em;
+  border-bottom: solid #EDEDED 2px;
+}
