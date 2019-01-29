@@ -48,9 +48,9 @@ class Reservations extends React.Component {
                 <form>
                     <Input
                         onChange={this.handleInputChange}
-                        name="restaurantName"
+                        name="restaurantID"
                         placeholder="Restaurant Name"
-                        value={this.state.restaurantName}
+                        value={this.state.restaurantID}
                     />
                     <Input
                         onChange={this.handleInputChange}
