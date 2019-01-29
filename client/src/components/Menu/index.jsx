@@ -21,7 +21,6 @@ class Menu extends React.Component {
       <Container>
         <Row>
           <Col size="md-12 sm-10">
-            <h3>Menu Items</h3>
             {this.props.categories.map((cat, i) => {
               var btnState = "";
               this.state.activeCat === i
