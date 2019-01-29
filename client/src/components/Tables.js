@@ -28,13 +28,21 @@ class Table extends React.Component {
           // 0 = available
           this.state.status === 0
             ? "#00A82E"
-            : this.state.status === 1 && this.props.roleView === "server"
+            : this.state.status === 1 &&
+              (this.props.roleView === "server" ||
+                this.props.roleView === "manager")
             ? "yellow"
-            : this.state.status === 2 && this.props.roleView === "server"
+            : this.state.status === 2 &&
+              (this.props.roleView === "server" ||
+                this.props.roleView === "manager")
             ? "orange"
-            : this.state.status === 3 && this.props.roleView === "server"
+            : this.state.status === 3 &&
+              (this.props.roleView === "server" ||
+                this.props.roleView === "manager")
             ? "#cc00cc"
-            : this.state.status === 4 && this.props.roleView === "server"
+            : this.state.status === 4 &&
+              (this.props.roleView === "server" ||
+                this.props.roleView === "manager")
             ? "#00C5CD"
             : this.state.status === 5
             ? "red"
@@ -47,7 +55,7 @@ class Table extends React.Component {
 
     return (
       <div
-        style={{ display: "inline-flex", zIndex: 450000000 }}
+        style={{ display: "inline-flex", zIndex: 5 }}
         onClick={this.changeStatus}
       >
         <div
