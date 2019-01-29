@@ -12,7 +12,7 @@ class ItemList extends React.Component {
             <List key={this.props.key} children={this.props.items}>
               {this.props.items.map((item, i) => {
                 return (
-                  <Row>
+                  <Row key={i}>
                     <Col size="sm-9"><h6 key={i} className="text-left" onClick={() => this.props.orderItem(item)}>{item.name}</h6></Col>
                     <Col size="sm-3" onClick={() => this.props.orderItem(item)}>{item.price}</Col>
                   </Row>

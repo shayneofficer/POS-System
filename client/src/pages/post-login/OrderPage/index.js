@@ -3,11 +3,12 @@ import Menu from "../../../components/Menu/index.jsx";
 // import { Row, Col } from "react-bootstrap";
 import { Container, Row, Col } from "../../../components/Grid";
 import API from "../../../utils/API";
+import { Button } from "react-bootstrap";
 import "./index.css";
 
 class OrderPage extends React.Component {
   state = {
-    restaurantId: sessionStorage.getItem("restID"),
+    restId: sessionStorage.getItem("restID"),
     restaurant: {},
     categories: [],
     orderedItems: []
@@ -25,13 +26,15 @@ class OrderPage extends React.Component {
       const Categories = Menu.Categories;
       this.setState({
         restaurant: Restaurant,
-        categories: Categories
+        categories: Categories,
+        restId: Restaurant._id
       });
     });
   };
 
   getRestaurant = (callback) => {
     API.getRestaurants().then((restaurants) => {
+      console.log(restaurants);
       const restaurant = restaurants.data[0];
       callback(restaurant);
     });
@@ -49,6 +52,36 @@ class OrderPage extends React.Component {
     });
   };
 
+  getTickets = (e) => {
+    e.preventDefault();
+    let tickets = this.state.restaurant.Receipts;
+    console.log(tickets);
+  };
+
+  saveTicket = (e) => {
+    e.preventDefault();
+    let Receipts = this.state.restaurant.Receipts;
+    let restId = this.state.restaurant._id;
+    let price = 0;
+    this.state.orderedItems.map((item) => {
+      price += item.price;
+    });
+    let ticket = {
+      isPaid: false,
+      amountCharged: price,
+      amountPaid: 0,
+      date: new Date(Date.now())
+    };
+    Receipts.push(ticket);
+    console.log("Receipt Added: " + ticket);
+
+    API.updateRestaurant(restId, Receipts).then((result) => {
+      this.setState({
+        orderedItems: []
+      });
+    });
+  };
+
   render () {
     return (
       <Container>
@@ -59,23 +92,26 @@ class OrderPage extends React.Component {
                 <Row>
                   <h3>Placeholder</h3>
                 </Row>
-                <Row>
-                  <table >
-                    <tbody className='text-left'>  
+                <table>
+                  <tbody className="text-left">
                     <tr>
                       <th>Item</th>
-                      <th className='text-right'>Cost</th>
+                      <th className="text-right">Cost</th>
                     </tr>
                     {this.state.orderedItems.map((item, i) => {
                       return (
-                        <tr  key={i}>
+                        <tr key={i}>
                           <td>{item.name}</td>
-                          <td className='text-right'>{item.price}</td>
+                          <td className="text-right">{item.price}</td>
                         </tr>
                       );
                     })}
-                    </tbody>
-                  </table>
+                  </tbody>
+                </table>
+                <Row>
+                  <Button bsStyle="warning" onClick={(e) => this.saveTicket(e)}>
+                    Save Tickets
+                  </Button>
                 </Row>
                 
               </Container>
