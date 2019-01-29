@@ -13,7 +13,7 @@ class ItemList extends React.Component {
               {this.props.items.map((item, i) => {
                 return (
                   <Row>
-                    <Col size="sm-9"><h6 className="text-left">{item.name}</h6></Col>
+                    <Col size="sm-9"><h6 onClick={this.props.orderItem} className="text-left">{item.name}</h6></Col>
                     <Col size="sm-3">{item.price}</Col>
                   </Row>
                 );
