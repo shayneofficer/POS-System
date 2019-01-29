@@ -1,18 +1,15 @@
 const router = require("express").Router();
 const reservationsController = require("../../controllers/reservationsController");
-// const menuRoutes = require("./menuRoutes");
-// const reservationRoutes = require("./reservationRoute");
-// const tableRoutes = require("./tableRoutes");
 
-// Matches with "/api/&rest="
+// Matches with "/api/reservations"
 router
   .route("/")
   .get(reservationsController.findAll)
-  .post(restaurreservationsControllerantController.create);
+  .post(reservationsController.create);
 
-// Matches with "/api/&rest=/:id"
+// Matches with "/api/reservations/:rsvId"
 router
-  .route("/:id")
+  .route("/=:rsvId")
   .get(reservationsController.findById)
   .put(reservationsController.update)
   .delete(reservationsController.remove);
