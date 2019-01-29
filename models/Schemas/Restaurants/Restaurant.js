@@ -4,7 +4,6 @@ const MenuSchema = require("../Menus");
 const BillSchema = require("./Bill");
 const TableSchema = require("./Table");
 const EmployeeSchema = require("./Employee");
-const ReservationSchema = require("../reservations");
 /**
  * More will be added later. This is just basic to work with menus.
  */
@@ -21,9 +20,6 @@ const RestaurantSchema = new Schema({
   // All bills for the restaurant (for easy calculations)
   // Bills are also children of the specific table they are linked to
   Receipts: [ BillSchema ],
-  // Reservations made for the restaurant
-  // Linked to Restaurant instead of tables so the table can easily be changed
-  Reservations: [ ReservationSchema ],
   // Employees of the Restaurant
   Employees: [ EmployeeSchema ],
   // Street Address preferably, but not required

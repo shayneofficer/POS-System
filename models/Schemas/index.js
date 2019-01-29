@@ -4,5 +4,6 @@ module.exports = {
   MenuItems: require("./Menus/MenuItem"),
   Restaurant: require("./Restaurants/Restaurant"),
   Bill: require("./Restaurants/bill"),
-  Table: require("./Restaurants/table")
+  Table: require("./Restaurants/table"),
+  Reservations: require("./reservations")
 };
