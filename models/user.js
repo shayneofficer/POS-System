@@ -8,12 +8,13 @@ const userSchema = new Schema({
   password: { type: String },
   manager: { type: Boolean, default: false },
   waiter: { type: Boolean, default: false },
+  host: { type: Boolean, default: false },
   date: { type: Date, default: Date.now },
   roles: {
-    type: [ Number ],
+    type: [Number],
     required: false,
     default: []
-  },
+  }
 });
 
 const User = mongoose.model("User", userSchema);

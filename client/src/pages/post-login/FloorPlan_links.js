@@ -23,7 +23,7 @@ class FloorPlan_links extends React.Component {
     return (
       <div style={myStyles.links} className={`${hidden ? "d-none" : ""}`}>
         <div>
-          <a href="#" style={{ margin: "10px" }}>
+          <a href="/register/user" style={{ margin: "10px" }}>
             Create New User
           </a>
         </div>
