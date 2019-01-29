@@ -6,11 +6,12 @@ import RegisterUser from "./components/RegisterUser";
 import FloorPlan from "./pages/post-login/FloorPlan";
 import HomeNoLogin from "./pages/no-login/Home";
 import Home from "./pages/post-login/Home";
-import Order from "./pages/post-login/OrderInput";
-// import OrderPage from "./pages/post-login/OrderPage/index";
-import ReservationList from "./pages/post-login/ReservationList";
-import Reservations from "./pages/no-login/Reservations";
+import OrderPage from "./pages/post-login/OrderPage/index";
+import reservationList from "./pages/post-login/reservationlist";
+import Reservations from "./pages/no-login/reservations";
 import NavBar from "./components/NavBar";
+import restaurantHome from "../src/pages/no-login/restaurantHome";
+
 
 class App extends Component {
   render() {
@@ -27,11 +28,11 @@ class App extends Component {
           />
           <Route exact path="/register/user" component={RegisterUser} />
           <Route path="/floorplan" component={FloorPlan} />
-          <Route path="/order" component={Order} />
-          {/* <Route path="/order" component={OrderPage} /> */}
+          <Route path="/order" component={OrderPage} />
           <Route path="/restlogin" component={Home} />
           <Route path="/reservations" component={Reservations} />
-          <Route path="/reservationlist" component={ReservationList} />
+          <Route path="/reservationlist" component={reservationList} />
+          <Route path="/restaurantHome" component={restaurantHome} />
         </div>
       </Router>
     );

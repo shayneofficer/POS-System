@@ -1,48 +1,87 @@
-import Menu from "../../../components/Menu";
+import React from "react";
+import Menu from "../../../components/Menu/index.jsx";
+// import { Row, Col } from "react-bootstrap";
 import { Container, Row, Col } from "../../../components/Grid";
-import API from '../../../utils/API';
+import API from "../../../utils/API";
+import "./index.css";
 
 class OrderPage extends React.Component {
   state = {
-    menu: {},
-    categories: []
+    restaurant: {},
+    categories: [],
+    orderedItems: []
   };
 
   componentDidMount = () => {
-    API.getMenuByName("Shine Main Menu");
+    this.showItems();
   };
 
-  getMenuByName = (name) => {
-    API.getMenuByName(name)
-      .then((result) => {
-        this.setState({
-          menu: result.data,
-          categories: result.data.categories
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-        this.setState({
-          menu: { error: "Check Log" },
-          categories: categories.push({ error: "Check Log" })
-        });
+  getMenu = () => {
+    this.getRestaurant((result) => {
+      const Restaurant = result;
+      console.log(Restaurant);
+      const Menu = Restaurant.Menus[0];
+      const Categories = Menu.Categories;
+      this.setState({
+        restaurant: Restaurant,
+        categories: Categories
       });
+    });
   };
+
+  getRestaurant = (callback) => {
+    API.getRestaurants().then((restaurants) => {
+      const restaurant = restaurants.data[0];
+      callback(restaurant);
+    });
+  };
+
+  showItems = () => {
+    this.getMenu();
+  };
+
+  orderItem = (i) => {
+    let array = this.state.orderedItems;
+    array.push(i);
+    this.setState({
+      orderedItems: array
+    });
+  };
+
   render () {
     return (
       <Container>
         <Row>
-          <Col>
+          <Col size="sm-4">
             <div className="box">
-              <h3>Placeholder</h3>
+              <Container>
+                <Row>
+                  <h3>Placeholder</h3>
+                </Row>
+                <Row>
+                  <table>
+                    <th>Item</th>
+                    <th>Cost</th>
+                    {this.state.orderedItems.map((item, i) => {
+                      return (
+                        <tr key={i}>
+                          <td>{item.name}</td>
+                          <td>{item.price}</td>
+                        </tr>
+                      );
+                    })}
+                  </table>
+                </Row>
+              </Container>
             </div>
           </Col>
-          <Col>
-            <Row>
-              <div className="box">
-                <Menu categories={this.state.categories} />
-              </div>
-            </Row>
+          <Col size="sm-8">
+            <div className="box">
+              <Menu
+                categories={this.state.categories}
+                orderItem={this.orderItem}
+              />
+            </div>
           </Col>
         </Row>
       </Container>
