@@ -1,7 +1,6 @@
 import React from "react";
 import ReservationRows from "../../components/ReservationRows";
 
-
 const reservation = {
     res1: {
         name: "Hannah",

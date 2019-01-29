@@ -7,19 +7,20 @@ import "./index.css";
 
 class OrderPage extends React.Component {
   state = {
+    restaurantId: sessionStorage.getItem("restID"),
     restaurant: {},
     categories: [],
     orderedItems: []
   };
 
   componentDidMount = () => {
+    console.log(this.state.restaurantId);
     this.showItems();
   };
 
   getMenu = () => {
     this.getRestaurant((result) => {
       const Restaurant = result;
-      console.log(Restaurant);
       const Menu = Restaurant.Menus[0];
       const Categories = Menu.Categories;
       this.setState({
@@ -59,24 +60,26 @@ class OrderPage extends React.Component {
                   <h3>Placeholder</h3>
                 </Row>
                 <Row>
-                  <table>
-                    <tbody>
+                  <table >
+                    <tbody className='text-left'>  
                     <tr>
                       <th>Item</th>
-                      <th>Cost</th>
+                      <th className='text-right'>Cost</th>
                     </tr>
                     {this.state.orderedItems.map((item, i) => {
                       return (
-                        <tr key={i}>
+                        <tr  key={i}>
                           <td>{item.name}</td>
-                          <td>{item.price}</td>
+                          <td className='text-right'>{item.price}</td>
                         </tr>
                       );
                     })}
                     </tbody>
                   </table>
                 </Row>
+                
               </Container>
+              <button className="btn btn-warning"> Save Order</button>
             </div>
           </Col>
           <Col size="sm-8">

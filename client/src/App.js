@@ -12,7 +12,6 @@ import Reservations from "./pages/no-login/Reservations";
 import NavBar from "./components/NavBar";
 import RestaurantHome from "./pages/no-login/RestaurantHome";
 
-
 class App extends Component {
   render() {
     return (
@@ -21,7 +20,11 @@ class App extends Component {
           <NavBar />
           <Route exact path="/" component={Main} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/register/restaurant" component={RegisterRestaurant} />
+          <Route
+            exact
+            path="/register/restaurant"
+            component={RegisterRestaurant}
+          />
           <Route exact path="/register/user" component={RegisterUser} />
           <Route path="/floorplan" component={FloorPlan} />
           <Route path="/order" component={OrderPage} />
@@ -30,8 +33,7 @@ class App extends Component {
           <Route path="/reservationlist" component={ReservationList} />
           <Route path="/restaurantHome" component={RestaurantHome} />
         </div>
-
-      </Router >
+      </Router>
     );
   }
 }
