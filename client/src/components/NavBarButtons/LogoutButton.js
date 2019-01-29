@@ -2,8 +2,6 @@ import React, { Component } from "react";
 
 const style = {
   login: {
-    marginLeft: "950px",
-    align: "right",
     fontSize: "1.3rem",
     color: "#ffc107"
   },
