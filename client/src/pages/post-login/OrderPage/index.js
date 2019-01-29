@@ -79,7 +79,7 @@ class OrderPage extends React.Component {
                 </Row>
                 
               </Container>
-              <button className="btn btn-warning"> Submit Order</button>
+              <button className="btn btn-warning"> Save Order</button>
             </div>
           </Col>
           <Col size="sm-8">
