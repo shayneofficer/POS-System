@@ -7,9 +7,9 @@ router
   .post(controller.create)
 
 router
-  .route("/&employee=:employeeId")
+  .route("/=:employeeId")
   .get(controller.findById)
-  .post(controller.delete)
-  .delete(controller.delete)
+  .post(controller.update)
+  .delete(controller.remove)
 
 module.exports = router;

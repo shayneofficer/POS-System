@@ -9,8 +9,9 @@ const style = {
     flexDirection: "column",
     justifyContent: "flex-end",
     alignItems: "flex-end",
-    marginTop: "60px",
-    marginRight: "100px"
+    marginTop: "20px",
+    marginRight: "100px",
+    marginBottom: "30px"
   },
   buttons: {
     margin: "10px",
@@ -30,72 +31,84 @@ class FloorPlan extends React.Component {
     tables: [
       {
         tableNumber: 1,
+        tableNo: "n1",
         tableShape: "rounded-corner",
         server: "server-1",
         serverName: "Jenny"
       },
       {
         tableNumber: 2,
+        tableNo: "n2",
         tableShape: "square",
         server: "server-3",
         serverName: "Tom"
       },
       {
         tableNumber: 3,
+        tableNo: "n3",
         tableShape: "square",
         server: "server-3",
         serverName: "Steve"
       },
       {
         tableNumber: 4,
+        tableNo: "n4",
         tableShape: "square",
         server: "server-3",
         serverName: "Steve"
       },
       {
         tableNumber: 5,
+        tableNo: "n5",
         tableShape: "square",
         server: "server-4",
         serverName: "Angie"
       },
       {
         tableNumber: 6,
+        tableNo: "n6",
         tableShape: "rounded-corner",
         server: "server-2",
         serverName: "Tom"
       },
       {
         tableNumber: 7,
+        tableNo: "n7",
         tableShape: "round",
         server: "server-1",
         serverName: "Jenny"
       },
       {
         tableNumber: 8,
+        tableNo: "n8",
         tableShape: "round",
         server: "server-1",
         serverName: "Jenny"
       },
       {
         tableNumber: 9,
+        tableNo: "n9",
         tableShape: "round",
         server: "server-4",
         serverName: "Steve"
       },
       {
         tableNumber: 10,
+        tableNo: "n10",
         tableShape: "round",
         server: "server-4",
         serverName: "Steve"
       },
       {
         tableNumber: 11,
+        tableNo: "n11",
         tableShape: "round",
         server: "server-2",
         serverName: "Tom"
       },
       {
         tableNumber: 12,
+        tableNo: "n12",
         tableShape: "round",
         server: "server-2",
         serverName: "Tom"
@@ -140,6 +153,7 @@ class FloorPlan extends React.Component {
                     tableNumber={table.tableNumber}
                     tableShape={table.tableShape}
                     serverNumber={table.server}
+                    tableNo={table.tableNo}
                   />
                 );
               })}
@@ -155,6 +169,7 @@ class FloorPlan extends React.Component {
                     tableShape={table.tableShape}
                     serverNumber={table.server}
                     roleView={this.state.role}
+                    tableNo={table.tableNo}
                   />
                 );
               })}

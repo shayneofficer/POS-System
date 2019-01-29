@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import API from '../utils/API';
+import { Input, FormBtn } from './Form';
 
 class Login extends Component {
   state = {
@@ -41,12 +42,9 @@ class Login extends Component {
     return (
       <div>
         <form action="/action_page.php">
-          <br />
-          <input onChange={this.handleInputChange} type="text" placeholder="Email" />
-          <br />
-          <input onChange={this.handleInputChange} type="password" placeholder="Password" />
-          <br />
-          <button onClick={this.handleFormSubmit}>Submit</button>
+          <Input onChange={this.handleInputChange} type="text" placeholder="Email" />
+          <Input onChange={this.handleInputChange} type="password" placeholder="Password" />
+          <FormBtn onClick={this.handleFormSubmit}>Submit</FormBtn>
         </form>
         <p id="loginError"></p>
       </div>
