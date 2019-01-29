@@ -11,24 +11,26 @@ import OrderPage from "./pages/post-login/OrderPage/index";
 import reservationList from "./pages/post-login/reservationlist";
 import Reservations from "./pages/no-login/reservations";
 import NavBar from "./components/NavBar";
+import restaurantHome from "../src/pages/no-login/restaurantHome";
 
 
 class App extends Component {
   render() {
     return (
-      <Router> 
+      <Router>
         <div>
           <NavBar />
-
           <Route exact path="/" component={home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register/restaurant" component={RegisterRestaurant} />
           <Route exact path="/register/user" component={RegisterUser} />
           <Route path="/floorplan" component={FloorPlan} />
-          <Route path="/order" component={OrderPage} />
+          <Route path="/order" component={Order} />
+          {/* <Route path="/order" component={OrderPage} /> */}
           <Route path="/restlogin" component={Home} />
           <Route path="/reservations" component={Reservations} />
           <Route path="/reservationlist" component={reservationList} />
+          <Route path="/restaurantHome" component={restaurantHome} />
 
         </div>
 

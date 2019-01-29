@@ -1,5 +1,5 @@
 import React from "react";
-import Background from "../../Images/Picture1.jpg"
+import image from "../../Images/burger.jpg";
 
 
 const style = {
@@ -22,12 +22,12 @@ const section = {
         height: "700px",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
-        backgroundImage: `url(${Background})`,
+        backgroundImage: `url(${image})`,
         backgroundPosition: "center"
     }
 };
 
-class home extends React.Component {
+class restaurantHome extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -41,15 +41,15 @@ class home extends React.Component {
                 <br />
                 <br />
 
-                <a href="/restaurantHome"><button
+                <a href="/Reservations"><button
                     style={style.buttons}
                     type="button"
                     className="btn btn-warning">
-                    Search Restaurants</button></a>
+                    Make a Reservation</button></a>
 
             </div >
         );
     }
 }
 
-export default home;
+export default restaurantHome;
