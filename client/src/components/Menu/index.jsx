@@ -3,6 +3,7 @@ import { Container, Row, Col } from "../Grid";
 import { Button } from "react-bootstrap";
 import ItemList from "./ItemList";
 
+
 class Menu extends React.Component {
   state = {
     activeItems: [],
@@ -19,7 +20,7 @@ class Menu extends React.Component {
 
   orderItem = () => {
     alert("item added to order")
-    console.log("hello there")
+ 
   };
 
   render () {
