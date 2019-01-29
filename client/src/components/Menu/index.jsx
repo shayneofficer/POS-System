@@ -42,11 +42,13 @@ class Menu extends React.Component {
               );
             })}
           </Col>
+         
         </Row>
         <Row>
           <Col size="sm-12">
             <ItemList className="itemList" orderItem={this.props.orderItem} items={this.state.activeItems} />
           </Col>
+          
         </Row>
       </Container>
     );
