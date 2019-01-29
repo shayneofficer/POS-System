@@ -27,7 +27,7 @@ const section = {
     }
 };
 
-class restaurantHome extends React.Component {
+class RestaurantHome extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
@@ -52,4 +52,4 @@ class restaurantHome extends React.Component {
     }
 }
 
-export default restaurantHome;
+export default RestaurantHome;

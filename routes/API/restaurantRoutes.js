@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const restaurantController = require("../../controllers/restaurantController");
 const menuRoutes = require("./menuRoutes");
-const menuController = require("../../controllers/menuController")
 // const reservationRoutes = require("./reservationRoutes");
 // const tableRoutes = require("./tableRoutes");
 // const receiptRoutes = require("./receiptRoutes");
@@ -21,7 +20,6 @@ router
   .delete(restaurantController.remove);
 
 router.use("/=:id/&menus", menuRoutes);
-
 
 // router.use("/=:id/&tables", tableRoutes);
 // router.use("/=:id/&reservations", reservationRoutes);
