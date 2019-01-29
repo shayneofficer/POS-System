@@ -3,7 +3,9 @@ import List from "./List";
 import { Container, Row, Col } from "../../Grid";
 import "./List.css";
 
+
 class ItemList extends React.Component {
+
   render () {
     return (
       <Container>
@@ -13,8 +15,8 @@ class ItemList extends React.Component {
               {this.props.items.map((item, i) => {
                 return (
                   <Row>
-                    <Col size="sm-9"><h6 className="text-left">{item.name}</h6></Col>
-                    <Col size="sm-3">{item.price}</Col>
+                    <Col size="sm-9"><h6 key={i} className="text-left" onClick={() => this.props.orderItem(item)}>{item.name}</h6></Col>
+                    <Col size="sm-3" onClick={() => this.props.orderItem(item)}>{item.price}</Col>
                   </Row>
                 );
               })}
