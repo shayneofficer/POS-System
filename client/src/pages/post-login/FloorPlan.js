@@ -1,6 +1,7 @@
 import React from "react";
 import Table from "../../components/Tables";
 import FloorPlanDesc from "../post-login/FloorPlan_desc";
+import FloorPlanLinks from "../post-login/FloorPlan_links";
 import { Link } from "react-router-dom";
 
 const style = {
@@ -22,6 +23,9 @@ const style = {
   tables: {
     display: "flex",
     justifyContent: "center"
+  },
+  links: {
+    margin: "50px"
   }
 };
 
@@ -117,6 +121,7 @@ class FloorPlan extends React.Component {
   };
 
   changeRole = role => {
+    console.log("role");
     this.setState({ role });
   };
 
@@ -125,6 +130,14 @@ class FloorPlan extends React.Component {
       <div className="wrapper">
         <div>
           <div style={{ display: "inline-flex" }}>
+            <button
+              onClick={() => this.changeRole("manager")}
+              style={style.buttons}
+              type="button"
+              className="btn btn-warning"
+            >
+              Manager
+            </button>
             <button
               onClick={() => this.changeRole("host")}
               style={style.buttons}
@@ -142,6 +155,7 @@ class FloorPlan extends React.Component {
               Server
             </button>
           </div>
+          <FloorPlanLinks roleView={this.state.role} />
           <div style={style.tables}>
             {this.state.tables
               .filter(table => table.tableShape !== "round")
