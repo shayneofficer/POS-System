@@ -5,6 +5,6 @@ const reservations = require('./reservationRoutes')
 
 // API routes
 router.use('/reservations', reservations);
-router.use('/&rest=', restaurants);
+router.use('/&rest', restaurants);
 router.use('/users', users);
 module.exports = router;

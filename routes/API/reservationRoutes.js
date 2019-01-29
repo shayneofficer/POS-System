@@ -1,17 +1,17 @@
 const router = require("express").Router();
-const reservationsController = require("../../controllers/reservationController");
+const reservationController = require("../../controllers/reservationController");
 
 // Matches with "/api/reservations"
 router
   .route("/")
-  .get(reservationsController.findAll)
-  .post(reservationsController.create);
+  .get(reservationController.find)
+  .post(reservationController.create);
 
 // Matches with "/api/reservations/:rsvId"
 router
   .route("/=:rsvId")
-  .get(reservationsController.findById)
-  .put(reservationsController.update)
-  .delete(reservationsController.remove);
+  .get(reservationController.findById)
+  .put(reservationController.update)
+  .delete(reservationController.remove);
 
 module.exports = router;
