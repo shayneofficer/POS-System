@@ -4,7 +4,7 @@ const reservationController = require("../../controllers/reservationController")
 // Matches with "/api/reservations"
 router
   .route("/")
-  .get(reservationController.find)
+  .get(reservationController.findAll)
   .post(reservationController.create);
 
 // Matches with "/api/reservations/:rsvId"

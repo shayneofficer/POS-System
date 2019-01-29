@@ -8,9 +8,9 @@ import HomeNoLogin from "./pages/no-login/Home";
 import Home from "./pages/post-login/Home";
 import OrderPage from "./pages/post-login/OrderPage/index";
 import reservationList from "./pages/post-login/reservationlist";
-import Reservations from "./pages/no-login/reservations";
+import Reservations from "./pages/no-login/Reservations";
 import NavBar from "./components/NavBar";
-import restaurantHome from "../src/pages/no-login/restaurantHome";
+import restaurantHome from "./pages/no-login/RestaurantHome";
 
 
 class App extends Component {
