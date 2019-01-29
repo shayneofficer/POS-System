@@ -24,18 +24,18 @@ class Reservations extends React.Component {
 
         console.log("handleFormSubmit");
         const submit = {
-            restaurantName: this.state.restaurantName,
+            restaurantID: this.state.restaurantID,
             name: this.state.name,
             email: this.state.email,
             phone: this.state.phone,
             partySize: this.state.partySize
         };
-        // console.log(submit);
+        console.log("Res", submit);
 
         API.createReservation(submit)
             .then(res => {
                 console.log("res", res);
-                this.setState({ restaurantName: "", name: "", email: "", phone: "", partySize: "" });
+                this.setState({ restaurantID: "", name: "", email: "", phone: "", partySize: "" });
                 console.log(this.state);
             }).catch(err => console.log("err", err));
 

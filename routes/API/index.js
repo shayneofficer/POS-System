@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const restaurants = require('./restaurantRoutes');
 const users = require('./userRoutes');
-const reservations = require('./reservationRoutes')
+const reservations = require('./reservationRoutes');
 
 // API routes
 router.use('/reservations', reservations);

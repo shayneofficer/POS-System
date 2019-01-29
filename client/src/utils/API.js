@@ -10,12 +10,12 @@ export default {
     console.log("userLogin", data);
     return axios.post(`${base}users/login`, data);
   },
-  createReservation: function (restId, data) {
+  createReservation: function (data) {
     console.log(`createReservation`, data);
-    return axios.post(`${base}&rest=${restId}/&reservations`, data);
+    return axios.post(`${base}reservations`, data);
   },
-  getReservations: function (restId) {
-    return axios.get(`${base}&rest=${restId}/&reservations`);
+  getReservations: function () {
+    return axios.get(`${base}reservations`);
   },
   /*************** Restaurant Methods *****************/
 

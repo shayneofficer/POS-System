@@ -5,5 +5,5 @@ module.exports = {
   Restaurant: require("./Restaurants/Restaurant"),
   Bill: require("./Restaurants/bill"),
   Table: require("./Restaurants/table"),
-  Reservations: require("./reservations")
+  Reservation: require('./reservations'),
 };
