@@ -1,8 +1,9 @@
 import React from "react";
 import MenuCats from "../../components/MenuCats";
 import API from "../../utils/API";
+import Menu from "../../components/Menu/index.jsx";
 
-import { Row, Col } from "../../components/Grid";
+import { Row, Col } from "react-bootstrap";
 
 class Order extends React.Component {
   // constructor(props) {
@@ -18,55 +19,35 @@ class Order extends React.Component {
       "House Specials"
     ],
     tableNo: [ "1", "2", "3", "4", "5", "7", "8", "9", "10", "11", "12" ],
-    items: [],
-    menu: {},
-    categoryNames: [],
-    categoryItems: [],
-    restaurant: {}
+    restaurant: {},
+    categories: []
   };
 
   componentDidMount = () => {
-    this.getRestaurants();
+    this.showItems();
   };
+
   getMenu = () => {
-    API.getMenus({ name: "Shine Main Menu" }).then((result) => {
+    this.getRestaurant((result) => {
+      const Restaurant = result.data[0];
+      const Menu = Restaurant.Menus[0];
+      const Categories = Menu.Categories;
       this.setState({
-        menu: result.data[0],
-        items: result.data[0].items
+        restaurant: Restaurant,
+        categories: Categories
       });
     });
   };
 
-  getItems = (menuId) => {
-    API.getMenuById(menuId).then((result) => {
-      this.setState({ items: result.data.items });
-      console.log(result);
-    });
-  };
-
-  getRestaurants = () => {
+  getRestaurant = (callback) => {
     API.getRestaurants().then((restaurants) => {
-      const restaurant = restaurants.data[0]
-      API.getMenus(restaurant._id).then((result) => {
-        const menus = result.data;
-        const Categories = menus[0].Categories;
-        const CategoryNames = [];
-        Categories.map(cat => {
-          CategoryNames.push(cat.name);
-        })
-        this.setState({
-          categoryNames: CategoryNames,
-        })
-        this.showItems();
-      });
+      const restaurant = restaurants.data[0];
+      callback(restaurant);
     });
   };
 
   showItems = () => {
-    // alert("YO LOOK AT THESE DISHES");
-    this.state.categories.map(cat => {
-      console.log(cat.Items);
-    })
+    this.getMenu();
   };
 
   render () {
@@ -151,7 +132,6 @@ class Order extends React.Component {
                     <td>qweqwe</td>
                     <td>qweqwe</td>
                     <td>qweqwe</td>
-                    <h1>{this.state.items.length}</h1>
                   </tr>
                 </table>
                 <input className="btn btn-warning" type="submit" />
@@ -159,12 +139,7 @@ class Order extends React.Component {
             </form>
           </div>
           <div className="column" style={colSize.column}>
-          <p>{this.state.categoryNames}</p>
-            {/* {this.state.categories.map((category) => {
-              return (
-                <MenuCats category={category} showItems={this.showItems} />
-              );
-            })} */}
+            <Menu categories={this.state.categories} />
           </div>
 
           <hr />
