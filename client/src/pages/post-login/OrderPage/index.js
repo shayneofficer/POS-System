@@ -1,7 +1,7 @@
 import React from "react";
 import Menu from "../../../components/Menu/index.jsx";
 // import { Row, Col } from "react-bootstrap";
-import { Row, Col } from "../../../components/Grid";
+import { Container, Row, Col } from "../../../components/Grid";
 import API from "../../../utils/API";
 import "./index.css";
 
@@ -51,6 +51,7 @@ class OrderPage extends React.Component {
 
   render () {
     return (
+      <Container>
       <Row>
         <Col size="sm-4">
           <div className="box">
@@ -75,6 +76,7 @@ class OrderPage extends React.Component {
           </div>
         </Col>
       </Row>
+    </Container>
     );
   }
 }
