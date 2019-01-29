@@ -13,14 +13,19 @@ class Order extends React.Component {
     category: [
       "Cold Apps",
       "Hot Apps",
+      "Soups",
       "Noodles & Rice",
-      "Chef's Special Rolls",
-      "House Specials"
+      "Sushi"
+     
     ],
-    // tableNo: ["1", "2", "3", "4", "5", "7", "8", "9", "10", "11", "12"],
-    // items: [],
-    // menu: {}
+    items: [],
+    restaurant: {},
+    menu: {},
+    catergories: []
+   
   };
+
+
   componentDidMount = () => {
     this.getMenu();
   };
@@ -33,6 +38,17 @@ class Order extends React.Component {
     });
   };
 
+  getRestaurants = () => {
+    API.getRestaurants.then((restaurants) => {
+      const restId = restaurants[0]._id;
+      API.getMenus.then(menus) =>  
+    }
+    
+    this.setState({
+      restaurants: restaurants[0]
+
+    }))
+  }
   getItems = (menuId) => {
     API.getMenuById(menuId).then((result) => {
       this.setState({ items: result.data.items });
