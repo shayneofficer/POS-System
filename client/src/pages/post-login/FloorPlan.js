@@ -176,7 +176,7 @@ class FloorPlan extends React.Component {
           </div>
         </div>
         <div style={style.buttons}>
-          <Link to={`/order`}>
+          <Link to={`/orderpage`}>
             <button
               style={style.buttons}
               type="button"

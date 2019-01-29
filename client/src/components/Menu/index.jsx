@@ -17,7 +17,10 @@ class Menu extends React.Component {
   };
 
 
-  
+  orderItem = () => {
+    alert("item added to order")
+    console.log("hello there")
+  };
 
   render () {
     return (
