@@ -46,44 +46,56 @@ class Reservations extends React.Component {
       })
       .catch(err => console.log("err", err));
 
-    // API.getReservation().then(res => console.log("res", res)).catch(err => console.log("err", err));
+    API.getReservations()
+      .then(res => {
+        console.log("res", res);
+        this.setState({
+          restaurantName: "",
+          name: "",
+          email: "",
+          phone: "",
+          partySize: ""
+        });
+        console.log(this.state);
+      })
+      .catch(err => console.log("err", err));
   };
-    render() {
-        return (
-            <div>
-                <form>
-                    <Input
-                        onChange={this.handleInputChange}
-                        name="restaurantID"
-                        placeholder="Restaurant Name"
-                        value={this.state.restaurantID}
-                    />
-                    <Input
-                        onChange={this.handleInputChange}
-                        name="name"
-                        placeholder="First &amp; Last Name"
-                        value={this.state.name}
-                    />
-                    <Input
-                        onChange={this.handleInputChange}
-                        name="email"
-                        placeholder="Email"
-                        value={this.state.email}
-                    />
-                    <Input
-                        onChange={this.handleInputChange}
-                        name="phone"
-                        type="number"
-                        placeholder="Phone"
-                        value={this.state.phone}
-                    />
-                    <Input
-                        onChange={this.handleInputChange}
-                        name="partySize"
-                        type="number"
-                        placeholder="Party Size"
-                        value={this.state.partySize}
-                    />
+  render() {
+    return (
+      <div>
+        <form>
+          <Input
+            onChange={this.handleInputChange}
+            name="restaurantID"
+            placeholder="Restaurant Name"
+            value={this.state.restaurantID}
+          />
+          <Input
+            onChange={this.handleInputChange}
+            name="name"
+            placeholder="First &amp; Last Name"
+            value={this.state.name}
+          />
+          <Input
+            onChange={this.handleInputChange}
+            name="email"
+            placeholder="Email"
+            value={this.state.email}
+          />
+          <Input
+            onChange={this.handleInputChange}
+            name="phone"
+            type="number"
+            placeholder="Phone"
+            value={this.state.phone}
+          />
+          <Input
+            onChange={this.handleInputChange}
+            name="partySize"
+            type="number"
+            placeholder="Party Size"
+            value={this.state.partySize}
+          />
           <FormBtn onClick={this.handleFormSubmit}>
             Create New Reservation
           </FormBtn>
