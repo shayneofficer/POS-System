@@ -16,7 +16,7 @@ class Menu extends React.Component {
     });
   };
 
-  render () {
+  render() {
     return (
       <Container>
         <Row>
@@ -38,7 +38,7 @@ class Menu extends React.Component {
               );
             })}
           </Col>
-         
+
         </Row>
         <Row>
           <Col size="sm-12">
@@ -48,7 +48,7 @@ class Menu extends React.Component {
               items={this.state.activeItems}
             />
           </Col>
-          
+
         </Row>
       </Container>
     );
