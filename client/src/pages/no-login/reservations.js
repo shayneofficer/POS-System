@@ -4,7 +4,7 @@ import API from "../../utils/API";
 
 class Reservations extends React.Component {
     state = {
-        restaurantName: "",
+        restaurantID: "",
         name: "",
         email: "",
         phone: "",
@@ -39,9 +39,10 @@ class Reservations extends React.Component {
                 console.log(this.state);
             }).catch(err => console.log("err", err));
 
+        console.log("handleFormSubmit");
+
         // API.getReservation().then(res => console.log("res", res)).catch(err => console.log("err", err));
     };
-
     render() {
         return (
             <div>
@@ -78,10 +79,9 @@ class Reservations extends React.Component {
                         placeholder="Party Size"
                         value={this.state.partySize}
                     />
-
                     <FormBtn onClick={this.handleFormSubmit}>
                         Create New Reservation
-                    </FormBtn>
+          </FormBtn>
                 </form>
             </div>
         );

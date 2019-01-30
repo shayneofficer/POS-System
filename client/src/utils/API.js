@@ -25,14 +25,17 @@ export default {
   getRestaurants: function () {
     return axios.get(`${base}&rest`);
   },
+  findRestaurant: function (data) {
+    return axios.post(`${base}&rest/name`, data);
+  },
   getRestaurantById: function (restId) {
-    return axios.get(`${base}&rest=${restId}`);
+    return axios.get(`${base}&rest${restId}`);
   },
   updateRestaurant: function (restId, data) {
-    return axios.put(`${base}&rest=${restId}`, data);
+    return axios.put(`${base}&rest${restId}`, data);
   },
   removeRestaurant: function (restId) {
-    return axios.delete(`${base}&rest=${restId}`);
+    return axios.delete(`${base}&rest${restId}`);
   },
 
   /*************** Menu Methods *****************/

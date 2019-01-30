@@ -4,13 +4,13 @@ import Login from "./pages/UserLogin";
 import RegisterRestaurant from "./components/RegisterRestaurant";
 import RegisterUser from "./components/RegisterUser";
 import FloorPlan from "./pages/post-login/FloorPlan";
-import home from "./pages/no-login/home";
+import Main from "./pages/no-login/Main";
 import Home from "./pages/post-login/Home";
 import OrderPage from "./pages/post-login/OrderPage/index";
-import reservationList from "./pages/post-login/reservationlist";
-import Reservations from "./pages/no-login/reservations";
+import ReservationList from "./pages/post-login/ReservationList";
+import Reservations from "./pages/no-login/Reservations";
 import NavBar from "./components/NavBar";
-import restaurantHome from "../src/pages/no-login/restaurantHome";
+import RestaurantHome from "./pages/no-login/RestaurantHome";
 
 
 class App extends Component {
@@ -19,7 +19,7 @@ class App extends Component {
       <Router>
         <div>
           <NavBar />
-          <Route exact path="/" component={home} />
+          <Route exact path="/" component={Main} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/register/restaurant" component={RegisterRestaurant} />
           <Route exact path="/register/user" component={RegisterUser} />
@@ -27,9 +27,8 @@ class App extends Component {
           <Route path="/order" component={OrderPage} />
           <Route path="/restlogin" component={Home} />
           <Route path="/reservations" component={Reservations} />
-          <Route path="/reservationlist" component={reservationList} />
-          <Route path="/restaurantHome" component={restaurantHome} />
-
+          <Route path="/reservationlist" component={ReservationList} />
+          <Route path="/restaurantHome" component={RestaurantHome} />
         </div>
 
       </Router >
