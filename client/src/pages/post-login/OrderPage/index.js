@@ -13,6 +13,7 @@ class OrderPage extends React.Component {
     categories: [],
     orderedItems: [],
     tables: [],
+    activeTable: {}
   };
 
   componentDidMount = () => {
@@ -51,13 +52,21 @@ class OrderPage extends React.Component {
     this.getMenu();
   };
 
-  orderItem = (i) => {
+  addItem= (item) => {
     let array = this.state.orderedItems;
-    array.push(i);
+    array.push(item);
     this.setState({
       orderedItems: array
     });
   };
+
+  removeItem= (index) => {
+    let array = this.state.orderedItems;
+    array.splice(index, 1);
+    this.setState({
+      orderedItems: array
+    });
+  }
 
   getTickets = (e) => {
     e.preventDefault();
@@ -65,7 +74,7 @@ class OrderPage extends React.Component {
     console.log(tickets);
   };
 
-  saveTicket = (e, tableIndex) => {
+  saveTicket = (e, tableIndex, newBill) => {
     e.preventDefault();
     if (tableIndex < 0) {
       console.log("No Table Selected");
@@ -73,25 +82,15 @@ class OrderPage extends React.Component {
     }
 
     let restId = this.state.restaurant._id;
-    let price = 0;
-    this.state.orderedItems.map((item) => {
-      price += item.price;
-    });
-    let ticket = {
-      isPaid: false,
-      amountCharged: price,
-      amountPaid: 0,
-      dateAdded: new Date(Date.now()),
-      dateUpdated: new Date(Date.now())
-    };
-    console.log(tableIndex);
+    
+    console.log(newBill);
 
-    API.updateTableBill(restId, tableIndex, ticket).then((result) => {
-      console.log("Bill added to table no. " + this.state.activeTable);
+    API.updateTableBill(restId, tableIndex, newBill).then((result) => {
       this.setState({
+        // tables: result.data.Tables,
         orderedItems: []
-      });
-    });
+      })
+    })
   };
 
   billPaid = (tableIndex) => {
@@ -103,8 +102,12 @@ class OrderPage extends React.Component {
       dateAdded: new Date(Date.now()),
       dateUpdated: new Date(Date.now())
     }
+
     API.billPaid(restId, tableIndex, receipt).then((result) => {
       console.log(result);
+      this.setState({
+        orderedItems: []
+      });
     })
   }
 
@@ -115,9 +118,11 @@ class OrderPage extends React.Component {
           <Col size="sm-4">
             <OrderForm
               tables={this.state.tables}
-              items={this.state.orderedItems}
+              activeTable={this.state.activeTable}
               saveTicket={this.saveTicket}
               billPaid={this.billPaid}
+              removeItem={this.removeItem}
+              orderedItems={this.state.orderedItems}
             />
           </Col>
           <Col size="sm-8">
@@ -125,7 +130,7 @@ class OrderPage extends React.Component {
               <Menu
                 tables={this.state.tables}
                 categories={this.state.categories}
-                orderItem={this.orderItem}
+                orderItem={this.addItem}
               />
             </div>
           </Col>

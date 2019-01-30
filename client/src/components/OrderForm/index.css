@@ -40,3 +40,9 @@ font-size: 18px;
   width: 100%;
   justify-content: space-evenly;
 }
+.text-bold {
+  font-weight: bold;
+}
+.border-top {
+  margin-top: 1em;
+}
