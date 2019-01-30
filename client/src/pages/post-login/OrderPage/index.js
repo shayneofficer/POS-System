@@ -26,15 +26,16 @@ class OrderPage extends React.Component {
       const Menu = Restaurant.Menus[0];
       const Categories = Menu.Categories;
       let tableArr = []
-      for (let i = 0; i < Restaurant.Tables.length; i++) {
-        tableArr.push(i);
-      }
+      Restaurant.Tables.map((table, i) => {
+        tableArr.push(table);
+      })
       this.setState({
         restaurant: Restaurant,
         categories: Categories,
         restId: Restaurant._id,
         tables: tableArr
       });
+      console.log(this.state.tables);
     });
   };
 
@@ -93,10 +94,8 @@ class OrderPage extends React.Component {
     });
   };
 
-  billPaid = () => {
+  billPaid = (tableIndex) => {
     let restId = this.state.restaurant._id;
-    console.log(restId);
-    let tableIndex = 6;
     let receipt = {
       isPaid: true,
       amountCharged: 10,
@@ -118,6 +117,7 @@ class OrderPage extends React.Component {
               tables={this.state.tables}
               items={this.state.orderedItems}
               saveTicket={this.saveTicket}
+              billPaid={this.billPaid}
             />
           </Col>
           <Col size="sm-8">
@@ -130,7 +130,6 @@ class OrderPage extends React.Component {
             </div>
           </Col>
         </Row>
-        <Button variant={'danger'} onClick={() => this.billPaid()}>Bill Paid Test</Button>
       </Container>
     );
   }
