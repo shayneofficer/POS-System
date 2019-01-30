@@ -86,7 +86,7 @@ class OrderForm extends React.Component {
             <Button
               disabled={tableSelected}
               variant="warning"
-              onClick={(e) => this.props.saveTicket(e)}>
+              onClick={(e) => this.props.saveTicket(e, this.state.activeTable)}>
               Save Ticket
             </Button>
           </Row>
