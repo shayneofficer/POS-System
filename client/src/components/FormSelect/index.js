@@ -28,11 +28,11 @@ class FormSelect extends React.Component {
             value={this.state.active} 
             >
             <option value={-1}>--</option>
-            {this.props.options ? (
-              this.props.options.map((o, i) => {
+            {this.props.tables ? (
+              this.props.tables.map((o, i) => {
                 return (
-                  <option value={o} key={i}>
-                    {o}
+                  <option value={i} key={i}>
+                    {i+1}
                   </option>
                 );
               })
