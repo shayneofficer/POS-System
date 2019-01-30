@@ -1,5 +1,5 @@
 import React from "react";
-import image from "../../Images/burger.jpg";
+import image from "../../Images/shine4.jpg";
 import { Input, FormBtn } from "../../components/Form";
 
 
