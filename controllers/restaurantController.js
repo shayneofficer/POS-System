@@ -23,6 +23,14 @@ module.exports = {
       .then(restaurant => res.json(restaurant))
       .catch(err => res.status(422).json(err));
   },
+  returnNames: function (req, res) {
+    db.Restaurant
+      .find({}, { name: 1 })
+      .then(restaurant => {
+        console.log(restaurant)
+        res.json(restaurant)})
+      .catch(err => res.status(422).json(err));
+  },
   create: function (req, res) {
     //add validation for creation
     db.Restaurant

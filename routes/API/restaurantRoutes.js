@@ -24,6 +24,12 @@ router
   .route("/name")
   .post(restaurantController.findByName);
 
+// Matches with "/api/&rest/justNames"
+router
+  .route("/justNames")
+  .get(restaurantController.returnNames);
+
+// Matches with "/api/&rest/=:id/&menus"
 router.use("/=:id/&menus", menuRoutes);
 
 router

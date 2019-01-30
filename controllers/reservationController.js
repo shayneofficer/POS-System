@@ -15,6 +15,12 @@ module.exports = {
       .then(results => res.json(results))
       .catch(err => res.status(422).json(err));
   },
+  findByRestId: function (req, res) {
+    db.Reservation
+      .find(req.params)
+      .then(results => res.json(results))
+      .catch(err => res.status(422).json(err));
+  },
   create: function (req, res) {
     console.log("Created Reservation", req.body);
     db.Reservation

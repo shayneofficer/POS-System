@@ -17,6 +17,10 @@ export default {
   getReservations: function () {
     return axios.get(`${base}reservations`);
   },
+  getReservationsByRestaurant: function (restID) {
+    console.log(`${base}reservations/rest/${restID}`)
+    return axios.get(`${base}reservations/rest/${restID}`);
+  },
   /*************** Restaurant Methods *****************/
 
   createRestaurant: function (data) {
@@ -27,6 +31,9 @@ export default {
   },
   findRestaurant: function (data) {
     return axios.post(`${base}&rest/name`, data);
+  },
+  findRestaurantsJustNames: function (data) {
+    return axios.post(`${base}&rest/justNames`, data);
   },
   getRestaurantById: function (restId) {
     return axios.get(`${base}&rest/=${restId}`);

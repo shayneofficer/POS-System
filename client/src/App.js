@@ -8,7 +8,7 @@ import Main from "./pages/no-login/Main";
 import Home from "./pages/post-login/Home";
 import OrderPage from "./pages/post-login/OrderPage/index";
 import ReservationList from "./components/reservationlist";
-import Reservations from "./pages/no-login/reservations";
+import Reservations from "./pages/no-login/Reservations";
 import NavBar from "./components/NavBar";
 import RestaurantHome from "./pages/no-login/restaurantHome";
 import ShineMenu from "./pages/post-login/PublicMenu/index";
