@@ -1,5 +1,7 @@
 import React from "react";
 import image from "../../Images/burger.jpg";
+import { Input, FormBtn } from "../../components/Form";
+
 
 
 const style = {
@@ -33,6 +35,11 @@ class RestaurantHome extends React.Component {
         this.state = {};
     }
 
+    handleSubmit = event => {
+        event.preventDefault();
+        window.location.href = "/Reservations"
+    }
+
     render() {
         return (
             <div style={section.background}>
@@ -41,11 +48,15 @@ class RestaurantHome extends React.Component {
                 <br />
                 <br />
 
-                <a href="/Reservations"><button
+                <FormBtn onClick={this.handleSubmit} style={style.buttons}>
+                    Make a Reservation
+                </FormBtn>
+
+                {/* <a href="/Reservations"><button
                     style={style.buttons}
                     type="button"
                     className="btn btn-warning">
-                    Make a Reservation</button></a>
+                    Make a Reservation</button></a> */}
 
             </div >
         );

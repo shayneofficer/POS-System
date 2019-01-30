@@ -2,21 +2,14 @@ const db = require("../models");
 
 // Defining methods for the POSController
 module.exports = {
-  find: function (req, res) {
-    db.Restaurant
-      .findById(req.params.id)
-      .then((restaurant) => {
-        res.json(restaurant.Tables.sort({ date: -1 }));
-      })
-      .catch((err) => res.status(422).json(err));
-  },
-  findById: function (req, res) {
-    db.Restaurant
-      .findById(req.params.id)
-      .then((restaurant) =>
-        res.json(restaurant.Tables.id(req.params.tableId))
-      )
-      .catch((err) => res.status(422).json(err));
+  updateAtIndex: function (req, res) {
+    db.Restaurant.findById(req.params.id).then((restaurant) => {
+      restaurant.Tables[req.params.tableIndex].set(req.body);
+      restaurant.save((err, result) => {
+        if (err) res.status(422).json(err);
+        res.json(result);
+      });
+    });
   },
   create: function (req, res) {
     db.Restaurant
@@ -45,26 +38,34 @@ module.exports = {
   },
   updateOne: function (req, res) {
     db.Restaurants.findById(req.params.id).then((restaurant) => {
-      const table = restaurant.Tables.id(req.params.tableId)
+      const table = restaurant.Tables.id(req.params.tableId);
       table.set(req.body);
       restaurant.save((err) => {
         if (err) res.status(422).json(err);
         res.json(restaurant.Tables);
-      })
-    })
+      });
+    });
   },
-  remove: function (req, res) {
+  removeAtIndex: function (req, res) {
     db.Restaurant
       .findById(req.params.id)
       .then((restaurant) => {
-        restaurant.Tables
-          .id(req.params.tableId)
-          .remove();
+        restaurant.Tables.id(req.params.tableId).remove();
         restaurant.save((err) => {
           if (err) res.status(422).json(err);
           res.json(restaurant);
         });
       })
       .catch((err) => res.status(422).json(err));
+  },
+  billPaid: function (req, res) {
+    db.Restaurant.findById(req.params.id).then((restaurant) => {
+      restaurant.Tables[req.params.tableIndex].set({ Bill: null });
+      restaurant.Receipts.push(req.body);
+      restaurant.save((err, result) => {
+        if (err) res.status(422).json(err);
+        res.json(result);
+      });
+    });
   }
 };

@@ -7,10 +7,13 @@ import "./index.css";
 class OrderForm extends React.Component {
   state = {
     orderedItems: [],
-    activeTable: undefined
+    activeTable: undefined,
+    activeBill: undefined,
+    tables: []
   };
 
   componentDidMount = () => {
+    console.log(this.props.tables);
     if (this.props.items) {
       this.setState({
         orderedItems: this.props.items
@@ -18,7 +21,12 @@ class OrderForm extends React.Component {
     }
     if (this.props.tableNum) {
       this.setState({
-        tableNum: this.props.tableNum
+        activeTable: this.props.activeTable
+      });
+    }
+    if (this.props.tables) {
+      this.setState({
+        tables: this.props.tables
       });
     }
   };
@@ -32,16 +40,33 @@ class OrderForm extends React.Component {
   };
 
   changeTable = (event) => {
-    console.log(event.target.value);
+    if (event.target.value >= 0) {
+      this.getTableBill(event.target.value);
+      this.setState({
+        activeTable: event.target.value
+      });
+    } else {
+      this.setState({
+        activeTable: undefined
+      });
+    }
+  };
 
-    this.setState({
-      activeTable: event.target.value
-    });
+  getTableBill = (tableIndex) => {
+    console.log(this.state.tables);
+    // let bill = this.state.tables[tableIndex].Bill;
+    // if (bill) {
+    //   this.setState({
+    //     activeBill: bill
+    //   });
+    // }
   };
 
   render () {
+    let tableSelected = false;
+    this.state.activeTable ? (tableSelected = false) : (tableSelected = true);
     return (
-      <div className="box">
+      <div className="box orderForm">
         <Container>
           <Row>
             <div className="inlineContainer">
@@ -50,7 +75,7 @@ class OrderForm extends React.Component {
               </div>
               <div className="inlineSelect">
                 <FormSelect
-                  options={this.props.tables}
+                  tables={this.props.tables}
                   active={this.state.activeTable}
                   handleSelect={this.changeTable}
                 />
@@ -74,12 +99,33 @@ class OrderForm extends React.Component {
                   </tr>
                 );
               })}
+              {this.state.activeBill && (
+                <div className="activeBill">
+                  <tr>Current Bill: {this.state.activeBill.amountCharged}</tr>
+                  <tr>Amount Paid: {this.state.activeBill.amountPaid}</tr>
+                </div>
+              )}
             </tbody>
           </table>
           <Row>
-            <Button variant="warning" onClick={(e) => this.props.saveTicket(e)}>
-              Save Ticket
-            </Button>
+            <div className="orderBtnContainer">
+              <Button
+                className="orderBtn"
+                disabled={tableSelected}
+                variant="default"
+                onClick={() => this.props.billPaid(this.state.activeTable)}>
+                Bill Paid
+              </Button>
+
+              <Button
+                className="orderBtn"
+                disabled={tableSelected}
+                variant="warning"
+                onClick={(e) =>
+                  this.props.saveTicket(e, this.state.activeTable)}>
+                Save Ticket
+              </Button>
+            </div>
           </Row>
         </Container>
       </div>
