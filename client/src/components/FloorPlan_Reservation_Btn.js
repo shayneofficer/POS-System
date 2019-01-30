@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 const myStyles = {
   buttons: {
@@ -23,13 +24,9 @@ class ReservationBtn extends React.Component {
     return (
       <div style={myStyles.buttons} className={`${hidden ? "d-none" : ""}`}>
         <Link to={`/home`}>
-          <button
-            style={myStyles.buttons}
-            type="button"
-            className="btn btn-warning"
-          >
+          <Button variant="warning" style={myStyles.buttons}>
             See Reservations
-          </button>
+          </Button>
         </Link>
       </div>
     );

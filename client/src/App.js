@@ -10,7 +10,7 @@ import OrderPage from "./pages/post-login/OrderPage/index";
 import ReservationList from "./components/reservationlist";
 import Reservations from "./pages/no-login/Reservations";
 import NavBar from "./components/NavBar";
-import RestaurantHome from "./pages/no-login/RestaurantHome";
+import RestaurantHome from "./pages/no-login/restaurantHome";
 import ShineMenu from "./pages/post-login/PublicMenu/index";
 
 class App extends Component {

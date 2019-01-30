@@ -1,5 +1,5 @@
 import React from "react";
-import Background from "../../Images/Picture1.jpg"
+import Background from "../../Images/burger.jpg"
 import { Input, FormBtn } from "../../components/Form";
 import API from "../../utils/API";
 import { Redirect } from 'react-router-dom';
