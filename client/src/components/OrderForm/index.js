@@ -18,7 +18,7 @@ class OrderForm extends React.Component {
     }
     if (this.props.tableNum) {
       this.setState({
-        tableNum: this.props.tableNum
+        activeTable: this.props.tableNum
       });
     }
   };
@@ -32,14 +32,20 @@ class OrderForm extends React.Component {
   };
 
   changeTable = (event) => {
-    console.log(event.target.value);
-
-    this.setState({
-      activeTable: event.target.value
-    });
+    if (event.target.value >= 0) {
+      this.setState({
+        activeTable: event.target.value
+      });
+    } else {
+      this.setState({
+        activeTable: undefined
+      });
+    }
   };
 
   render () {
+    let tableSelected = false;
+    this.state.activeTable ? (tableSelected = false) : (tableSelected = true);
     return (
       <div className="box">
         <Container>
@@ -77,7 +83,10 @@ class OrderForm extends React.Component {
             </tbody>
           </table>
           <Row>
-            <Button variant="warning" onClick={(e) => this.props.saveTicket(e)}>
+            <Button
+              disabled={tableSelected}
+              variant="warning"
+              onClick={(e) => this.props.saveTicket(e, this.state.activeTable)}>
               Save Ticket
             </Button>
           </Row>

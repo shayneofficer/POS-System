@@ -25,8 +25,9 @@ class FormSelect extends React.Component {
           <Form.Control
             as="select"
             onChange={this.handleChange}
-            value={this.state.active}
+            value={this.state.active} 
             >
+            <option value={-1}>--</option>
             {this.props.options ? (
               this.props.options.map((o, i) => {
                 return (
