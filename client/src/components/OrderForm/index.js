@@ -91,11 +91,11 @@ class OrderForm extends React.Component {
               {this.props.items.map((item, i) => {
                 return (
                   <tr key={i}>
-                    <td>
+                    <td className="ticket-item">
                       <span onClick={(i) => this.removeItem(i)}>- </span>{" "}
                       {item.name}
                     </td>
-                    <td className="text-right">{item.price}</td>
+                    <td className="text-right item-price">{item.price}</td>
                   </tr>
                 );
               })}
