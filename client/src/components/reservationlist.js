@@ -1,5 +1,6 @@
 import React from "react";
 import ReservationRows from "./ReservationRows";
+import API from "../utils/API";
 
 const reservation = [
     {
@@ -20,29 +21,59 @@ const reservation = [
     }
 ];
 
+const getReservations = restID => {
+    console.log("restID", restID)
+    if (restID && typeof restID == "string") {
+        console.log("api call")
+        API.getReservationsByRestaurant(restID).then(results => {
+            console.log("results.data", results.data);
+
+        })
+    }
+}
+
+
 class ReservationList extends React.Component {
+    state = {
+        reservations: []
+    }
+
+    componentDidMount() {
+        const restID = sessionStorage.getItem("restID");
+        console.log("restID", restID)
+        if (restID && typeof restID == "string") {
+            console.log("api call")
+            API.getReservationsByRestaurant(restID).then(results => {
+                console.log("results.data", results.data);
+                this.setState({reservations: results.data});
+            })
+        }
+    }
     render() {
         return (
             <div>
                 <table>
-                    <tr>
-                        <th>Name</th>
-                        <th>Date</th>
-                        <th>Time</th>
-                        <th>Party Size</th>
-                        <th>Table Assignment</th>
-                        <th>Server</th>
-                    </tr>
-                    {reservation.map((e, i) => (
-                        <ReservationRows name={e.name} key={i}
-                            date={e.date}
-                            time={e.time}
-                            partySize={e.partySize}
-                            tableAssignment={e.tableAssignment}
-                            server={e.server}
-                        />
-                    ))}
-                    {/* <ReservationRows name={reservation.res1.name}
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Party Size</th>
+                            <th>Table Assignment</th>
+                            <th>Server</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.state.reservations.map(e => (
+                            <ReservationRows name={e.name} key={e._id}
+                                date={e.date}
+                                time={e.time}
+                                partySize={e.partySize}
+                                tableAssignment={e.tableAssignment}
+                                server={e.server}
+                            />
+                        ))}
+                        {/* <ReservationRows name={reservation.res1.name}
                         date={reservation.res1.date}
                         time={reservation.res1.time}
                         partySize={reservation.res1.partySize}
@@ -54,6 +85,7 @@ class ReservationList extends React.Component {
                         partySize={reservation.res2.partySize}
                         tableAssignment={reservation.res2.tableAssignment}
                         server={reservation.res2.server} /> */}
+                    </tbody>
                 </table>
             </div>
         );

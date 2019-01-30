@@ -17,6 +17,10 @@ export default {
   getReservations: function () {
     return axios.get(`${base}reservations`);
   },
+  getReservationsByRestaurant: function (restID) {
+    console.log(`${base}reservations/rest/${restID}`)
+    return axios.get(`${base}reservations/rest/${restID}`);
+  },
   /*************** Restaurant Methods *****************/
 
   createRestaurant: function (data) {

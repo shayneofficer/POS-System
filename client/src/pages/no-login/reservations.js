@@ -9,7 +9,7 @@ class Reservations extends React.Component {
         email: "",
         phone: "",
         partySize: ""
-    }
+    };
     handleInputChange = event => {
         const name = event.target.name;
         const value = event.target.value;
@@ -37,12 +37,21 @@ class Reservations extends React.Component {
                 console.log("res", res);
                 this.setState({ restaurantID: "", name: "", email: "", phone: "", partySize: "" });
                 console.log(this.state);
-            }).catch(err => console.log("err", err));
+            })
+            .catch(err => console.log("err", err));
+
         console.log("handleFormSubmit");
 
         // API.getReservation().then(res => console.log("res", res)).catch(err => console.log("err", err));
     };
+
     render() {
+        const restID = sessionStorage.getItem("restID");
+
+        if (restID && typeof restID == "string") {
+            this.state.restaurantID = restID;
+        };
+
         return (
             <div>
                 <form>
