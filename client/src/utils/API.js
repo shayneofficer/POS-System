@@ -29,13 +29,14 @@ export default {
     return axios.post(`${base}&rest/name`, data);
   },
   getRestaurantById: function (restId) {
-    return axios.get(`${base}&rest${restId}`);
+    return axios.get(`${base}&rest/=${restId}`);
   },
   updateRestaurant: function (restId, data) {
-    return axios.put(`${base}&rest${restId}`, data);
+    console.log("reached API");
+    return axios.put(`${base}&rest/=${restId}`, data);
   },
   removeRestaurant: function (restId) {
-    return axios.delete(`${base}&rest${restId}`);
+    return axios.delete(`${base}&rest/=${restId}`);
   },
 
   /*************** Menu Methods *****************/

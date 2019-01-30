@@ -78,7 +78,7 @@ class OrderPage extends React.Component {
       date: new Date(Date.now())
     };
     Receipts.push(ticket);
-    console.log("Receipt Added: " + ticket);
+    console.log("Receipt Added: " + JSON.stringify(ticket));
 
     API.updateRestaurant(restId, Receipts).then((result) => {
       this.setState({
