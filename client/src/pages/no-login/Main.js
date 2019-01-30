@@ -1,6 +1,6 @@
 import React from "react";
 import Background from "../../Images/Picture1.jpg"
-import { Input, FormBtn } from "../../components/Search";
+import { Input, FormBtn } from "../../components/Form";
 import API from "../../utils/API";
 import { Redirect } from 'react-router-dom';
 
@@ -33,6 +33,7 @@ class Main extends React.Component {
     state = {
         restaurantName: "",
     }
+
     handleInputChange = event => {
         const name = event.target.name;
         const value = event.target.value;
@@ -44,6 +45,7 @@ class Main extends React.Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
+        window.location.href = "/RestaurantHome"
 
         const submit = {
             restaurantName: this.state.restaurantName,
@@ -80,12 +82,6 @@ class Main extends React.Component {
                             Search Restaurants</a>
                     </FormBtn>
                 </form>
-
-                <a href="/restaurantHome"><button
-                    style={style.buttons}
-                    type="button"
-                    className="btn btn-warning">
-                    Search Restaurants</button></a>
 
             </div >
         );
