@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Col } from "../Grid";
-import { Button } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
 import ItemList from "./ItemList";
 
 class Menu extends React.Component {
@@ -31,7 +31,7 @@ class Menu extends React.Component {
                 <Button
                   onClick={() => this.handleClick(i)}
                   className={"catBtn " + btnState}
-                  bsStyle="warning"
+                  variant="warning"
                   key={i}>
                   {cat.name}
                 </Button>
