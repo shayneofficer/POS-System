@@ -38,7 +38,11 @@ class Reservations extends React.Component {
                 this.setState({ restaurantID: "", name: "", email: "", phone: "", partySize: "" });
                 console.log(this.state);
             }).catch(err => console.log("err", err));
+<<<<<<< HEAD
 
+=======
+      
+>>>>>>> ecdf4b079748d24ab74298ba142af3635ca50eee
         console.log("handleFormSubmit");
 
         // API.getReservation().then(res => console.log("res", res)).catch(err => console.log("err", err));
@@ -81,6 +85,10 @@ class Reservations extends React.Component {
                     />
                     <FormBtn onClick={this.handleFormSubmit}>
                         Create New Reservation
+<<<<<<< HEAD
+=======
+
+>>>>>>> ecdf4b079748d24ab74298ba142af3635ca50eee
           </FormBtn>
                 </form>
             </div>

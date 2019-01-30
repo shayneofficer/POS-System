@@ -58,6 +58,10 @@ class Main extends React.Component {
                 this.setState({ restaurantName: "" });
                 sessionStorage.setItem("restID", res.data._id);
                 window.location.href = "./RestaurantHome.js"
+<<<<<<< HEAD
+=======
+
+>>>>>>> ecdf4b079748d24ab74298ba142af3635ca50eee
             }).catch(err => console.log("err", err));
 
     };

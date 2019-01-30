@@ -1,17 +1,18 @@
 import React from "react";
 import Menu from "../../../components/Menu/index.jsx";
-// import { Row, Col } from "react-bootstrap";
 import { Container, Row, Col } from "../../../components/Grid";
+import Button from "react-bootstrap/Button";
 import API from "../../../utils/API";
-import { Button } from "react-bootstrap";
 import "./index.css";
+import OrderForm from "../../../components/OrderForm";
 
 class OrderPage extends React.Component {
   state = {
     restId: sessionStorage.getItem("restID"),
     restaurant: {},
     categories: [],
-    orderedItems: []
+    orderedItems: [],
+    tables: [],
   };
 
   componentDidMount = () => {
@@ -24,10 +25,15 @@ class OrderPage extends React.Component {
       const Restaurant = result;
       const Menu = Restaurant.Menus[0];
       const Categories = Menu.Categories;
+      let tableArr = []
+      for (let i = 0; i < Restaurant.Tables.length; i++) {
+        tableArr.push(i);
+      }
       this.setState({
         restaurant: Restaurant,
         categories: Categories,
-        restId: Restaurant._id
+        restId: Restaurant._id,
+        tables: tableArr
       });
     });
   };
@@ -58,9 +64,13 @@ class OrderPage extends React.Component {
     console.log(tickets);
   };
 
-  saveTicket = (e) => {
+  saveTicket = (e, tableIndex) => {
     e.preventDefault();
-    let Receipts = this.state.restaurant.Receipts;
+    if (tableIndex < 0) {
+      console.log("No Table Selected");
+      return;
+    }
+
     let restId = this.state.restaurant._id;
     let price = 0;
     this.state.orderedItems.map((item) => {
@@ -70,61 +80,57 @@ class OrderPage extends React.Component {
       isPaid: false,
       amountCharged: price,
       amountPaid: 0,
-      date: new Date(Date.now())
+      dateAdded: new Date(Date.now()),
+      dateUpdated: new Date(Date.now())
     };
-    Receipts.push(ticket);
-    console.log("Receipt Added: " + ticket);
+    console.log(tableIndex);
 
-    API.updateRestaurant(restId, Receipts).then((result) => {
+    API.updateTableBill(restId, tableIndex, ticket).then((result) => {
+      console.log("Bill added to table no. " + this.state.activeTable);
       this.setState({
         orderedItems: []
       });
     });
   };
 
+  billPaid = () => {
+    let restId = this.state.restaurant._id;
+    console.log(restId);
+    let tableIndex = 6;
+    let receipt = {
+      isPaid: true,
+      amountCharged: 10,
+      amountPaid: 15,
+      dateAdded: new Date(Date.now()),
+      dateUpdated: new Date(Date.now())
+    }
+    API.billPaid(restId, tableIndex, receipt).then((result) => {
+      console.log(result);
+    })
+  }
+
   render () {
     return (
       <Container>
         <Row>
           <Col size="sm-4">
-            <div className="box">
-              <Container>
-                <Row>
-                  <h3>Placeholder</h3>
-                </Row>
-                <table>
-                  <tbody className="text-left">
-                    <tr>
-                      <th>Item</th>
-                      <th className="text-right">Cost</th>
-                    </tr>
-                    {this.state.orderedItems.map((item, i) => {
-                      return (
-                        <tr key={i}>
-                          <td>{item.name}</td>
-                          <td className="text-right">{item.price}</td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-                <Row>
-                  <Button bsStyle="warning" onClick={(e) => this.saveTicket(e)}>
-                    Save Tickets
-                  </Button>
-                </Row>
-              </Container>
-            </div>
+            <OrderForm
+              tables={this.state.tables}
+              items={this.state.orderedItems}
+              saveTicket={this.saveTicket}
+            />
           </Col>
           <Col size="sm-8">
             <div className="box">
               <Menu
+                tables={this.state.tables}
                 categories={this.state.categories}
                 orderItem={this.orderItem}
               />
             </div>
           </Col>
         </Row>
+        <Button variant={'danger'} onClick={() => this.billPaid()}>Bill Paid Test</Button>
       </Container>
     );
   }
