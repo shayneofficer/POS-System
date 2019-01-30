@@ -16,3 +16,12 @@
   justify-content: space-evenly;
   vertical-align: middle;
 }
+.orderForm {
+  min-height: 226px;
+}
+.orderBtnContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-evenly;
+}
