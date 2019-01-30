@@ -1,5 +1,7 @@
 import React from "react";
 import image from "../../Images/burger.jpg";
+import { Input, FormBtn } from "../../components/Form";
+
 
 
 const style = {
