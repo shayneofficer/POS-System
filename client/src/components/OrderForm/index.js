@@ -107,7 +107,7 @@ class OrderForm extends React.Component {
                       <span onClick={(i) => this.props.removeItem(i)}>- </span>{" "}
                       {item.name}
                     </td>
-                    <td className="text-right">{item.price}</td>
+                    <td className="text-right item-price">{item.price}</td>
                   </tr>
                 );
               })}
