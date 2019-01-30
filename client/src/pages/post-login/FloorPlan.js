@@ -4,12 +4,14 @@ import FloorPlanDesc from "../post-login/FloorPlan_desc";
 import FloorPlanLinks from "../post-login/FloorPlan_links";
 import Order_Check_Btns from "../../components/FloorPlan_Order_Check_Btns";
 import ReservationBtn from "../../components/FloorPlan_Reservation_Btn";
+import Button from "react-bootstrap/Button";
+import ServerKey from "../../components/ServerKey";
 
 const style = {
   colorKey: {
     display: "flex",
     flexDirection: "column",
-    justifyContent: "flex-end",
+    justifyContent: "center",
     alignItems: "flex-end",
     marginTop: "20px",
     marginRight: "100px",
@@ -27,6 +29,18 @@ const style = {
     fontSize: "1.3rem",
     display: "flex",
     justifyContent: "center"
+  },
+  serverKey: {
+    display: "flex",
+    // flexDirection: "column",
+    // justifyContent: "flex-end",
+    // // alignItems: "flex-start",
+    // marginTop: "20px",
+    // marginRight: "100px",
+    // marginBottom: "30px"
+    justifyContent: "center",
+    position: "relative",
+    top: "250px"
   }
 };
 
@@ -46,7 +60,7 @@ class FloorPlan extends React.Component {
         tableNo: "n2",
         tableShape: "square",
         server: "server-3",
-        serverName: "Tom"
+        serverName: "Steve"
       },
       {
         tableNumber: 3,
@@ -131,30 +145,27 @@ class FloorPlan extends React.Component {
       <div className="wrapper">
         <div>
           <div style={{ display: "inline-flex" }}>
-            <button
+            <Button
               onClick={() => this.changeRole("manager")}
               style={style.buttons}
-              type="button"
-              className="btn btn-warning"
+              variant="warning"
             >
               Manager
-            </button>
-            <button
+            </Button>
+            <Button
               onClick={() => this.changeRole("host")}
               style={style.buttons}
-              type="button"
-              className="btn btn-warning"
+              variant="warning"
             >
               Host
-            </button>
-            <button
+            </Button>
+            <Button
               onClick={() => this.changeRole("server")}
               style={style.buttons}
-              type="button"
-              className="btn btn-warning"
+              variant="warning"
             >
               Server
-            </button>
+            </Button>
           </div>
           <FloorPlanLinks roleView={this.state.role} />
           <div style={style.tables}>
@@ -192,6 +203,32 @@ class FloorPlan extends React.Component {
         </div>
         <Order_Check_Btns roleView={this.state.role} />
         <ReservationBtn roleView={this.state.role} />
+        {/* <table>
+          <tr>
+            <th>Server #</th>
+            <th>Server Name</th>
+          </tr>
+          {this.state.tables
+            .filter(serverInfo => serverInfo.serverName === "Tom")
+            .map(serverInfo => {
+              console.log(serverInfo);
+
+              return (
+                <ServerKey
+                  serverName={serverInfo.serverName}
+                  serverNumber={serverInfo.server}
+                />
+              );
+            })}
+        </table> */}
+        {/* ;  <ServerKey serverName={this.state.tables.serverName} /> */}
+        {/* {this.state.tables.forEach(function(e) {
+          console.log(e);
+          <ServerKey />;
+        })} */}
+        <div style={style.serverKey}>
+          <ServerKey />
+        </div>
         <div style={style.colorKey}>
           <FloorPlanDesc roleView={this.state.role} />
         </div>
