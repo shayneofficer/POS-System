@@ -109,7 +109,7 @@ class OrderPage extends React.Component {
                   </tbody>
                 </table>
                 <Row>
-                  <Button bsStyle="warning" onClick={(e) => this.saveTicket(e)}>
+                  <Button variant="warning" onClick={(e) => this.saveTicket(e)}>
                     Save Tickets
                   </Button>
                 </Row>
