@@ -45,7 +45,6 @@ class Main extends React.Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        window.location.href = "/RestaurantHome"
 
         const submit = {
             restaurantName: this.state.restaurantName,
@@ -57,11 +56,7 @@ class Main extends React.Component {
                 console.log("res.data", res.data);
                 this.setState({ restaurantName: "" });
                 sessionStorage.setItem("restID", res.data._id);
-                window.location.href = "./RestaurantHome.js"
-<<<<<<< HEAD
-=======
-
->>>>>>> ecdf4b079748d24ab74298ba142af3635ca50eee
+                window.location.href = "./restaurantHome"
             }).catch(err => console.log("err", err));
 
     };

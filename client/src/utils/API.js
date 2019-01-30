@@ -28,10 +28,10 @@ export default {
   findRestaurant: function (data) {
     return axios.post(`${base}&rest/name`, data);
   },
+  findRestaurantsJustNames: function (data) {
+    return axios.post(`${base}&rest/justNames`, data);
+  },
   getRestaurantById: function (restId) {
-<<<<<<< HEAD
-    return axios.get(`${base}&rest${restId}`);
-=======
     return axios.get(`${base}&rest/=${restId}`);
   },
   updateRestaurant: function (restId, data) {
@@ -40,7 +40,6 @@ export default {
   },
   removeRestaurant: function (restId) {
     return axios.delete(`${base}&rest/=${restId}`);
->>>>>>> ecdf4b079748d24ab74298ba142af3635ca50eee
   },
 
   updateTableBill: function (restId, tableIndex, ticket) {
@@ -48,14 +47,9 @@ export default {
     let data = { Bill: ticket };
     return axios.put(`${base}&rest/=${restId}/&tables/=${tableIndex}`, data);
   },
-<<<<<<< HEAD
-  removeRestaurant: function (restId) {
-    return axios.delete(`${base}&rest${restId}`);
-=======
   billPaid: function (restId, tableIndex, receipt) {
     console.log(restId, tableIndex, receipt);
     return axios.put(`${base}&rest/=${restId}/&tables/=${tableIndex}/paid`, receipt);
->>>>>>> ecdf4b079748d24ab74298ba142af3635ca50eee
   },
 
   /*************** Menu Methods *****************/
