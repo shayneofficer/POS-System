@@ -3,12 +3,8 @@ const db = require("../models");
 // Defining methods for the POSController
 module.exports = {
   updateAtIndex: function (req, res) {
-    console.log("Hit updateBill");
-    console.log(req.params.id);
-    console.log(req.params.tableIndex);
     db.Restaurant.findById(req.params.id).then((restaurant) => {
-      console.log(restaurant);
-      restaurant.Tables[req.params.tableIndex].set(req.body.data);
+      restaurant.Tables[req.params.tableIndex].set(req.body);
       restaurant.save((err, result) => {
         if (err) res.status(422).json(err);
         res.json(result);
