@@ -2,13 +2,10 @@ import React from "react";
 import "./tables.css";
 
 class Table extends React.Component {
-  // constructor(props) {
-  // super(props);
   state = {
     tableReady: false,
     status: 0
   };
-  // }
 
   changeStatus = () => {
     if (this.props.roleView === "host" && this.state.status === 0) {
@@ -49,7 +46,6 @@ class Table extends React.Component {
             : "#00A82E",
         borderStyle: "solid",
         borderWidth: ".5rem"
-        // margin: "10px"
       }
     }; // 1 = seated-have not ordered //2 = order has been taken // 3 = food has been served // 4 = Needs Check // 5 = needs bussing
 
