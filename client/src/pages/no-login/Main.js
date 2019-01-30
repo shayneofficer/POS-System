@@ -76,7 +76,7 @@ class Main extends React.Component {
                         placeholder="Restaurant Name"
                         value={this.state.restaurantName}
                     />
-                    <FormBtn onClick={this.handleFormSubmit}>
+                    <FormBtn onClick={this.handleFormSubmit} style={style.buttons}>
                         {/* <a href="/restaurantHome"
                             style={style.buttons}
                             type="button"
