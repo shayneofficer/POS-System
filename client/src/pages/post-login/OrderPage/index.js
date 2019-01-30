@@ -1,17 +1,17 @@
 import React from "react";
 import Menu from "../../../components/Menu/index.jsx";
-// import { Row, Col } from "react-bootstrap";
 import { Container, Row, Col } from "../../../components/Grid";
 import API from "../../../utils/API";
-import { Button } from "react-bootstrap";
 import "./index.css";
+import OrderForm from "../../../components/OrderForm";
 
 class OrderPage extends React.Component {
   state = {
     restId: sessionStorage.getItem("restID"),
     restaurant: {},
     categories: [],
-    orderedItems: []
+    orderedItems: [],
+    tables: []
   };
 
   componentDidMount = () => {
@@ -24,10 +24,15 @@ class OrderPage extends React.Component {
       const Restaurant = result;
       const Menu = Restaurant.Menus[0];
       const Categories = Menu.Categories;
+      let tableArr = []
+      for (let i = 0; i < Restaurant.Tables.length; i++) {
+        tableArr.push(i);
+      }
       this.setState({
         restaurant: Restaurant,
         categories: Categories,
-        restId: Restaurant._id
+        restId: Restaurant._id,
+        tables: tableArr
       });
     });
   };
@@ -87,38 +92,16 @@ class OrderPage extends React.Component {
       <Container>
         <Row>
           <Col size="sm-4">
-            <div className="box">
-              <Container>
-                <Row>
-                  <h3>Placeholder</h3>
-                </Row>
-                <table>
-                  <tbody className="text-left">
-                    <tr>
-                      <th>Item</th>
-                      <th className="text-right">Cost</th>
-                    </tr>
-                    {this.state.orderedItems.map((item, i) => {
-                      return (
-                        <tr key={i}>
-                          <td>{item.name}</td>
-                          <td className="text-right">{item.price}</td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-                <Row>
-                  <Button bsStyle="warning" onClick={(e) => this.saveTicket(e)}>
-                    Save Tickets
-                  </Button>
-                </Row>
-              </Container>
-            </div>
+            <OrderForm
+              tables={this.state.tables}
+              items={this.state.orderedItems}
+              saveTicket={this.saveTicket}
+            />
           </Col>
           <Col size="sm-8">
             <div className="box">
               <Menu
+                tables={this.state.tables}
                 categories={this.state.categories}
                 orderItem={this.orderItem}
               />

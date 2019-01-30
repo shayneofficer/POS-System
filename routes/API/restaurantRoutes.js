@@ -6,18 +6,23 @@ const menuRoutes = require("./menuRoutes");
 // const receiptRoutes = require("./receiptRoutes");
 // const employeeRoutes = require("./employeeRoutes");
 
-// Matches with "/api/&rest="
+// Matches with "/api/&rest"
 router
   .route("/")
   .get(restaurantController.find)
   .post(restaurantController.create);
 
-// Matches with "/api/&rest=:id"
+// Matches with "/api/&rest/=:id"
 router
   .route("/=:id")
   .get(restaurantController.findById)
   .put(restaurantController.update)
   .delete(restaurantController.remove);
+
+// Matches with "/api/&rest/name"
+router
+  .route("/name")
+  .post(restaurantController.findByName);
 
 router.use("/=:id/&menus", menuRoutes);
 
