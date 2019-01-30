@@ -1,0 +1,29 @@
+.box {
+    box-shadow: 0px 3px 15px 3px #888888;
+    border: 2px solid black;
+    box-sizing: border-box;
+    padding: 0 20px;
+  }
+  .catBtn {
+    margin: 0.25rem;
+    font-weight: bold;
+    height: 50px;
+    width: 200px;
+  }
+  
+  .pd-0 {
+    padding: 0 !important;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    padding: 0.5em 0;
+  }
+  table {
+    align-items: left;
+    width: 100%;
+  }

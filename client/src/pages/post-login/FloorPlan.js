@@ -2,7 +2,8 @@ import React from "react";
 import Table from "../../components/Tables";
 import FloorPlanDesc from "../post-login/FloorPlan_desc";
 import FloorPlanLinks from "../post-login/FloorPlan_links";
-import { Link } from "react-router-dom";
+import Order_Check_Btns from "../../components/FloorPlan_Order_Check_Btns";
+import ReservationBtn from "../../components/FloorPlan_Reservation_Btn";
 
 const style = {
   colorKey: {
@@ -14,18 +15,18 @@ const style = {
     marginRight: "100px",
     marginBottom: "30px"
   },
-  buttons: {
-    margin: "10px",
-    fontSize: "1.3rem",
-    display: "flex",
-    justifyContent: "center"
-  },
   tables: {
     display: "flex",
     justifyContent: "center"
   },
   links: {
     margin: "50px"
+  },
+  buttons: {
+    margin: "10px",
+    fontSize: "1.3rem",
+    display: "flex",
+    justifyContent: "center"
   }
 };
 
@@ -189,26 +190,8 @@ class FloorPlan extends React.Component {
               })}
           </div>
         </div>
-        <div style={style.buttons}>
-          <Link to={`/order`}>
-            <button
-              style={style.buttons}
-              type="button"
-              className="btn btn-warning"
-            >
-              Enter Order
-            </button>
-          </Link>
-          <Link to={`/home`}>
-            <button
-              style={style.buttons}
-              type="button"
-              className="btn btn-warning"
-            >
-              Get Check
-            </button>
-          </Link>
-        </div>
+        <Order_Check_Btns roleView={this.state.role} />
+        <ReservationBtn roleView={this.state.role} />
         <div style={style.colorKey}>
           <FloorPlanDesc roleView={this.state.role} />
         </div>
