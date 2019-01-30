@@ -1,6 +1,6 @@
 
 module.exports = {
-  Reservations: require('./Schemas/reservations'),
+  Reservation: require('./Schemas/reservations'),
   Restaurant: require('./Schemas/Restaurants/Restaurant'),
   Table: require('./Schemas/Restaurants/Table'),
   Bill: require('./Schemas/Restaurants/Bill'),

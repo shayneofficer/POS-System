@@ -16,6 +16,13 @@ module.exports = {
       .then((restaurant) => res.json(restaurant))
       .catch((err) => res.status(422).json(err));
   },
+  findByName: function (req, res) {
+    console.log(req.body);
+    db.Restaurant
+      .findOne({ name: req.body.restaurantName })
+      .then(restaurant => res.json(restaurant))
+      .catch(err => res.status(422).json(err));
+  },
   create: function (req, res) {
     //add validation for creation
     db.Restaurant

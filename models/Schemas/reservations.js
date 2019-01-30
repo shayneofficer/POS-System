@@ -10,6 +10,6 @@ const ReservationSchema = new Schema({
     time: { type: Number},
     partySize: { type: Number },
 });
-const Reservation = mongoose.model("Reservations", ReservationSchema);
+const Reservation = mongoose.model("Reservation", ReservationSchema);
 
 module.exports = Reservation;

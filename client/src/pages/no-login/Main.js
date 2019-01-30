@@ -47,17 +47,20 @@ class Main extends React.Component {
         event.preventDefault();
         window.location.href = "/RestaurantHome"
 
-        console.log("handleFormSubmit");
         const submit = {
             restaurantName: this.state.restaurantName,
         };
-        API.getRestaurantById(submit)
+        console.log("handleFormSubmit", submit);
+
+        API.findRestaurant(submit)
             .then(res => {
-                console.log("res", res);
+                console.log("res.data", res.data);
                 this.setState({ restaurantName: "" });
+                sessionStorage.setItem("restID", res.data._id);
+                window.location.href = "./RestaurantHome.js"
+
             }).catch(err => console.log("err", err));
 
-        // API.getReservation().then(res => console.log("res", res)).catch(err => console.log("err", err));
     };
     render() {
         return (
@@ -69,9 +72,9 @@ class Main extends React.Component {
                 <form>
                     <Input
                         onChange={this.handleInputChange}
-                        name="restaurantID"
+                        name="restaurantName"
                         placeholder="Restaurant Name"
-                        value={this.state.restaurantID}
+                        value={this.state.restaurantName}
                     /> <FormBtn onClick={this.handleFormSubmit}>
                         <a href="/restaurantHome"
                             style={style.buttons}

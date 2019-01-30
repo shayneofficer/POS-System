@@ -10,12 +10,12 @@ export default {
     console.log("userLogin", data);
     return axios.post(`${base}users/login`, data);
   },
-  createReservation: function (restId, data) {
+  createReservation: function (data) {
     console.log(`createReservation`, data);
-    return axios.post(`${base}&rest/=${restId}/&reservations`, data);
+    return axios.post(`${base}reservations`, data);
   },
-  getReservations: function (restId) {
-    return axios.get(`${base}&rest/=${restId}/&reservations`);
+  getReservations: function () {
+    return axios.get(`${base}reservations`);
   },
   /*************** Restaurant Methods *****************/
 
@@ -25,14 +25,17 @@ export default {
   getRestaurants: function () {
     return axios.get(`${base}&rest/`);
   },
+  findRestaurant: function (data) {
+    return axios.post(`${base}&rest/name`, data);
+  },
   getRestaurantById: function (restId) {
-    return axios.get(`${base}&rest/=${restId}`);
+    return axios.get(`${base}&rest${restId}`);
   },
   updateRestaurant: function (restId, data) {
-    return axios.put(`${base}&rest/=${restId}`, data);
+    return axios.put(`${base}&rest${restId}`, data);
   },
   removeRestaurant: function (restId) {
-    return axios.delete(`${base}&rest/=${restId}`);
+    return axios.delete(`${base}&rest${restId}`);
   },
 
   /*************** Menu Methods *****************/
