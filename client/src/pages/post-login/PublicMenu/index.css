@@ -15,15 +15,3 @@
     padding: 0 !important;
   }
   
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  li {
-    padding: 0.5em 0;
-  }
-  table {
-    align-items: left;
-    width: 100%;
-  }
