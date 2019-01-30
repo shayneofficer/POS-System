@@ -6,8 +6,8 @@ import "./index.css";
 
 class OrderForm extends React.Component {
   state = {
-    orderedItems: [],
-    activeTable: undefined
+    activeTable: undefined,
+    activeBill: undefined,
   };
 
   componentDidMount = () => {
@@ -16,25 +16,23 @@ class OrderForm extends React.Component {
         orderedItems: this.props.items
       });
     }
-    if (this.props.tableNum) {
+    if (this.props.activeTable) {
       this.setState({
-        activeTable: this.props.tableNum
+        activeTable: this.props.activeTable
       });
     }
-  };
-
-  removeItem = (index) => {
-    let items = this.state.orderedItems;
-    items.splice(index, 1);
-    this.setState({
-      oderedItems: items
-    });
+    if (this.props.orderedItems) {
+      this.setState({
+        orderedItems: this.props.orderedItems
+      })
+    }
   };
 
   changeTable = (event) => {
     if (event.target.value >= 0) {
+      this.getTableBill(event.target.value);
       this.setState({
-        activeTable: event.target.value
+        activeTable: event.target.value,
       });
     } else {
       this.setState({
@@ -43,11 +41,44 @@ class OrderForm extends React.Component {
     }
   };
 
+  getTableBill = (tableIndex) => {
+    let bill = this.props.tables[tableIndex].Bill;
+    if (bill) {
+      this.setState({
+        activeBill: bill
+      });
+    }
+  };
+
+  handleSave = (e, activeTable) => {
+    if (this.state.activeBill) {
+      var newBill = this.state.activeBill;
+    } else {
+      var newBill = {
+        amountCharged: 0,
+        amountPaid: 0,
+        isPaid: false,
+        dateAdded: new Date(Date.now()),
+        dateUpdated: new Date(Date.now())
+      }
+    }
+    let orderSum = 0;
+    this.props.orderedItems.map((item) => {
+      orderSum += item.price;
+    });
+    // console.log(this.state.activeBill);
+    newBill.amountCharged += orderSum;
+    this.props.saveTicket(e, activeTable, newBill);
+    this.setState({
+      activeBill: newBill,
+    });
+  };
+
   render () {
     let tableSelected = false;
     this.state.activeTable ? (tableSelected = false) : (tableSelected = true);
     return (
-      <div className="box">
+      <div className="box orderForm">
         <Container>
           <Row>
             <div className="inlineContainer">
@@ -56,7 +87,7 @@ class OrderForm extends React.Component {
               </div>
               <div className="inlineSelect">
                 <FormSelect
-                  options={this.props.tables}
+                  tables={this.props.tables}
                   active={this.state.activeTable}
                   handleSelect={this.changeTable}
                 />
@@ -69,26 +100,62 @@ class OrderForm extends React.Component {
                 <th>Item</th>
                 <th className="text-right">Cost</th>
               </tr>
-              {this.props.items.map((item, i) => {
+              {this.props.orderedItems.map((item, i) => {
                 return (
                   <tr key={i}>
                     <td>
-                      <span onClick={(i) => this.removeItem(i)}>- </span>{" "}
+                      <span onClick={(i) => this.props.removeItem(i)}>- </span>{" "}
                       {item.name}
                     </td>
-                    <td className="text-right">{item.price}</td>
+                    <td className="text-right item-price">{item.price}</td>
                   </tr>
                 );
               })}
+              {this.state.activeBill && (
+                <tr className="border-top">
+                  <td className="text-bold">Current Bill: </td>
+                  <td className="text-right">
+                    {this.state.activeBill.amountCharged}
+                  </td>
+                </tr>
+              )}
+              {this.state.activeBill && (
+                <tr>
+                  <td className="text-bold">Amount Paid: </td>
+                  <td className="text-right">
+                    {this.state.activeBill.amountPaid}
+                  </td>
+                </tr>
+              )}
+              {this.state.activeBill && (
+                <tr>
+                  <td className="text-bold">Balance Due: </td>
+                  <td className="text-right">
+                    {this.state.activeBill.amountCharged -
+                      this.state.activeBill.amountPaid}
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
           <Row>
-            <Button
-              disabled={tableSelected}
-              variant="warning"
-              onClick={(e) => this.props.saveTicket(e, this.state.activeTable)}>
-              Save Ticket
-            </Button>
+            <div className="orderBtnContainer">
+              <Button
+                className="orderBtn"
+                disabled={tableSelected}
+                variant="default"
+                onClick={() => this.props.billPaid(this.state.activeTable)}>
+                Bill Paid
+              </Button>
+
+              <Button
+                className="orderBtn"
+                disabled={tableSelected}
+                variant="warning"
+                onClick={(e) => this.handleSave(e, this.state.activeTable)}>
+                Save Ticket
+              </Button>
+            </div>
           </Row>
         </Container>
       </div>

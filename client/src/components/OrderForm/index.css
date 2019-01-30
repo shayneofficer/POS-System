@@ -5,9 +5,11 @@
   justify-content: center;
   text-align: left;
   height: 100%;
+ 
 }
 .inlineSelect {
   padding-left: 0.5em;
+ 
 }
 .inlineContainer {
   width: 100%;
@@ -15,4 +17,32 @@
   flex-direction: row;
   justify-content: space-evenly;
   vertical-align: middle;
+ 
+}
+.orderForm {
+  min-height: 226px;
+  max-height: 650px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.ticket-item, .item-price {
+border-bottom: 1px solid #DDDDDD;
+padding: .5em 0;
+font-size: 18px;
+
+
+}
+
+.orderBtnContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-evenly;
+}
+.text-bold {
+  font-weight: bold;
+}
+.border-top {
+  margin-top: 1em;
 }
