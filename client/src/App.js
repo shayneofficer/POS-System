@@ -7,10 +7,10 @@ import FloorPlan from "./pages/post-login/FloorPlan";
 import Main from "./pages/no-login/Main";
 import Home from "./pages/post-login/Home";
 import OrderPage from "./pages/post-login/OrderPage/index";
-import ReservationList from "./pages/post-login/ReservationList";
-import Reservations from "./pages/no-login/Reservations";
+import ReservationList from "./pages/post-login/reservationlist";
+import Reservations from "./pages/no-login/reservations";
 import NavBar from "./components/NavBar";
-import RestaurantHome from "./pages/no-login/RestaurantHome";
+import RestaurantHome from "./pages/no-login/restaurantHome";
 import ShineMenu from "./pages/post-login/PublicMenu/index";
 
 class App extends Component {
@@ -30,7 +30,7 @@ class App extends Component {
           <Route path="/floorplan" component={FloorPlan} />
           <Route path="/order" component={OrderPage} />
           <Route path="/restlogin" component={Home} />
-          <Route path="/shinemenu" component={ShineMenu}/>
+          <Route path="/shinemenu" component={ShineMenu} />
           <Route path="/reservations" component={Reservations} />
           <Route path="/reservationlist" component={ReservationList} />
           <Route path="/restaurantHome" component={RestaurantHome} />
