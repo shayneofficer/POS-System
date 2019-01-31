@@ -2,21 +2,14 @@ import React from "react";
 import Table from "../../components/Tables";
 import FloorPlanDesc from "../post-login/FloorPlan_desc";
 import FloorPlanLinks from "../post-login/FloorPlan_links";
-import Order_Check_Btns from "../../components/FloorPlan_Order_Check_Btns";
+import OrderCheckBtns from "../../components/FloorPlan_Order_Check_Btns";
 import ReservationBtn from "../../components/FloorPlan_Reservation_Btn";
 import Button from "react-bootstrap/Button";
 import ServerKey from "../../components/ServerKey";
+import API from "../../utils/API";
+import ReservationList from "../../components/reservationlist";
 
 const style = {
-  colorKey: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "flex-end",
-    marginTop: "20px",
-    marginRight: "100px",
-    marginBottom: "30px"
-  },
   tables: {
     display: "flex",
     justifyContent: "center"
@@ -30,23 +23,18 @@ const style = {
     display: "flex",
     justifyContent: "center"
   },
-  serverKey: {
+  colorKey: {
     display: "flex",
-    // flexDirection: "column",
-    // justifyContent: "flex-end",
-    // // alignItems: "flex-start",
-    // marginTop: "20px",
-    // marginRight: "100px",
-    // marginBottom: "30px"
-    justifyContent: "center",
-    position: "relative",
-    top: "250px"
+    flexDirection: "row"
   }
 };
 
 class FloorPlan extends React.Component {
   state = {
     role: "host",
+    restaurant: undefined,
+    restId: undefined,
+    dbTables: [],
     tables: [
       {
         tableNumber: 1,
@@ -135,6 +123,32 @@ class FloorPlan extends React.Component {
     ]
   };
 
+  componentDidMount = () => {
+    this.getTables();
+  };
+
+  getTables= () => {
+    this.getRestaurant((result) => {
+      const Restaurant = result;
+      let tableArr = [];
+      Restaurant.Tables.map((table, i) => {
+        tableArr.push(table);
+      });
+      this.setState({
+        restaurant: Restaurant,
+        restId: Restaurant._id,
+        dbTables: tableArr
+      });
+    });
+  };
+
+  getRestaurant = (callback) => {
+    API.getRestaurants().then((restaurants) => {
+      const restaurant = restaurants.data[0];
+      callback(restaurant);
+    });
+  };
+
   changeRole = role => {
     console.log("role");
     this.setState({ role });
@@ -201,36 +215,14 @@ class FloorPlan extends React.Component {
               })}
           </div>
         </div>
-        <Order_Check_Btns roleView={this.state.role} />
+        <Order_Check_Btns roleView={this.state.role} tables={this.state.dbTables} />
         <ReservationBtn roleView={this.state.role} />
-        {/* <table>
-          <tr>
-            <th>Server #</th>
-            <th>Server Name</th>
-          </tr>
-          {this.state.tables
-            .filter(serverInfo => serverInfo.serverName === "Tom")
-            .map(serverInfo => {
-              console.log(serverInfo);
-
-              return (
-                <ServerKey
-                  serverName={serverInfo.serverName}
-                  serverNumber={serverInfo.server}
-                />
-              );
-            })}
-        </table> */}
-        {/* ;  <ServerKey serverName={this.state.tables.serverName} /> */}
-        {/* {this.state.tables.forEach(function(e) {
-          console.log(e);
-          <ServerKey />;
-        })} */}
-        <div style={style.serverKey}>
-          <ServerKey />
-        </div>
         <div style={style.colorKey}>
+          <ServerKey />
           <FloorPlanDesc roleView={this.state.role} />
+        </div>
+        <div>
+          <ReservationList roleView={this.state.role} />
         </div>
       </div>
     );

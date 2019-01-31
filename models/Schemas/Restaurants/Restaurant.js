@@ -4,6 +4,7 @@ const MenuSchema = require("../Menus");
 const BillSchema = require("./Bill");
 const TableSchema = require("./Table");
 const EmployeeSchema = require("./Employee");
+const ReservationSchema = require("../Reservations");
 /**
  * More will be added later. This is just basic to work with menus.
  */
@@ -22,6 +23,8 @@ const RestaurantSchema = new Schema({
   Receipts: [ BillSchema ],
   // Employees of the Restaurant
   Employees: [ EmployeeSchema ],
+  // Reservations for the restaurant
+  Reservations: [ ReservationSchema ],
   // Street Address preferably, but not required
   location: {
     type: String
