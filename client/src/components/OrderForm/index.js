@@ -17,6 +17,11 @@ class OrderForm extends React.Component {
         orderedItems: this.props.orderedItems
       });
     }
+    if (this.props.activeTable) {
+      this.setState({
+        activeTable: this.props.activeTable
+      });
+    }
   };
 
   changeTable = (event) => {
@@ -83,15 +88,12 @@ class OrderForm extends React.Component {
     };
     this.props.newBill(tableIndex, newBill);
     this.getTableBill(tableIndex);
-    // this.setState({
-    //   activeBill: newBill
-    // })
   };
   render () {
     let tableSelected = false;
     this.state.activeTable ? (tableSelected = false) : (tableSelected = true);
     return (
-      <div className="box orderForm">
+      <div className="orderForm">
         <Row>
           <div className="inlineContainer">
             <div className="inline">
@@ -108,23 +110,26 @@ class OrderForm extends React.Component {
         </Row>
         <table>
           <tbody className="text-left">
-            <tr>
-              <th>Item</th>
-              <th className="text-right">Cost</th>
-            </tr>
-            {this.props.orderedItems.map((item, i) => {
-              return (
-                <tr key={i}>
-                  <td className="item-name">
-                    <span onClick={(i) => this.props.removeItem(i)}>
-                      -{" "}
-                    </span>{" "}
-                    {item.name}
-                  </td>
-                  <td className="text-right item-price">{item.price}</td>
-                </tr>
-              );
-            })}
+            {this.props.orderedItems && (
+              <tr>
+                <th>Item</th>
+                <th className="text-right">Cost</th>
+              </tr>
+            )}
+            {this.props.orderedItems &&
+              this.props.orderedItems.map((item, i) => {
+                return (
+                  <tr key={i}>
+                    <td className="item-name">
+                      <span onClick={(i) => this.props.removeItem(i)}>
+                        -{" "}
+                      </span>{" "}
+                      {item.name}
+                    </td>
+                    <td className="text-right item-price">{item.price}</td>
+                  </tr>
+                );
+              })}
             {this.state.activeBill && (
               <tr className="border-top">
                 <td className="text-bold">Current Bill: </td>
@@ -154,13 +159,15 @@ class OrderForm extends React.Component {
         </table>
 
         <div className="orderBtnContainer">
-          <Button
-            className="orderBtn"
-            disabled={tableSelected}
-            variant="warning"
-            onClick={() => this.handleSave(this.state.activeTable)}>
-            Update Items
-          </Button>
+          {this.props.orderedItems && (
+            <Button
+              className="orderBtn"
+              disabled={tableSelected}
+              variant="warning"
+              onClick={() => this.handleSave(this.state.activeTable)}>
+              Update Items
+            </Button>
+          )}
 
           <button
             className="btn btn-default orderBtn"
@@ -180,7 +187,11 @@ class OrderForm extends React.Component {
           saveTicket={this.props.saveTicket}
         />
         <div className="orderBtnContainer">
-          <Button variant="outline-danger" disabled={tableSelected} className="newTicketBtn" onClick={() => this.newBill()}>
+          <Button
+            variant="outline-danger"
+            disabled={tableSelected}
+            className="newTicketBtn"
+            onClick={() => this.newBill()}>
             New Ticket
           </Button>
         </div>
