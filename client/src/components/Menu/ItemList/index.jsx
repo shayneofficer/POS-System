@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 
 class ItemList extends React.Component {
   addItem = (category) => {
-    console.log(cateogry);
+    console.log(category);
   };
   render () {
     return (
