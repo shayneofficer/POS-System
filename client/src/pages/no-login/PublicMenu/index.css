@@ -3,15 +3,17 @@
     border: 2px solid black;
     box-sizing: border-box;
     padding: 0 20px;
-  }
- .catBtn {
+}
+
+
+.catBtn {
     margin: 0.25rem;
     font-weight: bold;
     height: 50px;
     width: 200px;
-  }
+}
   
-  .pd-0 {
+.pd-0 {
     padding: 0 !important;
-  }
+}
   

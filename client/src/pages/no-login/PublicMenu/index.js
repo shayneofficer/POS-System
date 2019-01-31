@@ -57,7 +57,7 @@ class ShineMenu extends React.Component {
       <Container>
         <Row>
           <Col size="sm-8">
-            <div className="box">
+            <div className="box bg-white">
             <h2 style={myStyle.titleSpace}> Shine Restaurant</h2> 
               <Menu
                 categories={this.state.categories}

@@ -1,7 +1,7 @@
 import React from "react";
 import image from "../../Images/restbg.jpg";
 import { FormBtn } from "../../components/Form";
-import ShineMenu from "../no-login/PublicMenu/index.js";
+import ShineMenu from "./PublicMenu/index.js";
 
 
 
