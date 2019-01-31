@@ -1,5 +1,5 @@
 import React from "react";
-import Background from "../../Images/burger.jpg"
+import Background from "../../Images/homebg.jpg"
 import { Input, FormBtn } from "../../components/Form";
 import API from "../../utils/API";
 import { Redirect } from 'react-router-dom';
@@ -15,7 +15,8 @@ const style = {
     header: {
         color: "#ffc107",
         fontSize: "2.5rem",
-        textAlign: "center"
+        textAlign: "center",
+        paddingTop: "75px"
     }
 };
 
