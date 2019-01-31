@@ -88,15 +88,18 @@ class Reservations extends React.Component {
                     <Input
                         onChange={this.handleInputChange}
                         name="date"
-                        type="String"
-                        placeholder="Date"
+                        type="date"
+                        min={Date.now}
+                        default={Date.now}
                         value={this.state.date}
                     />
                     <Input
                         onChange={this.handleInputChange}
                         name="time"
-                        type="number"
-                        placeholder="Time"
+                        type="time"
+                        min="10:00" 
+                        max="20:00"
+                        step="900"
                         value={this.state.time}
                     />
                     <Input

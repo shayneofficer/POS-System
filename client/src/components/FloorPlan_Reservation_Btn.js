@@ -11,11 +11,17 @@ const myStyles = {
 };
 
 class ReservationBtn extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     reservation: this.props.seeReservations
+  //   };
+  // }
 
+  // changeReservation = () => {
+  //   this.setState({ reservation: true });
+  //   console.log(this.state.reservation);
+  // };
   render() {
     let hidden = true;
     if (this.props.roleView === "host" || this.props.roleView === "manager") {
@@ -23,11 +29,13 @@ class ReservationBtn extends React.Component {
     }
     return (
       <div style={myStyles.buttons} className={`${hidden ? "d-none" : ""}`}>
-        <Link to={`/home`}>
-          <Button variant="warning" style={myStyles.buttons}>
-            See Reservations
-          </Button>
-        </Link>
+        <Button
+          variant="warning"
+          style={myStyles.buttons}
+          onClick={this.props.changeReservations}
+        >
+          See Reservations
+        </Button>
       </div>
     );
   }
