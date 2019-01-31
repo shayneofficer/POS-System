@@ -28,11 +28,11 @@ class ReservationList extends React.Component {
 
     componentDidMount() {
         const restID = sessionStorage.getItem("restID");
-        console.log("restID", restID)
+        // console.log("restID", restID)
         if (restID && typeof restID == "string") {
-            console.log("api call")
+            // console.log("api call");
             API.getReservationsByRestaurant(restID).then(results => {
-                console.log("results.data", results.data);
+                // console.log("results.data", results.data);
                 this.setState({ reservations: results.data });
             })
         }

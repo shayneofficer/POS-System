@@ -3,7 +3,7 @@ import React, { Component } from "react";
 
 class ReservationRows extends Component {
     render() {
-        console.log("RR props", this.props);
+        // console.log("RR props", this.props);
         return (
             <tr>
                 <td>

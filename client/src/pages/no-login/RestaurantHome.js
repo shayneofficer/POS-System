@@ -32,7 +32,7 @@ const section = {
 
 const restID = sessionStorage.getItem("restID");
 if (restID) {
-    console.log("restID", restID);
+    // console.log("restID", restID);
 
 } else {
     console.log("No restID");

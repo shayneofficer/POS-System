@@ -42,7 +42,7 @@ class Main extends React.Component {
 
   componentDidMount() {
     API.findRestaurantsJustNames().then(results => {
-      console.log("selections.data", results.data);
+    //   console.log("selections.data", results.data);
       this.setState({ selections: results.data });
     });
   }
@@ -71,7 +71,7 @@ class Main extends React.Component {
 
     API.findRestaurant(submit)
       .then(res => {
-        console.log("res.data", res.data);
+        // console.log("res.data", res.data);
         if (res.data == null) {
           this.setState({
             restaurantName: `"${
