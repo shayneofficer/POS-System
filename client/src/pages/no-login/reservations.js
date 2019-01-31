@@ -41,7 +41,7 @@ class Reservations extends React.Component {
             .then(res => {
                 console.log("res", res);
                 this.setState({ restaurantID: "", name: "", email: "", phone: "", date: "", time: "", partySize: "" });
-                console.log(this.state);
+                // console.log(this.state);
             })
             .catch(err => console.log("err", err));
 
