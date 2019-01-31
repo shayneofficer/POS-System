@@ -2,7 +2,7 @@ import React from "react";
 import Table from "../../components/Tables";
 import FloorPlanDesc from "../post-login/FloorPlan_desc";
 import FloorPlanLinks from "../post-login/FloorPlan_links";
-import Order_Check_Btns from "../../components/FloorPlan_Order_Check_Btns";
+import OrderCheckBtns from "../../components/FloorPlan_Order_Check_Btns";
 import ReservationBtn from "../../components/FloorPlan_Reservation_Btn";
 import Button from "react-bootstrap/Button";
 import ServerKey from "../../components/ServerKey";
@@ -185,7 +185,7 @@ class FloorPlan extends React.Component {
               })}
           </div>
         </div>
-        <Order_Check_Btns roleView={this.state.role} />
+        <OrderCheckBtns roleView={this.state.role} />
         <ReservationBtn roleView={this.state.role} />
         <div style={style.colorKey}>
           <ServerKey />

@@ -1,6 +1,8 @@
 import React from "react";
 import Background from "../../Images/homebg.jpg"
 import { Input, FormBtn } from "../../components/Form";
+import { FormBtn } from "../../components/Form";
+
 import API from "../../utils/API";
 import { Redirect } from 'react-router-dom';
 import { ReadStream } from "tty";
@@ -88,9 +90,9 @@ class Main extends React.Component {
                 <br />
                 <br />
                 <form>
-                    <div class="form-group">
-                        <label for="restaurantNames">Restaurant Select</label>
-                        <select onChange={this.selectionChange} class="form-control" id="restaurantNames">
+                    <div className="form-group">
+                        <label htmlFor="restaurantNames">Restaurant Select</label>
+                        <select onChange={this.selectionChange} className="form-control" id="restaurantNames">
                             <option>-</option>
                             {this.state.selections.map(e => (
                                 <option key={e._id} _id={e._id}>{e.name}</option>
