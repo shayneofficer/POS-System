@@ -7,21 +7,19 @@ import { Redirect } from "react-router-dom";
 import { ReadStream } from "tty";
 
 const style = {
-
-    buttons: {
-        fontSize: "1.3rem",
-        display: "flex",
-        justifyContent: "center",
-        margin: "0 auto"
-    },
-    header: {
-        color: "white",
-        fontSize: "2.5rem",
-        textAlign: "center",
-    },
-    restselect: {
-      color: "white"
-    }
+  buttons: {
+    fontSize: "1.3rem",
+    display: "flex",
+    justifyContent: "center",
+    margin: "0 auto"
+  },
+  header: {
+    color: "white",
+    fontSize: "2.5rem",
+    textAlign: "center"
+  },
+  restselect: {
+    color: "white"
   }
 };
 
@@ -42,14 +40,14 @@ class Main extends React.Component {
     selections: []
   };
 
-  componentDidMount() {
-    API.findRestaurantsJustNames().then(results => {
+  componentDidMount () {
+    API.findRestaurantsJustNames().then((results) => {
       console.log("selections.data", results.data);
       this.setState({ selections: results.data });
     });
   }
 
-  handleInputChange = event => {
+  handleInputChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     this.setState({
@@ -58,12 +56,12 @@ class Main extends React.Component {
     // console.log(`${name}: ${value}`);
   };
 
-  selectionChange = event => {
+  selectionChange = (event) => {
     // console.log(event.target.value);
     this.setState({ restaurantName: event.target.value });
   };
 
-  handleFormSubmit = event => {
+  handleFormSubmit = (event) => {
     event.preventDefault();
 
     const submit = {
@@ -72,13 +70,12 @@ class Main extends React.Component {
     console.log("handleFormSubmit", submit);
 
     API.findRestaurant(submit)
-      .then(res => {
+      .then((res) => {
         console.log("res.data", res.data);
         if (res.data == null) {
           this.setState({
-            restaurantName: `"${
-              this.state.restaurantName
-            }" is not a current restaurant`
+            restaurantName: `"${this.state
+              .restaurantName}" is not a current restaurant`
           });
         } else {
           this.setState({ restaurantName: "" });
@@ -86,9 +83,9 @@ class Main extends React.Component {
           window.location.href = "./restaurantHome";
         }
       })
-      .catch(err => console.log("err", err));
+      .catch((err) => console.log("err", err));
   };
-  render() {
+  render () {
     return (
       <div style={section.background}>
         <br />
@@ -103,10 +100,9 @@ class Main extends React.Component {
             <select
               onChange={this.selectionChange}
               className="form-control"
-              id="restaurantNames"
-            >
+              id="restaurantNames">
               <option>-</option>
-              {this.state.selections.map(e => (
+              {this.state.selections.map((e) => (
                 <option key={e._id} _id={e._id}>
                   {e.name}
                 </option>
