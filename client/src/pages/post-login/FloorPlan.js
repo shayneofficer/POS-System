@@ -215,7 +215,7 @@ class FloorPlan extends React.Component {
               })}
           </div>
         </div>
-        <Order_Check_Btns roleView={this.state.role} tables={this.state.dbTables} />
+        <OrderCheckBtns roleView={this.state.role} tables={this.state.dbTables} />
         <ReservationBtn roleView={this.state.role} />
         <div style={style.colorKey}>
           <ServerKey />
