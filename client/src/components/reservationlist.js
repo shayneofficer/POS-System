@@ -33,7 +33,7 @@ class ReservationList extends React.Component {
             console.log("api call")
             API.getReservationsByRestaurant(restID).then(results => {
                 console.log("results.data", results.data);
-                this.setState({reservations: results.data});
+                this.setState({ reservations: results.data });
             })
         }
     }
@@ -44,6 +44,8 @@ class ReservationList extends React.Component {
                     <thead>
                         <tr>
                             <th>Name</th>
+                            <th>E-mail</th>
+                            <th>Phone</th>
                             <th>Date</th>
                             <th>Time</th>
                             <th>Party Size</th>
@@ -54,6 +56,8 @@ class ReservationList extends React.Component {
                     <tbody>
                         {this.state.reservations.map(e => (
                             <ReservationRows name={e.name} key={e._id}
+                                email={e.email}
+                                phone={e.phone}
                                 date={e.date}
                                 time={e.time}
                                 partySize={e.partySize}
@@ -61,18 +65,7 @@ class ReservationList extends React.Component {
                                 server={e.server}
                             />
                         ))}
-                        {/* <ReservationRows name={reservation.res1.name}
-                        date={reservation.res1.date}
-                        time={reservation.res1.time}
-                        partySize={reservation.res1.partySize}
-                        tableAssignment={reservation.res1.tableAssignment}
-                        server={reservation.res1.server} />
-                    <ReservationRows name={reservation.res2.name}
-                        date={reservation.res2.date}
-                        time={reservation.res2.time}
-                        partySize={reservation.res2.partySize}
-                        tableAssignment={reservation.res2.tableAssignment}
-                        server={reservation.res2.server} /> */}
+
                     </tbody>
                 </table>
             </div>

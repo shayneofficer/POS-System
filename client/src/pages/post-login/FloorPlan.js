@@ -2,11 +2,12 @@ import React from "react";
 import Table from "../../components/Tables";
 import FloorPlanDesc from "../post-login/FloorPlan_desc";
 import FloorPlanLinks from "../post-login/FloorPlan_links";
-import Order_Check_Btns from "../../components/FloorPlan_Order_Check_Btns";
+import OrderCheckBtns from "../../components/FloorPlan_Order_Check_Btns";
 import ReservationBtn from "../../components/FloorPlan_Reservation_Btn";
 import Button from "react-bootstrap/Button";
 import ServerKey from "../../components/ServerKey";
-import ReservationList from "../../components/reservationlist";
+import API from "../../utils/API";
+import ReservationList from "../../components/ReservationList";
 
 const style = {
   tables: {
@@ -32,6 +33,9 @@ class FloorPlan extends React.Component {
   state = {
     displayReservations: false,
     role: "host",
+    restaurant: undefined,
+    restId: undefined,
+    dbTables: [],
     tables: [
       {
         tableNumber: 1,
@@ -120,6 +124,32 @@ class FloorPlan extends React.Component {
     ]
   };
 
+  componentDidMount = () => {
+    this.getTables();
+  };
+
+  getTables = () => {
+    this.getRestaurant((result) => {
+      const Restaurant = result;
+      let tableArr = [];
+      Restaurant.Tables.map((table, i) => {
+        tableArr.push(table);
+      });
+      this.setState({
+        restaurant: Restaurant,
+        restId: Restaurant._id,
+        dbTables: tableArr
+      });
+    });
+  };
+
+  getRestaurant = (callback) => {
+    API.getRestaurants().then((restaurants) => {
+      const restaurant = restaurants.data[0];
+      callback(restaurant);
+    });
+  };
+
   changeRole = role => {
     console.log("role");
     this.setState({ role });
@@ -191,11 +221,11 @@ class FloorPlan extends React.Component {
               })}
           </div>
         </div>
-        <Order_Check_Btns roleView={this.state.role} />
         <ReservationBtn
           roleView={this.state.role}
           changeReservations={this.changeReservation}
         />
+        <OrderCheckBtns roleView={this.state.role} tables={this.state.dbTables} />
         <div style={style.colorKey}>
           <ServerKey />
           <FloorPlanDesc roleView={this.state.role} />
