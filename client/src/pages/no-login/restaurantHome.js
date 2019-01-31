@@ -1,6 +1,6 @@
 import React from "react";
 import image from "../../Images/shine4.jpg";
-import { Input, FormBtn } from "../../components/Form";
+import { FormBtn } from "../../components/Form";
 
 
 
@@ -30,9 +30,9 @@ const section = {
 };
 
 const restID = sessionStorage.getItem("restID");
-if(restID) {
+if (restID) {
     console.log("restID", restID);
-    
+
 } else {
     console.log("No restID");
 }
