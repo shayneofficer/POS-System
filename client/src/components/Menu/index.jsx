@@ -16,7 +16,7 @@ class Menu extends React.Component {
     });
   };
 
-  render() {
+  render () {
     return (
       <Container>
         <Row>
@@ -37,8 +37,13 @@ class Menu extends React.Component {
                 </Button>
               );
             })}
+            <Button
+              onClick={() => this.addCategory}
+              id="addCatBtn"
+              variant="outline-warning">
+              +
+            </Button>
           </Col>
-
         </Row>
         <Row>
           <Col size="sm-12">
@@ -46,9 +51,10 @@ class Menu extends React.Component {
               className="itemList"
               orderItem={this.props.orderItem}
               items={this.state.activeItems}
+              canEdit={this.props.canEdit}
+              activeCat={this.props.activeCat}
             />
           </Col>
-
         </Row>
       </Container>
     );
