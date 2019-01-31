@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
+import BillModal from "../components/BillModal";
 
 import { Link } from "react-router-dom";
 const myStyles = {
@@ -25,11 +26,8 @@ class Order_Check_Btn extends React.Component {
           </Button>
         </Link>
 
-        <Link to={`/home`}>
-          <Button variant="warning" style={myStyles.buttons}>
-            Get Check
-          </Button>
-        </Link>
+        <BillModal tables={this.props.tables} activeTable={this.props.activeTable}/>
+
       </div>
     );
   }
