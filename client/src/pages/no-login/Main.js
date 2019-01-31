@@ -1,6 +1,8 @@
 import React from "react";
-import Background from "../../Images/burger.jpg"
+import Background from "../../Images/homebg.jpg"
+import { Input, FormBtn } from "../../components/Form";
 import { FormBtn } from "../../components/Form";
+
 import API from "../../utils/API";
 import { Redirect } from 'react-router-dom';
 import { ReadStream } from "tty";
@@ -13,9 +15,10 @@ const style = {
         margin: "0 auto"
     },
     header: {
-        color: "#ffc107",
+        color: "white",
         fontSize: "2.5rem",
-        textAlign: "center"
+        textAlign: "center",
+    
     }
 };
 
