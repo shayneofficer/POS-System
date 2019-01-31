@@ -6,17 +6,9 @@ import Order_Check_Btns from "../../components/FloorPlan_Order_Check_Btns";
 import ReservationBtn from "../../components/FloorPlan_Reservation_Btn";
 import Button from "react-bootstrap/Button";
 import ServerKey from "../../components/ServerKey";
+import ReservationList from "../../components/reservationlist";
 
 const style = {
-  colorKey: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "flex-end",
-    marginTop: "20px",
-    marginRight: "100px",
-    marginBottom: "30px"
-  },
   tables: {
     display: "flex",
     justifyContent: "center"
@@ -30,17 +22,9 @@ const style = {
     display: "flex",
     justifyContent: "center"
   },
-  serverKey: {
+  colorKey: {
     display: "flex",
-    // flexDirection: "column",
-    // justifyContent: "flex-end",
-    // // alignItems: "flex-start",
-    // marginTop: "20px",
-    // marginRight: "100px",
-    // marginBottom: "30px"
-    justifyContent: "center",
-    position: "relative",
-    top: "250px"
+    flexDirection: "row"
   }
 };
 
@@ -203,34 +187,12 @@ class FloorPlan extends React.Component {
         </div>
         <Order_Check_Btns roleView={this.state.role} />
         <ReservationBtn roleView={this.state.role} />
-        {/* <table>
-          <tr>
-            <th>Server #</th>
-            <th>Server Name</th>
-          </tr>
-          {this.state.tables
-            .filter(serverInfo => serverInfo.serverName === "Tom")
-            .map(serverInfo => {
-              console.log(serverInfo);
-
-              return (
-                <ServerKey
-                  serverName={serverInfo.serverName}
-                  serverNumber={serverInfo.server}
-                />
-              );
-            })}
-        </table> */}
-        {/* ;  <ServerKey serverName={this.state.tables.serverName} /> */}
-        {/* {this.state.tables.forEach(function(e) {
-          console.log(e);
-          <ServerKey />;
-        })} */}
-        <div style={style.serverKey}>
-          <ServerKey />
-        </div>
         <div style={style.colorKey}>
+          <ServerKey />
           <FloorPlanDesc roleView={this.state.role} />
+        </div>
+        <div>
+          <ReservationList roleView={this.state.role} />
         </div>
       </div>
     );
