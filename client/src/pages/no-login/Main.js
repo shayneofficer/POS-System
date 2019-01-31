@@ -17,7 +17,9 @@ const style = {
         color: "white",
         fontSize: "2.5rem",
         textAlign: "center",
-    
+        restselect: {
+            color: "white"
+        }
     }
 };
 
@@ -90,7 +92,7 @@ class Main extends React.Component {
                 <br />
                 <form>
                     <div className="form-group">
-                        <label htmlFor="restaurantNames">Restaurant Select</label>
+                        <label style={style.restselect} htmlFor="restaurantNames">Restaurant Select</label>
                         <select onChange={this.selectionChange} className="form-control" id="restaurantNames">
                             <option>-</option>
                             {this.state.selections.map(e => (

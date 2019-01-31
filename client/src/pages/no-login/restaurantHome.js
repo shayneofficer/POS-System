@@ -1,6 +1,6 @@
 import React from "react";
 import image from "../../Images/restbg.jpg";
-import { Input, FormBtn } from "../../components/Form";
+import { FormBtn } from "../../components/Form";
 import ShineMenu from "./PublicMenu/index.js";
 
 
