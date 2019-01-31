@@ -180,7 +180,7 @@ class OrderForm extends React.Component {
           saveTicket={this.props.saveTicket}
         />
         <div className="orderBtnContainer">
-          <Button variant="outline-danger" className="newTicketBtn" onClick={() => this.newBill()}>
+          <Button variant="outline-danger" disabled={tableSelected} className="newTicketBtn" onClick={() => this.newBill()}>
             New Ticket
           </Button>
         </div>
