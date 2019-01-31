@@ -88,7 +88,7 @@ class Reservations extends React.Component {
                     <Input
                         onChange={this.handleInputChange}
                         name="date"
-                        type={Date}
+                        type="String"
                         placeholder="Date"
                         value={this.state.date}
                     />

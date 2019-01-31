@@ -8,7 +8,9 @@ const ReservationSchema = new Schema({
     phone: { type: Number },
     date: { type: Date, default: Date.now },
     time: { type: Number},
-    partySize: { type: Number },
+    partySize: { type: Number }
 });
 
-module.exports = ReservationSchema;
+const Reservation = mongoose.model("Reservation", ReservationSchema);
+
+module.exports = Reservation;
