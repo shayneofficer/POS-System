@@ -18,6 +18,9 @@ const style = {
         fontSize: "2.5rem",
         textAlign: "center",
 
+    },
+    restselect: {
+        color: "white"
     }
 };
 
