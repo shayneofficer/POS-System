@@ -41,7 +41,7 @@ class Reservations extends React.Component {
             .then(res => {
                 console.log("res", res);
                 this.setState({ restaurantID: "", name: "", email: "", phone: "", date: "", time: "", partySize: "" });
-                console.log(this.state);
+                // console.log(this.state);
             })
             .catch(err => console.log("err", err));
 
@@ -88,15 +88,18 @@ class Reservations extends React.Component {
                     <Input
                         onChange={this.handleInputChange}
                         name="date"
-                        type={Date}
-                        placeholder="Date"
+                        type="date"
+                        min={Date.now}
+                        default={Date.now}
                         value={this.state.date}
                     />
                     <Input
                         onChange={this.handleInputChange}
                         name="time"
-                        type="number"
-                        placeholder="Time"
+                        type="time"
+                        min="10:00" 
+                        max="20:00"
+                        step="900"
                         value={this.state.time}
                     />
                     <Input

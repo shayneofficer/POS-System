@@ -2,8 +2,28 @@ import React from "react";
 import List from "./List";
 import { Container, Row, Col } from "../../Grid";
 import "./List.css";
+import Button from "react-bootstrap/Button";
 
 class ItemList extends React.Component {
+  state = {
+    activeCat: this.props.activeCat
+  };
+  componentDidUpdate (prevProps) {
+    if (prevProps.activeCat !== this.props.activeCat) {
+      this.setState({
+        activeCat: this.props.activeCat
+      });
+    }
+  }
+  addItem = (category) => {
+    console.log(category);
+  };
+
+  orderItem = (item) => {
+    if (this.props.canOrder) {
+      this.props.orderItem(item);
+    }
+  };
   render () {
     return (
       <Container>
@@ -13,11 +33,28 @@ class ItemList extends React.Component {
               {this.props.items.map((item, i) => {
                 return (
                   <Row key={i}>
-                    <Col size="sm-9"><h6 key={i} className="text-left" onClick={() => this.props.orderItem(item)}>{item.name}</h6></Col>
-                    <Col size="sm-3" onClick={() => this.props.orderItem(item)}>{item.price}</Col>
+                    <Col size="sm-9">
+                      <h6
+                        key={i}
+                        className="text-left"
+                        onClick={() => this.orderItem(item)}>
+                        {item.name}
+                      </h6>
+                    </Col>
+                    <Col size="sm-3" onClick={() => this.orderItem(item)}>
+                      {item.price}
+                    </Col>
                   </Row>
                 );
               })}
+              {this.props.canEdit && (
+                <Button
+                  id="addItemBtn"
+                  variant="light"
+                  onClick={() => this.addItem(this.props.activeCat)}>
+                  Add New Item
+                </Button>
+              )}
             </List>
           ) : (
             <p>Select a Category to View Items</p>

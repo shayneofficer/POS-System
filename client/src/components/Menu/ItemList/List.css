@@ -4,16 +4,19 @@
   border-radius: 4px;
   overflow-y: scroll;
   overflow-x: hidden;
+  background-color: white;
 }
 
 .list-overflow-container ul {
   margin: 0;
+  background-color: white;
 }
 
 .list-overflow-container li {
   border-radius: 0px;
   border-left: none;
   border-right: none;
+  background-color: white;
 }
 
 .list-overflow-container li * {
@@ -35,12 +38,14 @@
   display: flex;
   text-align: left;
   justify-content: space-between;
+  background-color: white;
 }
 
 .text-left {
   text-align: left !important;
   width: 100%;
   margin-left: 2rem;
+  
 }
 .row {
   padding: 1em 0;
@@ -48,4 +53,19 @@
 }
 h6 {
   margin-bottom: 0;
+}
+
+#addCatBtn,
+#addItemBtn {
+  display: block;
+}
+#addCatBtn {
+  margin: 6px 12px;
+  width: 3em;
+  font-weight: bolder;
+}
+.justify-content-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
