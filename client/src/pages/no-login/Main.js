@@ -40,9 +40,9 @@ class Main extends React.Component {
     selections: []
   };
 
-  componentDidMount () {
-    API.findRestaurantsJustNames().then((results) => {
-      console.log("selections.data", results.data);
+  componentDidMount() {
+    API.findRestaurantsJustNames().then(results => {
+    //   console.log("selections.data", results.data);
       this.setState({ selections: results.data });
     });
   }
@@ -70,8 +70,8 @@ class Main extends React.Component {
     console.log("handleFormSubmit", submit);
 
     API.findRestaurant(submit)
-      .then((res) => {
-        console.log("res.data", res.data);
+      .then(res => {
+        // console.log("res.data", res.data);
         if (res.data == null) {
           this.setState({
             restaurantName: `"${this.state

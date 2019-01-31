@@ -33,7 +33,7 @@ module.exports = {
   },
   update: function (req, res) {
     db.Reservation
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .findOneAndUpdate({ _id: req.params.rsvId }, req.body)
       .then(results => res.json(results))
       .catch(err => res.status(422).json(err));
   },
