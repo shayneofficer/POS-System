@@ -127,7 +127,7 @@ class FloorPlan extends React.Component {
     this.getTables();
   };
 
-  getTables= () => {
+  getTables = () => {
     this.getRestaurant((result) => {
       const Restaurant = result;
       let tableArr = [];
