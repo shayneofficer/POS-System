@@ -14,4 +14,9 @@ router
   .put(reservationController.update)
   .delete(reservationController.remove);
 
+// Matches with "/api/reservations/:rsvId"
+router
+  .route("/rest/:restaurantID")
+  .get(reservationController.findByRestId)
+
 module.exports = router;

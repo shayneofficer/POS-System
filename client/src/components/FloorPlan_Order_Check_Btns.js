@@ -1,4 +1,6 @@
 import React from "react";
+import Button from "react-bootstrap/Button";
+
 import { Link } from "react-router-dom";
 const myStyles = {
   buttons: {
@@ -10,11 +12,6 @@ const myStyles = {
 };
 
 class Order_Check_Btn extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {};
-  // }
-
   render() {
     let hidden = true;
     if (this.props.roleView === "manager" || this.props.roleView === "server") {
@@ -23,22 +20,15 @@ class Order_Check_Btn extends React.Component {
     return (
       <div style={myStyles.buttons} className={`${hidden ? "d-none" : ""}`}>
         <Link to={`/order`}>
-          <button
-            style={myStyles.buttons}
-            type="button"
-            className="btn btn-warning"
-          >
+          <Button variant="warning" style={myStyles.buttons}>
             Enter Order
-          </button>
+          </Button>
         </Link>
+
         <Link to={`/home`}>
-          <button
-            style={myStyles.buttons}
-            type="button"
-            className="btn btn-warning"
-          >
+          <Button variant="warning" style={myStyles.buttons}>
             Get Check
-          </button>
+          </Button>
         </Link>
       </div>
     );

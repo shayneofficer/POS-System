@@ -1,5 +1,5 @@
 import axios from "axios";
-const base = `http://localhost:3001/api/`;
+const base = `/api/`;
 
 export default {
   createUser: function (data) {
@@ -17,6 +17,10 @@ export default {
   getReservations: function () {
     return axios.get(`${base}reservations`);
   },
+  getReservationsByRestaurant: function (restID) {
+    console.log(`${base}reservations/rest/${restID}`)
+    return axios.get(`${base}reservations/rest/${restID}`);
+  },
   /*************** Restaurant Methods *****************/
 
   createRestaurant: function (data) {
@@ -27,6 +31,9 @@ export default {
   },
   findRestaurant: function (data) {
     return axios.post(`${base}&rest/name`, data);
+  },
+  findRestaurantsJustNames: function (data) {
+    return axios.post(`${base}&rest/justNames`, data);
   },
   getRestaurantById: function (restId) {
     return axios.get(`${base}&rest/=${restId}`);
@@ -40,13 +47,17 @@ export default {
   },
 
   updateTableBill: function (restId, tableIndex, ticket) {
-    console.log(restId, tableIndex);
     let data = { Bill: ticket };
     return axios.put(`${base}&rest/=${restId}/&tables/=${tableIndex}`, data);
   },
   billPaid: function (restId, tableIndex, receipt) {
-    console.log(restId, tableIndex, receipt);
     return axios.put(`${base}&rest/=${restId}/&tables/=${tableIndex}/paid`, receipt);
+  },
+  archiveBill: function (restId, tableIndex, newBill) {
+    console.log('********');
+    console.log(newBill);
+    console.log('********');
+    return axios.put(`${base}&rest/=${restId}/&tables/=${tableIndex}/archive`, newBill)
   },
 
   /*************** Menu Methods *****************/
