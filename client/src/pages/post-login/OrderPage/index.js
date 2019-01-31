@@ -65,7 +65,7 @@ class OrderPage extends React.Component {
 
   getTickets = (e) => {
     e.preventDefault();
-    let tickets = this.state.restaurant.Receipts;
+    // let tickets = this.state.restaurant.Receipts;
   };
 
   saveTicket = (tableIndex, newBill) => {
@@ -105,7 +105,7 @@ class OrderPage extends React.Component {
     });
   };
 
-  render () {
+  render() {
     return (
       <Container>
         <Row>
