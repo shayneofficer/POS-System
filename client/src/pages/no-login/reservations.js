@@ -1,6 +1,7 @@
 import React from "react";
 import { Input, FormBtn } from "../../components/Form";
 import API from "../../utils/API";
+import { distanceInWordsToNow } from "date-fns";
 
 class Reservations extends React.Component {
     state = {
@@ -8,6 +9,8 @@ class Reservations extends React.Component {
         name: "",
         email: "",
         phone: "",
+        date: Date.now,
+        time: "",
         partySize: ""
     };
     handleInputChange = event => {
@@ -28,6 +31,8 @@ class Reservations extends React.Component {
             name: this.state.name,
             email: this.state.email,
             phone: this.state.phone,
+            date: this.state.date,
+            time: this.state.time,
             partySize: this.state.partySize
         };
         console.log("Res", submit);
@@ -35,7 +40,7 @@ class Reservations extends React.Component {
         API.createReservation(submit)
             .then(res => {
                 console.log("res", res);
-                this.setState({ restaurantID: "", name: "", email: "", phone: "", partySize: "" });
+                this.setState({ restaurantID: "", name: "", email: "", phone: "", partySize: "", date: "", time: "" });
                 console.log(this.state);
             })
             .catch(err => console.log("err", err));
@@ -79,6 +84,18 @@ class Reservations extends React.Component {
                         type="number"
                         placeholder="Phone"
                         value={this.state.phone}
+                    />
+                    <Input
+                        onChange={this.handleInputChange}
+                        name="date"
+                        placeholder="Date"
+                        value={this.state.date}
+                    />
+                    <Input
+                        onChange={this.handleInputChange}
+                        name="time"
+                        placeholder="Time"
+                        value={this.state.time}
                     />
                     <Input
                         onChange={this.handleInputChange}
