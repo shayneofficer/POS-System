@@ -1,6 +1,7 @@
 import React from "react";
 import image from "../../Images/shine4.jpg";
-import { FormBtn } from "../../components/Form";
+import { Input, FormBtn } from "../../components/Form";
+import ShineMenu from "../no-login/PublicMenu/index.js";
 
 
 
@@ -59,7 +60,7 @@ class RestaurantHome extends React.Component {
                 <FormBtn onClick={this.handleSubmit} style={style.buttons}>
                     Make a Reservation
                 </FormBtn>
-
+                <ShineMenu />
                 {/* <a href="/Reservations"><button
                     style={style.buttons}
                     type="button"
