@@ -59,3 +59,13 @@ h6 {
 #addItemBtn {
   display: block;
 }
+#addCatBtn {
+  margin: 6px 12px;
+  width: 3em;
+  font-weight: bolder;
+}
+.justify-content-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

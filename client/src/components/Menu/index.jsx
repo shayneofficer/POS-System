@@ -37,12 +37,14 @@ class Menu extends React.Component {
                 </Button>
               );
             })}
+            <div className="justify-content-center">
             <Button
               onClick={() => this.addCategory}
               id="addCatBtn"
               variant="outline-warning">
               +
             </Button>
+            </div>
           </Col>
         </Row>
         <Row>
@@ -53,6 +55,7 @@ class Menu extends React.Component {
               items={this.state.activeItems}
               canEdit={this.props.canEdit}
               activeCat={this.props.activeCat}
+              canOrder={this.props.canOrder}
             />
           </Col>
         </Row>
