@@ -1,38 +1,40 @@
 import React, { Component } from "react";
-
+import Button from "react-bootstrap/Button";
+import API from "../utils/API";
 
 class ReservationRows extends Component {
+    updateReservation = event => {
+        event.preventDefault();
+        
+    };
+
     render() {
-        // console.log("RR props", this.props);
+        console.log("RR props", this.props);
         return (
             <tr>
+                <td>{this.props.name}</td>
+                <td>{this.props.email}</td>
+                <td>{this.props.phone}</td>
+                <td>{this.props.date}</td>
+                <td>{this.props.time}</td>
+                <td>{this.props.partySize}</td>
                 <td>
-                    {this.props.name}
+                    <form>
+                        <input type="number" />
+                        <Button type="submit" onClick={this.updateReservation} variant="warning">
+                            Submit
+                        </Button>
+                    </form>
                 </td>
                 <td>
-                    {this.props.email}
-                </td>
-                <td>
-                    {this.props.phone}
-                </td>
-                <td>
-                    {this.props.date}
-                </td>
-                <td>
-                    {this.props.time}
-                </td>
-                <td>
-                    {this.props.partySize}
-                </td>
-                <td>
-                    {this.props.tableAssignment}
-                </td>
-                <td>
-                    {this.props.server}
+                    <form>
+                        <input type="name" />
+                        <Button type="submit" onClick={this.updateReservation} variant="warning">
+                            Submit
+                        </Button>
+                    </form>
                 </td>
             </tr>
-
-
         );
     }
 }
