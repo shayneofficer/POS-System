@@ -1,6 +1,5 @@
 import React from "react";
 import Background from "../../Images/homebg.jpg"
-import { Input, FormBtn } from "../../components/Form";
 import { FormBtn } from "../../components/Form";
 
 import API from "../../utils/API";
@@ -18,7 +17,7 @@ const style = {
         color: "white",
         fontSize: "2.5rem",
         textAlign: "center",
-    
+
     }
 };
 
