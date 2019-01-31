@@ -31,6 +31,7 @@ const style = {
 
 class FloorPlan extends React.Component {
   state = {
+    displayReservations: false,
     role: "host",
     restaurant: undefined,
     restId: undefined,
@@ -154,6 +155,11 @@ class FloorPlan extends React.Component {
     this.setState({ role });
   };
 
+  changeReservation = () => {
+    this.setState({ displayReservations: !this.state.displayReservations });
+    console.log(this.state.reservation);
+  };
+
   render() {
     return (
       <div className="wrapper">
@@ -215,15 +221,20 @@ class FloorPlan extends React.Component {
               })}
           </div>
         </div>
+        <ReservationBtn
+          roleView={this.state.role}
+          changeReservations={this.changeReservation}
+        />
         <OrderCheckBtns roleView={this.state.role} tables={this.state.dbTables} />
-        <ReservationBtn roleView={this.state.role} />
         <div style={style.colorKey}>
           <ServerKey />
           <FloorPlanDesc roleView={this.state.role} />
         </div>
-        <div>
-          <ReservationList roleView={this.state.role} />
-        </div>
+        {this.state.displayReservations && (
+          <div>
+            <ReservationList roleView={this.state.role} />
+          </div>
+        )}
       </div>
     );
   }
