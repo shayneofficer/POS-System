@@ -9,7 +9,7 @@ class Reservations extends React.Component {
         name: "",
         email: "",
         phone: "",
-        date: Date.now,
+        date: "",
         time: "",
         partySize: ""
     };
@@ -40,7 +40,7 @@ class Reservations extends React.Component {
         API.createReservation(submit)
             .then(res => {
                 console.log("res", res);
-                this.setState({ restaurantID: "", name: "", email: "", phone: "", partySize: "", date: "", time: "" });
+                this.setState({ restaurantID: "", name: "", email: "", phone: "", date: "", time: "", partySize: "" });
                 console.log(this.state);
             })
             .catch(err => console.log("err", err));
@@ -88,12 +88,14 @@ class Reservations extends React.Component {
                     <Input
                         onChange={this.handleInputChange}
                         name="date"
+                        type={Date}
                         placeholder="Date"
                         value={this.state.date}
                     />
                     <Input
                         onChange={this.handleInputChange}
                         name="time"
+                        type="number"
                         placeholder="Time"
                         value={this.state.time}
                     />
