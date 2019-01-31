@@ -128,6 +128,7 @@ class OrderPage extends React.Component {
                 categories={this.state.categories}
                 orderItem={this.addItem}
                 canEdit={true}
+                canOrder={true}
               />
             </div>
           </Col>
