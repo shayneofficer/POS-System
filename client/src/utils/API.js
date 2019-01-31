@@ -32,8 +32,8 @@ export default {
   findRestaurant: function(data) {
     return axios.post(`${base}&rest/name`, data);
   },
-  findRestaurantsJustNames: function(data) {
-    return axios.post(`${base}&rest/justNames`, data);
+  findRestaurantsJustNames: function() {
+    return axios.get(`${base}&rest/justNames`);
   },
   getRestaurantById: function(restId) {
     return axios.get(`${base}&rest/=${restId}`);
