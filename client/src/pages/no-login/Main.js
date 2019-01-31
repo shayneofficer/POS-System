@@ -7,16 +7,18 @@ import { Redirect } from "react-router-dom";
 import { ReadStream } from "tty";
 
 const style = {
-  buttons: {
-    fontSize: "1.3rem",
-    display: "flex",
-    justifyContent: "center",
-    margin: "0 auto"
-  },
-  header: {
-    color: "white",
-    fontSize: "2.5rem",
-    textAlign: "center",
+
+    buttons: {
+        fontSize: "1.3rem",
+        display: "flex",
+        justifyContent: "center",
+        margin: "0 auto"
+    },
+    header: {
+        color: "white",
+        fontSize: "2.5rem",
+        textAlign: "center",
+    },
     restselect: {
       color: "white"
     }
