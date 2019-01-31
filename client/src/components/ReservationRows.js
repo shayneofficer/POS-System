@@ -5,7 +5,7 @@ import API from "../utils/API";
 class ReservationRows extends Component {
     updateReservation = event => {
         event.preventDefault();
-        
+        console.log("e.t.v", event.target.value);
     };
 
     render() {
