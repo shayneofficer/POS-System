@@ -21,8 +21,8 @@ class FormSelect extends React.Component {
   render () {
     return (
       <Form>
-        <Form.Group controlId="exampleForm.ControlSelect1">
-          <Form.Control
+        <Form.Group bsPrefix="form-group mb-0" controlId="exampleForm.ControlSelect1">
+          <Form.Control 
             as="select"
             onChange={this.handleChange}
             value={this.state.active} 

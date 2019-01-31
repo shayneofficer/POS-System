@@ -67,5 +67,18 @@ module.exports = {
         res.json(result);
       });
     });
+  },
+  archiveBill: function (req, res) {
+    db.Restaurant.findById(req.params.id).then((restaurant) => {
+      const oldBill = restaurant.Tables[req.params.tableIndex].Bill;
+      restaurant.Tables[req.params.tableIndex].set({ Bill: req.body });
+      if (oldBill) {
+        restaurant.Receipts.push(oldBill);
+      }
+      restaurant.save((err, result) => {
+        if (err) res.status(422).json(err);
+        res.json(result);
+      });
+    });
   }
 };

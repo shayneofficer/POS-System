@@ -5,11 +5,9 @@
   justify-content: center;
   text-align: left;
   height: 100%;
- 
 }
 .inlineSelect {
   padding-left: 0.5em;
- 
 }
 .inlineContainer {
   width: 100%;
@@ -17,26 +15,28 @@
   flex-direction: row;
   justify-content: space-evenly;
   vertical-align: middle;
- 
 }
 .orderForm {
   min-height: 226px;
   max-height: 650px;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 }
 
-.ticket-item, .item-price {
-border-bottom: 1px solid #DDDDDD;
-padding: .5em 0;
-font-size: 18px;
-
-
+.ticket-item,
+.item-price {
+  border-bottom: 1px solid #dddddd;
+  padding: .5em 0;
+  font-size: 15px;
+}
+.item-name {
+  border-bottom: 1px solid #dddddd;
 }
 
 .orderBtnContainer {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   width: 100%;
   justify-content: space-evenly;
 }
@@ -45,4 +45,43 @@ font-size: 18px;
 }
 .border-top {
   margin-top: 1em;
+}
+.formRow {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+label {
+  margin-bottom: 0.25rem;
+  text-align: left;
+}
+.form-check {
+  padding-left: 0.5rem;
+}
+
+.collapsing {
+  width: 100%;
+}
+.row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  display: flex;
+  flex-direction: row;
+}
+.orderBtn {
+  margin: 0.5em auto;
+}
+
+.fixedSize {
+  width: 10em;
+}
+.newTicketBtn {
+  margin: 0.5em auto;
+  font-size: 0.8em;
+}
+
+@media only screen and (max-width: 800px) {
+  .fixedSize {
+    width: 9.75em;
+  }
 }
