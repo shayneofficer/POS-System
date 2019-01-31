@@ -101,7 +101,7 @@ class OrderPage extends React.Component {
       console.log(restaurant);
       this.setState({
         tables: restaurant.Tables
-      })
+      });
     });
   };
 
@@ -110,14 +110,16 @@ class OrderPage extends React.Component {
       <Container>
         <Row>
           <Col size="sm-4">
-            <OrderForm
-              tables={this.state.tables}
-              saveTicket={this.saveTicket}
-              billPaid={this.billPaid}
-              removeItem={this.removeItem}
-              orderedItems={this.state.orderedItems}
-              newBill={this.newBill}
-            />
+            <div className="box">
+              <OrderForm
+                tables={this.state.tables}
+                saveTicket={this.saveTicket}
+                billPaid={this.billPaid}
+                removeItem={this.removeItem}
+                orderedItems={this.state.orderedItems}
+                newBill={this.newBill}
+              />
+            </div>
           </Col>
           <Col size="sm-8">
             <div className="box">
