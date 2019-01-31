@@ -7,7 +7,7 @@ import ReservationBtn from "../../components/FloorPlan_Reservation_Btn";
 import Button from "react-bootstrap/Button";
 import ServerKey from "../../components/ServerKey";
 import API from "../../utils/API";
-import ReservationList from "../../components/reservationlist";
+import ReservationList from "../../components/ReservationList";
 
 const style = {
   tables: {

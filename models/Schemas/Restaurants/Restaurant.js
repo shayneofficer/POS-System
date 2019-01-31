@@ -23,8 +23,6 @@ const RestaurantSchema = new Schema({
   Receipts: [ BillSchema ],
   // Employees of the Restaurant
   Employees: [ EmployeeSchema ],
-  // Reservations for the restaurant
-  Reservations: [ ReservationSchema ],
   // Street Address preferably, but not required
   location: {
     type: String
