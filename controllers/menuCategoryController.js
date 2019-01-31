@@ -35,14 +35,10 @@ module.exports = {
     db.Restaurant
       .findById(req.params.id)
       .then((restaurant) => {
-        const rest = restaurant;
-        const item = rest.menus
-          .id(req.params.menuId)
-          .Items.id(req.params.itemId);
-        item.set(req.body);
-        return rest.save();
+        restaurant.Menus[0].Categories.set(req.body);
+        return restaurant.save();
       })
-      .then((menu) => res.send(menu))
+      .then((result) => res.json(result))
       .catch((err) => res.status(422).json(err));
   },
   updateOne: function (req, res) {

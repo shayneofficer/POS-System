@@ -56,5 +56,15 @@ module.exports = {
         });
       })
       .catch((err) => res.status(422).json(err));
-  }
+  },
+  updateCategories: function (req, res) {
+    db.Restaurant
+      .findById(req.params.id)
+      .then((restaurant) => {
+        restaurant.Menus[0].Categories.set(req.body);
+        return restaurant.save();
+      })
+      .then((result) => res.json(result))
+      .catch((err) => res.status(422).json(err));
+  },
 };
