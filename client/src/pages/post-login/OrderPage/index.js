@@ -63,6 +63,11 @@ class OrderPage extends React.Component {
     });
   };
 
+  getTickets = (e) => {
+    e.preventDefault();
+    // let tickets = this.state.restaurant.Receipts;
+  };
+
   saveTicket = (tableIndex, newBill) => {
     if (tableIndex < 0) {
       console.log("No Table Selected");
@@ -100,7 +105,7 @@ class OrderPage extends React.Component {
     });
   };
 
-  render () {
+  render() {
     return (
       <Container>
         <Row>

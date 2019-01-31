@@ -1,8 +1,9 @@
 import React from "react";
 const myStyles = {
   key: {
+    display: "flex",
     flexDirection: "column",
-    width: "20%",
+    width: "15%",
     marginLeft: "10px",
     fontSize: "1.5rem",
     fontWeight: "400",

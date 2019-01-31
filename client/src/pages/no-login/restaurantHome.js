@@ -1,6 +1,7 @@
 import React from "react";
-import image from "../../Images/shine4.jpg";
+import image from "../../Images/restbg.jpg";
 import { Input, FormBtn } from "../../components/Form";
+import ShineMenu from "../no-login/PublicMenu/index.js";
 
 
 
@@ -30,9 +31,9 @@ const section = {
 };
 
 const restID = sessionStorage.getItem("restID");
-if(restID) {
+if (restID) {
     console.log("restID", restID);
-    
+
 } else {
     console.log("No restID");
 }
@@ -59,7 +60,7 @@ class RestaurantHome extends React.Component {
                 <FormBtn onClick={this.handleSubmit} style={style.buttons}>
                     Make a Reservation
                 </FormBtn>
-
+                <ShineMenu />
                 {/* <a href="/Reservations"><button
                     style={style.buttons}
                     type="button"

@@ -21,18 +21,6 @@ const reservation = [
     }
 ];
 
-const getReservations = restID => {
-    console.log("restID", restID)
-    if (restID && typeof restID == "string") {
-        console.log("api call")
-        API.getReservationsByRestaurant(restID).then(results => {
-            console.log("results.data", results.data);
-
-        })
-    }
-}
-
-
 class ReservationList extends React.Component {
     state = {
         reservations: []
