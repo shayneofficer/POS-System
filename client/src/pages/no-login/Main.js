@@ -2,7 +2,6 @@ import React from "react";
 import Background from "../../Images/burger.jpg"
 import { Input, FormBtn } from "../../components/Form";
 import API from "../../utils/API";
-import RestaurantDropdown from "../../components/RestaurantDropdown";
 import { Redirect } from 'react-router-dom';
 import { ReadStream } from "tty";
 
