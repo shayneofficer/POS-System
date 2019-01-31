@@ -30,6 +30,7 @@ const style = {
 
 class FloorPlan extends React.Component {
   state = {
+    displayReservations: false,
     role: "host",
     tables: [
       {
@@ -124,6 +125,11 @@ class FloorPlan extends React.Component {
     this.setState({ role });
   };
 
+  changeReservation = () => {
+    this.setState({ displayReservations: !this.state.displayReservations });
+    console.log(this.state.reservation);
+  };
+
   render() {
     return (
       <div className="wrapper">
@@ -186,14 +192,19 @@ class FloorPlan extends React.Component {
           </div>
         </div>
         <Order_Check_Btns roleView={this.state.role} />
-        <ReservationBtn roleView={this.state.role} />
+        <ReservationBtn
+          roleView={this.state.role}
+          changeReservations={this.changeReservation}
+        />
         <div style={style.colorKey}>
           <ServerKey />
           <FloorPlanDesc roleView={this.state.role} />
         </div>
-        <div>
-          <ReservationList roleView={this.state.role} />
-        </div>
+        {this.state.displayReservations && (
+          <div>
+            <ReservationList roleView={this.state.role} />
+          </div>
+        )}
       </div>
     );
   }
