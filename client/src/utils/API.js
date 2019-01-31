@@ -58,6 +58,15 @@ export default {
       receipt
     );
   },
+  archiveBill: function(restId, tableIndex, newBill) {
+    console.log("********");
+    console.log(newBill);
+    console.log("********");
+    return axios.put(
+      `${base}&rest/=${restId}/&tables/=${tableIndex}/archive`,
+      newBill
+    );
+  },
 
   /*************** Menu Methods *****************/
 

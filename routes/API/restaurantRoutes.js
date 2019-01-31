@@ -39,7 +39,10 @@ router
   
 router.route("/=:id/&tables/=:tableIndex/paid")
   .put(tableController.billPaid);
-// router.use("/=:id/&reservations", reservationRoutes);
+  
+router.route("/=:id/&tables/=:tableIndex/archive")
+  .put(tableController.archiveBill);
+  // router.use("/=:id/&reservations", reservationRoutes);
 // router.use("/=:id/&employees", employeeRoutes);
 // router.use("/=:id/&receipts", receiptRoutes);
 
