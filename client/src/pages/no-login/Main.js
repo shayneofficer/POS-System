@@ -1,8 +1,9 @@
 import React from "react";
 import Background from "../../Images/burger.jpg"
-import { Input, FormBtn } from "../../components/Form";
+import { FormBtn } from "../../components/Form";
 import API from "../../utils/API";
 import { Redirect } from 'react-router-dom';
+import { ReadStream } from "tty";
 
 const style = {
     buttons: {
@@ -32,6 +33,14 @@ const section = {
 class Main extends React.Component {
     state = {
         restaurantName: "",
+        selections: [],
+    }
+
+    componentDidMount() {
+        API.findRestaurantsJustNames().then(results => {
+            console.log("selections.data", results.data);
+            this.setState({ selections: results.data });
+        })
     }
 
     handleInputChange = event => {
@@ -42,6 +51,11 @@ class Main extends React.Component {
         });
         // console.log(`${name}: ${value}`);
     };
+
+    selectionChange = event => {
+        // console.log(event.target.value);
+        this.setState({ restaurantName: event.target.value });
+    }
 
     handleFormSubmit = event => {
         event.preventDefault();
@@ -54,9 +68,14 @@ class Main extends React.Component {
         API.findRestaurant(submit)
             .then(res => {
                 console.log("res.data", res.data);
-                this.setState({ restaurantName: "" });
-                sessionStorage.setItem("restID", res.data._id);
-                window.location.href = "./restaurantHome"
+                if (res.data == null) {
+                    this.setState({ restaurantName: `"${this.state.restaurantName}" is not a current restaurant` });
+                } else {
+                    this.setState({ restaurantName: "" });
+                    sessionStorage.setItem("restID", res.data._id);
+                    window.location.href = "./restaurantHome";
+                }
+
             }).catch(err => console.log("err", err));
 
     };
@@ -68,17 +87,20 @@ class Main extends React.Component {
                 <br />
                 <br />
                 <form>
-                    <Input
-                        onChange={this.handleInputChange}
-                        name="restaurantName"
-                        placeholder="Restaurant Name"
-                        value={this.state.restaurantName}
-                    />
-                    <FormBtn onClick={this.handleFormSubmit} style={style.buttons}
-                        href="/restaurantHome"
-                        style={style.buttons}
-                        type="button"
-                        className="btn btn-warning">
+                    <div className="form-group">
+                        <label htmlFor="restaurantNames">Restaurant Select</label>
+                        <select onChange={this.selectionChange} className="form-control" id="restaurantNames">
+                            <option>-</option>
+                            {this.state.selections.map(e => (
+                                <option key={e._id} _id={e._id}>{e.name}</option>
+                            ))}
+                        </select>
+                    </div>
+                    <FormBtn onClick={this.handleFormSubmit} style={style.buttons}>
+                        {/* <a href="/restaurantHome"
+                            style={style.buttons}
+                            type="button"
+                            className="btn btn-warning"> */}
                         Search Restaurants
                     </FormBtn>
                 </form>
