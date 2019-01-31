@@ -3,7 +3,7 @@ module.exports = {
   MenuCategory: require("./Menus/MenuCategory"),
   MenuItems: require("./Menus/MenuItem"),
   Restaurant: require("./Restaurants/Restaurant"),
-  Bill: require("./Restaurants/bill"),
-  Table: require("./Restaurants/table"),
-  Reservation: require('./reservations'),
+  Bill: require("./Restaurants/Bill"),
+  Table: require("./Restaurants/Table"),
+  Reservation: require("./Reservations")
 };
