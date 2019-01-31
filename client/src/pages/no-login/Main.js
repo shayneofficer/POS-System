@@ -13,10 +13,10 @@ const style = {
         margin: "0 auto"
     },
     header: {
-        color: "#ffc107",
+        color: "white",
         fontSize: "2.5rem",
         textAlign: "center",
-        paddingTop: "75px"
+    
     }
 };
 
