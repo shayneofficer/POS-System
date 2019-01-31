@@ -105,7 +105,23 @@ class OrderPage extends React.Component {
     });
   };
 
-  render() {
+  createItem = (catIndex, itemData) => {
+    const categories = this.state.restaurant.Menus[0].Categories
+    const data = categories[catIndex].items.push(itemData);
+    API.updateMenuCategories(this.state.restaurant._id, data).then((result) => {
+      console.log(result);
+    });
+  };
+
+  createCategory = (catData) => {
+    const categories = this.state.restaurant.Menus[0].Categories;
+    const data = categories.push(catData);
+    API.updateMenuCategories(this.state.restaurant._id, data).then((result) => {
+      console.log(result);
+    });
+  };
+
+  render () {
     return (
       <Container>
         <Row>
@@ -129,6 +145,8 @@ class OrderPage extends React.Component {
                 orderItem={this.addItem}
                 canEdit={true}
                 canOrder={true}
+                createCategory={this.createCategory}
+                createItem={this.createItem}
               />
             </div>
           </Col>
