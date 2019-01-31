@@ -2,8 +2,7 @@ import React from "react";
 import List from "./List";
 import { Container, Row, Col } from "../../Grid";
 import "./List.css";
-import Button from "react-bootstrap/Button";
-
+import CreateModal from "../CreateModal";
 class ItemList extends React.Component {
   state = {
     activeCat: this.props.activeCat
@@ -15,8 +14,10 @@ class ItemList extends React.Component {
       });
     }
   }
-  addItem = (category) => {
-    console.log(category);
+  createItem= (catIndex, itemName, itemPrice) => {
+    console.log("TODO: createItem");
+    console.log(catIndex, itemName, itemPrice);
+    // this.props.createItem(catIndex, itemName, itemPrice);
   };
 
   orderItem = (item) => {
@@ -48,12 +49,11 @@ class ItemList extends React.Component {
                 );
               })}
               {this.props.canEdit && (
-                <Button
-                  id="addItemBtn"
-                  variant="light"
-                  onClick={() => this.addItem(this.props.activeCat)}>
-                  Add New Item
-                </Button>
+                <CreateModal
+                  createType="Item"
+                  handleCreate={this.createItem}
+                  activeCat={this.state.activeCat}
+                />
               )}
             </List>
           ) : (

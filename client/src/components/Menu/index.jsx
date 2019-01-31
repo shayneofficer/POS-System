@@ -2,6 +2,7 @@ import React from "react";
 import { Container, Row, Col } from "../Grid";
 import Button from "react-bootstrap/Button";
 import ItemList from "./ItemList";
+import CreateModal from "./CreateModal";
 
 class Menu extends React.Component {
   state = {
@@ -10,10 +11,21 @@ class Menu extends React.Component {
   };
   handleClick = (i) => {
     console.log(i);
-    this.setState({
-      activeCat: i,
-      activeItems: this.props.categories[i].Items
-    });
+    if (i === this.state.activeCat) {
+      this.setState({
+        activeCat: -1,
+        activeItems: []
+      });
+    } else {
+      this.setState({
+        activeCat: i,
+        activeItems: this.props.categories[i].Items
+      });
+    }
+  };
+  createCategory = (catName) => {
+    console.log("TODO: Create Category", catName);
+    // this.props.createCategory();
   };
 
   render () {
@@ -21,6 +33,7 @@ class Menu extends React.Component {
       <Container>
         <Row>
           <Col size="md-12 sm-10">
+          {/* Category Buttons */}
             {this.props.categories.map((cat, i) => {
               var btnState = "";
               this.state.activeCat === i
@@ -32,19 +45,19 @@ class Menu extends React.Component {
                   onClick={() => this.handleClick(i)}
                   className={"catBtn " + btnState}
                   variant="warning"
+                  type="button"
                   key={i}>
                   {cat.name}
                 </Button>
               );
             })}
-            <div className="justify-content-center">
-            <Button
-              onClick={() => this.addCategory}
-              id="addCatBtn"
-              variant="outline-warning">
-              +
-            </Button>
-            </div>
+            {/* Button + Modal to create a new category */}
+            {this.props.canEdit && (
+              <CreateModal
+                createType="Category"
+                handleCreate={this.createCategory}
+              />
+            )}
           </Col>
         </Row>
         <Row>
@@ -54,8 +67,9 @@ class Menu extends React.Component {
               orderItem={this.props.orderItem}
               items={this.state.activeItems}
               canEdit={this.props.canEdit}
-              activeCat={this.props.activeCat}
+              activeCat={this.state.activeCat}
               canOrder={this.props.canOrder}
+              createItem={this.props.createItem}
             />
           </Col>
         </Row>
