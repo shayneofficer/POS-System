@@ -45,7 +45,7 @@ class Table extends React.Component {
             ? "red"
             : "#00A82E",
         borderStyle: "solid",
-        borderWidth: ".5rem"
+        borderWidth: ".3rem"
       }
     }; // 1 = seated-have not ordered //2 = order has been taken // 3 = food has been served // 4 = Needs Check // 5 = needs bussing
 

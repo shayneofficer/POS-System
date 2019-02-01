@@ -23,7 +23,7 @@ class FloorPlan_links extends React.Component {
       hidden = false;
     }
     return (
-      <div style={myStyles.links} className={`${hidden ? "d-none" : ""}`}>
+      <div className={`${hidden ? "d-none" : ""}`}>
         <Link to={"/register/user"}>
           <Button
             variant="link"

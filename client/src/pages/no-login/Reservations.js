@@ -3,6 +3,25 @@ import { Input, FormBtn } from "../../components/Form";
 import API from "../../utils/API";
 import { distanceInWordsToNow } from "date-fns";
 
+const style = {
+    input: {
+        width: "50%",
+        fontSize: "1.3rem",
+        display: "in-line",
+        justifyContent: "center",
+        margin: "0 auto"
+    },
+    background: {
+        backgroundColor: "lightgray"
+    },
+    button: {
+        fontSize: "1.3rem",
+        display: "flex",
+        justifyContent: "center",
+        margin: "0 auto"
+    }
+};
+
 class Reservations extends React.Component {
     state = {
         restaurantID: "",
@@ -58,26 +77,30 @@ class Reservations extends React.Component {
         };
 
         return (
-            <div>
-                <form>
+            <div style={style.background}>
+                <form style={style.input}>
+                    Restaurant ID
                     <Input
                         onChange={this.handleInputChange}
                         name="restaurantID"
                         placeholder="Restaurant Name"
                         value={this.state.restaurantID}
                     />
+                    Name
                     <Input
                         onChange={this.handleInputChange}
                         name="name"
                         placeholder="First &amp; Last Name"
                         value={this.state.name}
                     />
+                    E-mail
                     <Input
                         onChange={this.handleInputChange}
                         name="email"
                         placeholder="Email"
                         value={this.state.email}
                     />
+                    Phone
                     <Input
                         onChange={this.handleInputChange}
                         name="phone"
@@ -85,6 +108,7 @@ class Reservations extends React.Component {
                         placeholder="Phone"
                         value={this.state.phone}
                     />
+                    Date
                     <Input
                         onChange={this.handleInputChange}
                         name="date"
@@ -92,15 +116,17 @@ class Reservations extends React.Component {
                         min={Date.now}
                         value={this.state.date}
                     />
+                    Time
                     <Input
                         onChange={this.handleInputChange}
                         name="time"
                         type="time"
-                        min="10:00" 
+                        min="10:00"
                         max="20:00"
                         step="900"
                         value={this.state.time}
                     />
+                    Party-Size
                     <Input
                         onChange={this.handleInputChange}
                         name="partySize"
@@ -108,10 +134,13 @@ class Reservations extends React.Component {
                         placeholder="Party Size"
                         value={this.state.partySize}
                     />
-                    <FormBtn onClick={this.handleFormSubmit}>
+                    <FormBtn onClick={this.handleFormSubmit} style={style.button}>
                         Create New Reservation
           </FormBtn>
+
                 </form>
+                <br></br>
+                <br></br>
             </div>
         );
     }

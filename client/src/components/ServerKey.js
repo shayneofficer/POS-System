@@ -1,22 +1,10 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
 
-const myStyles = {
-  table: {
-    width: "10%",
-    marginLeft: "20px",
-    marginRight: "90px",
-    marginTop: "40px",
-    fontSize: "1rem",
-    fontWeight: "400",
-    textAlign: "center"
-  }
-};
-
 class ServerKey extends React.Component {
   render() {
     return (
-      <Table style={myStyles.table} striped bordered hover>
+      <Table striped bordered hover>
         <thead>
           <tr style={{ backgroundColor: "lightgrey" }}>
             <th> Server #</th>

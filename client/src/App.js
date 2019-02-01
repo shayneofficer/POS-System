@@ -6,15 +6,14 @@ import RegisterUser from "./components/RegisterUser";
 import FloorPlan from "./pages/post-login/FloorPlan";
 import Main from "./pages/no-login/Main";
 import Home from "./pages/post-login/Home";
-import OrderPage from "./pages/post-login/OrderPage/index";
+import OrderPage from "./pages/post-login/OrderPage";
 import ReservationList from "./components/ReservationList";
 import Reservations from "./pages/no-login/Reservations";
 import NavBar from "./components/NavBar";
 import RestaurantHome from "./pages/no-login/RestaurantHome";
 
-
 class App extends Component {
-  render () {
+  render() {
     return (
       <Router>
         <div>

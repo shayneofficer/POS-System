@@ -4,24 +4,11 @@ import Button from "react-bootstrap/Button";
 const myStyles = {
   buttons: {
     margin: "10px",
-    fontSize: "1.3rem",
-    display: "flex",
-    justifyContent: "center"
+    fontSize: "1.3rem"
   }
 };
 
 class ReservationBtn extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     reservation: this.props.seeReservations
-  //   };
-  // }
-
-  // changeReservation = () => {
-  //   this.setState({ reservation: true });
-  //   console.log(this.state.reservation);
-  // };
   render() {
     let hidden = true;
     if (this.props.roleView === "host" || this.props.roleView === "manager") {

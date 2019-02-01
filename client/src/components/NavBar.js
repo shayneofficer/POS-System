@@ -16,18 +16,19 @@ const style = {
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
 class Navbar extends Component {
   state = {
-    login: false,
-  }
+    login: false
+  };
+  
   componentDidMount = () => {
     if (sessionStorage.getItem("login") !== this.state.login) {
       let localLogin = sessionStorage.getItem("login");
       this.setState({
         login: localLogin
-      })
+      });
     }
-  }
+  };
 
-  render() {
+  render () {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <a className="navbar-brand" href="/">
@@ -35,7 +36,7 @@ class Navbar extends Component {
         </a>
         <a className="navbar-brand" id="nameH" href="/" style={style.name}>
           Webster Halsted
-      </a>
+        </a>
         <button
           className="navbar-toggler"
           type="button"
@@ -43,16 +44,13 @@ class Navbar extends Component {
           data-target="#navbarNav"
           aria-controls="navbarNav"
           aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
+          aria-label="Toggle navigation">
           <span className="navbar-toggler-icon" />
         </button>
 
         <div className="ml-auto">
           {console.log("login", sessionStorage.getItem("login"))}
-          {/* {sessionStorage.getItem("login") ? <LoginButton /> : <LogoutButton />} */}
-          <LoginButton />
-          <LogoutButton />
+          {this.state.login ? <LogoutButton /> : <LoginButton />}
         </div>
       </nav>
     );
