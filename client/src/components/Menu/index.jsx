@@ -7,10 +7,10 @@ import CreateModal from "./CreateModal";
 class Menu extends React.Component {
   state = {
     activeItems: [],
-    activeCat: -1
+    activeCat: -1,
   };
+  
   handleClick = (i) => {
-    console.log(i);
     if (i === this.state.activeCat) {
       this.setState({
         activeCat: -1,
@@ -24,8 +24,7 @@ class Menu extends React.Component {
     }
   };
   createCategory = (catName) => {
-    console.log("TODO: Create Category", catName);
-    // this.props.createCategory();
+    this.props.createCategory(catName);
   };
 
   render () {

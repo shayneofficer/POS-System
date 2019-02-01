@@ -15,9 +15,7 @@ class ItemList extends React.Component {
     }
   }
   createItem= (catIndex, itemName, itemPrice) => {
-    console.log("TODO: createItem");
-    console.log(catIndex, itemName, itemPrice);
-    // this.props.createItem(catIndex, itemName, itemPrice);
+    this.props.createItem(catIndex, itemName, itemPrice);
   };
 
   orderItem = (item) => {
@@ -29,7 +27,7 @@ class ItemList extends React.Component {
     return (
       <Container>
         <Col size="sm-12">
-          {this.props.items.length ? (
+          {this.props.items ? (
             <List key={this.props.key} children={this.props.items}>
               {this.props.items.map((item, i) => {
                 return (

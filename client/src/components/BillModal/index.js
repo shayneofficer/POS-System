@@ -53,7 +53,6 @@ class BillModal extends React.Component {
     API.archiveBill(restId, tableIndex, newBill);
     API.getRestaurants().then((restaurants) => {
       const restaurant = restaurants.data[0];
-      console.log(restaurant);
       this.setState({
         tables: restaurant.Tables
       });

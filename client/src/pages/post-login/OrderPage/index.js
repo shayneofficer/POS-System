@@ -105,20 +105,53 @@ class OrderPage extends React.Component {
     });
   };
 
-  createItem = (catIndex, itemData) => {
-    const categories = this.state.restaurant.Menus[0].Categories
-    const data = categories[catIndex].items.push(itemData);
-    API.updateMenuCategories(this.state.restaurant._id, data).then((result) => {
-      console.log(result);
-    });
+  createItem = (catIndex, itemName, itemPrice) => {
+    const newPrice = parseFloat(itemPrice);
+    if (newPrice) {
+      const newItem = {
+        name: itemName,
+        price: itemPrice,
+        date: new Date(Date.now())
+      };
+      API.addMenuItem(
+        this.state.restaurant._id,
+        catIndex,
+        newItem
+      ).then((result) => {
+        if (result.data) {
+          this.setState({
+            categories: result.data
+          });
+        } else {
+          console.log(
+            "Weird Exception: See createCategory() of OrderPage/index.js",
+            result
+          );
+        }
+      });
+    }
   };
 
-  createCategory = (catData) => {
-    const categories = this.state.restaurant.Menus[0].Categories;
-    const data = categories.push(catData);
-    API.updateMenuCategories(this.state.restaurant._id, data).then((result) => {
-      console.log(result);
-    });
+  createCategory = (catName) => {
+    if (catName) {
+      const newCat = {
+        name: catName,
+        items: [],
+        date: new Date(Date.now())
+      };
+      API.addMenuCategory(this.state.restaurant._id, newCat).then((result) => {
+        if (result.data) {
+          this.setState({
+            categories: result.data
+          });
+        } else {
+          console.log(
+            "Weird Exception: See createCategory() of OrderPage/index.js",
+            result
+          );
+        }
+      });
+    }
   };
 
   render () {
