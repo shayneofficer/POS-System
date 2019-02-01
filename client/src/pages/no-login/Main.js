@@ -114,7 +114,7 @@ class Main extends React.Component {
                             style={style.buttons}
                             type="button"
                             className="btn btn-warning"> */}
-            Search Restaurants
+            Select Restaurant
           </FormBtn>
         </form>
       </div>
