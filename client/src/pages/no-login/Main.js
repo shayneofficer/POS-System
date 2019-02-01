@@ -89,7 +89,7 @@ class Main extends React.Component {
     return (
       <div style={section.background}>
         <br />
-        <h1 style={style.header}>Find your favorite exclusive restaurant!</h1>
+        <h1 style={style.header}>Browse our exclusive restaurants!</h1>
         <br />
         <br />
         <form>
