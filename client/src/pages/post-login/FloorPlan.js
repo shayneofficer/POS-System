@@ -153,7 +153,7 @@ class FloorPlan extends React.Component {
   };
 
   changeRole = role => {
-    console.log("role");
+    console.log(role);
     this.setState({ role });
   };
 

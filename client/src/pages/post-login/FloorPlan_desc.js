@@ -15,47 +15,45 @@ const myStyles = {
 };
 
 class FloorPlan_desc extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {};
   }
 
-  render() {
+  render () {
     let hidden = false;
     if (this.props.roleView === "host") {
       hidden = true;
     }
     return (
       <Table style={myStyles.key} className={`${hidden ? "d-none" : ""}`}>
-        <thead>
-          <tr
+          <thead
             style={{
               backgroundColor: "lightgrey",
               fontWeight: "bold"
-            }}
-          >
-            <th>Table Status</th>
+            }}>
+            <tr><th>Table Status</th></tr>
+          </thead>
+        <tbody>
+          <tr style={{ backgroundColor: "#00A82E" }}>
+            <td>Table Available</td>
           </tr>
-        </thead>
-
-        <tr style={{ backgroundColor: "#00A82E" }}>
-          <td>Table Available</td>
-        </tr>
-        <tr style={{ backgroundColor: "yellow" }}>
-          <td>Table Seated</td>
-        </tr>
-        <tr style={{ backgroundColor: "orange" }}>
-          <td>Has Ordered</td>
-        </tr>
-        <tr style={{ backgroundColor: "#cc00cc" }}>
-          <td>Food is Served</td>
-        </tr>
-        <tr style={{ backgroundColor: "#00C5CD" }}>
-          <td>Needs Check</td>
-        </tr>
-        <tr style={{ backgroundColor: "red" }}>
-          <td>Needs Bussing</td>
-        </tr>
+          <tr style={{ backgroundColor: "yellow" }}>
+            <td>Table Seated</td>
+          </tr>
+          <tr style={{ backgroundColor: "orange" }}>
+            <td>Has Ordered</td>
+          </tr>
+          <tr style={{ backgroundColor: "#cc00cc" }}>
+            <td>Food is Served</td>
+          </tr>
+          <tr style={{ backgroundColor: "#00C5CD" }}>
+            <td>Needs Check</td>
+          </tr>
+          <tr style={{ backgroundColor: "red" }}>
+            <td>Needs Bussing</td>
+          </tr>
+        </tbody>
       </Table>
     );
   }
