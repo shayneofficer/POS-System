@@ -2,7 +2,7 @@ import React from "react";
 import { Input, FormBtn } from "../../components/Form";
 import API from "../../utils/API";
 import { distanceInWordsToNow } from "date-fns";
-
+// style
 const style = {
     input: {
         width: "50%",
@@ -43,7 +43,13 @@ class Reservations extends React.Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-
+        if (event) {
+            window.location.assign('/');
+            alert("Yay! You are officially booked!");
+        }
+        else {
+            alert("Please input all fields!");
+        }
         console.log("handleFormSubmit");
         const submit = {
             restaurantID: this.state.restaurantID,

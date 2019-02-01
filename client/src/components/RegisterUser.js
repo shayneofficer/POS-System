@@ -8,9 +8,13 @@ class Register extends Component {
     username: "",
     email: "",
     password: "",
-    confirm: ""
+    confirm: "",
+    restaurantID: sessionStorage.getItem("restID"),
+    waiter: true,
+    manager: true,
+    host: true,
   }
-  
+
   submit = {
     username: "",
     email: "",
@@ -36,7 +40,11 @@ class Register extends Component {
           const submit = {
             username: this.state.username,
             email: this.state.email,
-            password: this.state.password
+            password: this.state.password,
+            restaurantID: this.state.restaurantID,
+            waiter: true,
+            manager: true,
+            host: true,
           };
           console.log(submit);
 
