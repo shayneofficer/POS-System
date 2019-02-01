@@ -16,12 +16,13 @@ const style = {
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
 class Navbar extends Component {
   state = {
-    login: false
+    login: 0
   };
-  
-  componentDidMount = () => {
+  componentWillMount = () => {
     if (sessionStorage.getItem("login") !== this.state.login) {
+      // console.log("ss", sessionStorage.getItem("login"))
       let localLogin = sessionStorage.getItem("login");
+      // console.log("local login", localLogin);
       this.setState({
         login: localLogin
       });
@@ -29,6 +30,16 @@ class Navbar extends Component {
   };
 
   render () {
+    let Logged = <LoginButton/>
+    // console.log("state login if", this.state.login)
+    if(this.state.login) {
+      // console.log("out")
+      Logged = <LogoutButton />
+    } else {
+      // console.log("in")
+      Logged = <LoginButton />
+    }
+    // console.log("Logged",Logged);
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <a className="navbar-brand" href="/">
@@ -49,8 +60,7 @@ class Navbar extends Component {
         </button>
 
         <div className="ml-auto">
-          {console.log("login", sessionStorage.getItem("login"))}
-          {this.state.login ? <LogoutButton /> : <LoginButton />}
+          {Logged}
         </div>
       </nav>
     );
