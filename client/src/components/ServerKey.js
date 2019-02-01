@@ -4,7 +4,9 @@ import Table from "react-bootstrap/Table";
 const myStyles = {
   table: {
     width: "10%",
-    marginLeft: "10px",
+    marginLeft: "20px",
+    marginRight: "90px",
+    marginTop: "40px",
     fontSize: "1rem",
     fontWeight: "400",
     textAlign: "center"

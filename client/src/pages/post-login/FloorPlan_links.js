@@ -1,4 +1,6 @@
 import React from "react";
+import Button from "react-bootstrap/Button";
+import { Link } from "react-router-dom";
 const myStyles = {
   links: {
     display: "flex",
@@ -22,14 +24,17 @@ class FloorPlan_links extends React.Component {
     }
     return (
       <div style={myStyles.links} className={`${hidden ? "d-none" : ""}`}>
-        <div>
-          <a href="/register/user" style={{ margin: "10px" }}>
+        <Link to={"/register/user"}>
+          <Button
+            variant="link"
+            style={{ margin: "10px", color: "black", fontSize: "1.3rem" }}
+          >
             Create New User
-          </a>
-        </div>
-        <div>
-          <a href="#">Delete User</a>
-        </div>
+          </Button>
+        </Link>
+        <Button variant="link" style={{ color: "black", fontSize: "1.3rem" }}>
+          Delete User
+        </Button>
       </div>
     );
   }
