@@ -144,6 +144,7 @@ class OrderPage extends React.Component {
           this.setState({
             categories: result.data
           });
+          console.log(result.data)
         } else {
           console.log(
             "Weird Exception: See createCategory() of OrderPage/index.js",

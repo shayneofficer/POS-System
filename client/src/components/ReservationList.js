@@ -8,19 +8,24 @@ class ReservationList extends React.Component {
     reservations: []
   };
 
-  componentDidMount() {
+  componentDidMount () {
     const restID = sessionStorage.getItem("restID");
-    console.log("restID", restID)
-    if (restID && typeof restID == "string") {
-      // console.log("api call");
-      API.getReservationsByRestaurant(restID).then(results => {
-        console.log("results.data", results.data);
-        this.setState({ reservations: results.data });
+    this.getRestaurant((result) => {
+      const reservations = result.Reservations
+      this.setState({
+        reservations: reservations
       });
-    }
-  }
+    });
+    // }
+  } 
+  getRestaurant = (callback) => {
+    API.getRestaurants().then((restaurants) => {
+      const restaurant = restaurants.data[0];
+      callback(restaurant);
+    });
+  };
 
-  render() {
+  render () {
     return (
       <Table>
         <thead>
@@ -36,7 +41,7 @@ class ReservationList extends React.Component {
           </tr>
         </thead>
         <tbody>
-          {this.state.reservations.map(e => (
+          {this.state.reservations.map((e) => (
             <ReservationRows
               name={e.name}
               key={e._id}
