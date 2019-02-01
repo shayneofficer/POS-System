@@ -53,7 +53,7 @@ class RestaurantHome extends React.Component {
         return (
             <div style={section.background}>
                 <br />
-                <h1 style={style.header}>Book your seat at Shine, our exclusive POS restaurant!</h1>
+                <h1 style={style.header}>Book your seat at Shine!</h1>
                 <br />
                 <br />
 

@@ -11,7 +11,6 @@ import ReservationList from "./components/ReservationList";
 import Reservations from "./pages/no-login/Reservations";
 import NavBar from "./components/NavBar";
 import RestaurantHome from "./pages/no-login/RestaurantHome";
-import ShineMenu from "./pages/no-login/PublicMenu";
 
 class App extends Component {
   render () {
@@ -30,7 +29,6 @@ class App extends Component {
           <Route path="/floorplan" component={FloorPlan} />
           <Route path="/order" component={OrderPage} />
           <Route path="/restlogin" component={Home} />
-          <Route path="/shinemenu" component={ShineMenu} />
           <Route path="/reservations" component={Reservations} />
           <Route path="/reservationlist" component={ReservationList} />
           <Route path="/restaurantHome" component={RestaurantHome} />
