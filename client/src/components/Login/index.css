@@ -1,0 +1,9 @@
+#LoginForm {
+  margin: auto;
+}
+
+#LoginRow {
+  display: flex;
+  justify-content: center;
+  margin-top: 5%;
+}
