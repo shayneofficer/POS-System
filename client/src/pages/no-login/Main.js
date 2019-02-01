@@ -19,7 +19,17 @@ const style = {
     textAlign: "center"
   },
   restselect: {
-    color: "white"
+    color: "white",
+    fontSize: "1.5rem",
+    display: "flex",
+    justifyContent: "center",
+    margin: "0 auto"
+  },
+  entry: {
+    width: "75%",
+    display: "flex",
+    justifyContent: "center",
+    margin: "0 auto"
   }
 };
 
@@ -42,7 +52,7 @@ class Main extends React.Component {
 
   componentDidMount() {
     API.findRestaurantsJustNames().then(results => {
-    //   console.log("selections.data", results.data);
+      //   console.log("selections.data", results.data);
       this.setState({ selections: results.data });
     });
   }
@@ -85,7 +95,7 @@ class Main extends React.Component {
       })
       .catch((err) => console.log("err", err));
   };
-  render () {
+  render() {
     return (
       <div style={section.background}>
         <br />
@@ -97,7 +107,7 @@ class Main extends React.Component {
             <label style={style.restselect} htmlFor="restaurantNames">
               Restaurant Select
             </label>
-            <select
+            <select style={style.entry}
               onChange={this.selectionChange}
               className="form-control"
               id="restaurantNames">
