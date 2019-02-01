@@ -35,7 +35,7 @@ class Login extends Component {
         sessionStorage.setItem("userID", res.data._id);
         sessionStorage.setItem("restID", res.data.restaurantID);
         sessionStorage.setItem("login", res.data.login);
-        window.location.href="/";
+        window.location.href = "/Floorplan";
       }
 
     }).catch(err => console.log(err));
