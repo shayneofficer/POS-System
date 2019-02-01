@@ -26,7 +26,7 @@ class Order_Check_Btn extends React.Component {
           </Button>
         </Link>
 
-        <BillModal tables={this.props.tables} activeTable={this.props.activeTable}/>
+        {/* <BillModal tables={this.props.tables} activeTable={this.props.activeTable}/> */}
 
       </div>
     );
