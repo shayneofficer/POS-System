@@ -44,6 +44,7 @@ class Reservations extends React.Component {
     handleFormSubmit = event => {
         event.preventDefault();
         if (event) {
+            window.location.assign('/');
             alert("Yay! You are officially booked!");
         }
         else {
