@@ -3,31 +3,6 @@ import ReservationRows from "./ReservationRows";
 import API from "../utils/API";
 import Table from "react-bootstrap/Table";
 
-// const styles = {
-//   list: {
-//     alignItems: "center"
-//   }
-// };
-
-const reservation = [
-  {
-    name: "Hannah",
-    date: "1/30/19",
-    time: "7:00pm",
-    partySize: 5,
-    tableAssignment: 3,
-    server: "Patty"
-  },
-  {
-    name: "Andrea",
-    date: "1/31/19",
-    time: "6:00pm",
-    partySize: 2,
-    tableAssignment: 4,
-    server: "Nancy"
-  }
-];
-
 class ReservationList extends React.Component {
   state = {
     reservations: []
@@ -35,15 +10,16 @@ class ReservationList extends React.Component {
 
   componentDidMount() {
     const restID = sessionStorage.getItem("restID");
-    console.log("restID", restID);
+    // console.log("restID", restID)
     if (restID && typeof restID == "string") {
-      console.log("api call");
+      // console.log("api call");
       API.getReservationsByRestaurant(restID).then(results => {
-        console.log("results.data", results.data);
+        // console.log("results.data", results.data);
         this.setState({ reservations: results.data });
       });
     }
   }
+
   render() {
     return (
       <Table>

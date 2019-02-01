@@ -90,7 +90,6 @@ class Reservations extends React.Component {
                         name="date"
                         type="date"
                         min={Date.now}
-                        default={Date.now}
                         value={this.state.date}
                     />
                     <Input

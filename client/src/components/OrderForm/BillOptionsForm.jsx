@@ -56,7 +56,8 @@ class BillOptionsForm extends React.Component {
     });
   };
 
-  handleSubmit = (activeTable) => {
+  handleSubmit = (e, activeTable) => {
+    e.preventDefault();
     if (this.state.amountPaid >= this.state.amountCharged) {
       let bill = this.props.activeBill;
       bill.amountPaid = this.state.amountPaid;
@@ -132,7 +133,8 @@ class BillOptionsForm extends React.Component {
                 className="orderBtn"
                 disabled={this.props.tableSelected}
                 variant="default"
-                onClick={() => this.handleSubmit(this.props.activeTable)}>
+                type="submit"
+                onClick={(e) => this.handleSubmit(e, this.props.activeTable)}>
                 Submit
               </Button>
             </Col>
