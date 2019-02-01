@@ -9,7 +9,7 @@ router
 
 // Matches with "/api/reservations/:rsvId"
 router
-  .route("/=:rsvId")
+  .route("/:rsvId")
   .get(reservationController.findById)
   .put(reservationController.update)
   .delete(reservationController.remove);

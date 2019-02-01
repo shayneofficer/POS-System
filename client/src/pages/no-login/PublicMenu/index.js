@@ -63,6 +63,7 @@ class ShineMenu extends React.Component {
                 categories={this.state.categories}
                 orderItem={this.orderItem}
                 canOrder={false}
+                canEdit={false}
               />
             </div>
           </Col>

@@ -55,7 +55,8 @@ class OrderForm extends React.Component {
     }
   };
 
-  handleSave = (tableIndex) => {
+  handleSave = (e, tableIndex) => {
+    e.preventDefault();
     if (this.state.activeBill) {
       var newBill = this.state.activeBill;
     } else {
@@ -164,7 +165,8 @@ class OrderForm extends React.Component {
               className="orderBtn"
               disabled={tableSelected}
               variant="warning"
-              onClick={() => this.handleSave(this.state.activeTable)}>
+              type="submit"
+              onClick={(e) => this.handleSave(e, this.state.activeTable)}>
               Update Items
             </Button>
           )}

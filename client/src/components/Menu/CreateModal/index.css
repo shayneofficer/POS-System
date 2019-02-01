@@ -1,0 +1,17 @@
+.justify-evenly {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 100%;
+}
+#CreateModal {
+  width: 50%;
+}
+.text-center {
+  text-align: center;
+}
+.pv-0 {
+  padding-top: 0;
+  padding-bottom: 0;
+}

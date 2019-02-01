@@ -5,6 +5,7 @@ const menuRoutes = require("./menuRoutes");
 // const receiptRoutes = require("./receiptRoutes");
 // const employeeRoutes = require("./employeeRoutes");
 const tableController = require("../../controllers/tableController");
+const menuController = require("../../controllers/menuController");
 
 // Matches with "/api/&rest"
 router
@@ -30,7 +31,8 @@ router
   .get(restaurantController.returnNames);
 
 // Matches with "/api/&rest/=:id/&menus"
-router.use("/=:id/&menus", menuRoutes);
+// router.use("/=:id/&menus", menuRoutes);
+router.route("/=:id/&menus").put(menuController.updateCategories);
 
 router
   .route("/=:id/&tables/=:tableIndex")

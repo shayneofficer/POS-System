@@ -12,52 +12,39 @@ class BillModal extends React.Component {
     show: false
   };
 
-  componentDidMount () {
+  componentDidMount = () => {
     if (this.props.activeTable) {
-      this.setState({
-        activeTable: this.props.activeTable
-      });
+      this.setState({ activeTable: this.props.activeTable });
     }
     if (this.props.tables) {
-      this.setState({
-        tables: this.props.tables
-      });
+      this.setState({ tables: this.props.tables });
     }
-  }
-  componentDidUpdate (prevProps) {
+  };
+
+  componentDidUpdate = (prevProps) => {
     if (prevProps.tables !== this.props.tables) {
-      this.setState({
-        tables: this.props.tables
-      });
+      this.setState({ tables: this.props.tables });
     }
     if (prevProps.activeTable !== this.props.activeTable) {
-      this.setState({
-        activeTable: this.props.activeTable
-      });
+      this.setState({ activeTable: this.props.activeTable });
     }
-  }
+  };
+
   saveTicket = (tableIndex, newBill) => {
     if (tableIndex < 0) {
       console.log("No Table Selected");
       return;
     }
-
     let restId = this.props.restId;
-
     API.updateTableBill(restId, tableIndex, newBill).then((result) => {
-      this.setState({
-        // tables: result.data.Tables,
-        orderedItems: []
-      });
+      this.setState({ orderedItems: [] });
     });
   };
 
   billPaid = (tableIndex, receipt) => {
     let restId = this.props.restId;
     API.billPaid(restId, tableIndex, receipt).then((result) => {
-      this.setState({
-        orderedItems: []
-      });
+      this.setState({ orderedItems: [] });
     });
   };
 
@@ -74,16 +61,11 @@ class BillModal extends React.Component {
   };
 
   handleShow = () => {
-    this.setState({
-      show: true
-    });
-    console.log(this.state.show);
+    this.setState({ show: true });
   };
 
   handleHide = () => {
-    this.setState({
-      show: false
-    });
+    this.setState({ show: false });
   };
 
   render () {
@@ -100,18 +82,18 @@ class BillModal extends React.Component {
       <div id="BillModalContainer">
         <Button
           variant="warning"
+          type="button"
           style={myStyles.buttons}
           onClick={() => this.handleShow()}>
           Get Check
         </Button>
         <Modal
           show={this.state.show}
-          onHide={this.handleHide}
+          onHide={this.handleHide()}
           size="lg"
           aria-labelledby="contained-modal-title-vcenter"
           centered>
-          <Modal.Header closeButton>
-          </Modal.Header>
+          <Modal.Header closeButton />
           <Modal.Body id="GetCheckModal">
             <OrderForm
               tables={this.state.tables}
@@ -122,7 +104,7 @@ class BillModal extends React.Component {
             />
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={() => this.handleHide()}>Close</Button>
+            <Button type="button" onClick={() => this.handleHide()}>Close</Button>
           </Modal.Footer>
         </Modal>
       </div>

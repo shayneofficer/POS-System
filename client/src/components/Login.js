@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import API from '../utils/API';
 import { Input, FormBtn } from './Form';
+import LogoutButton from './NavBarButtons/LogoutButton'
 
 class Login extends Component {
   state = {
@@ -24,6 +25,7 @@ class Login extends Component {
       email: this.state.email,
       password: this.state.password,
     }
+    console.log("login submit", submit);
     API.userLogin(submit).then(res => {
       console.log("res.data", res.data);
       if (res.data.err) {
@@ -33,6 +35,7 @@ class Login extends Component {
         sessionStorage.setItem("userID", res.data._id);
         sessionStorage.setItem("restID", res.data.restaurantID);
         sessionStorage.setItem("login", res.data.login);
+        window.location.href="/";
       }
 
     }).catch(err => console.log(err));
@@ -42,8 +45,8 @@ class Login extends Component {
     return (
       <div>
         <form action="/action_page.php">
-          <Input onChange={this.handleInputChange} type="text" placeholder="Email" />
-          <Input onChange={this.handleInputChange} type="password" placeholder="Password" />
+          <Input onChange={this.handleInputChange} type="text" name="email" placeholder="Email" />
+          <Input onChange={this.handleInputChange} type="password" name="password" placeholder="Password" />
           <FormBtn onClick={this.handleFormSubmit}>Submit</FormBtn>
         </form>
         <p id="loginError"></p>
