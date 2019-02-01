@@ -47,7 +47,7 @@ class Reservations extends React.Component {
             alert("Yay! You are officially booked!");
         }
         else {
-            alert("Sorry you are on the wait list");
+            alert("Please input all fields!");
         }
         console.log("handleFormSubmit");
         const submit = {
