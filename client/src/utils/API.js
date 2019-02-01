@@ -10,9 +10,8 @@ export default {
     console.log("userLogin", data);
     return axios.post(`${base}users/login`, data);
   },
-  createReservation: function(data) {
-    console.log(`createReservation`, data);
-    return axios.post(`${base}reservations`, data);
+  createReservation: function(restID, data) {
+    return axios.post(`${base}&rest/=${restID}/&reservations`, data);
   },
   getReservations: function() {
     return axios.get(`${base}reservations`);

@@ -6,6 +6,7 @@ const menuRoutes = require("./menuRoutes");
 // const employeeRoutes = require("./employeeRoutes");
 const tableController = require("../../controllers/tableController");
 const menuController = require("../../controllers/menuController");
+const reservationController = require("../../controllers/reservationController");
 
 // Matches with "/api/&rest"
 router
@@ -35,6 +36,7 @@ router
 router.route("/=:id/&menus/&cat=:catIndex/&items").post(menuController.addItem);
 router.route("/=:id/&menus/&cat").post(menuController.addCategory);
 
+router.route("/=:id/&reservations/").post(reservationController.create);
 
 router
   .route("/=:id/&tables/=:tableIndex")
