@@ -7,14 +7,15 @@ const style = {
   },
 };
 
-class LoginButton extends Component {
+class LogoutButton extends Component {
   LogOut = event => {
     event.preventDefault();
     console.log(event);
-    sessionStorage.setItem("userID", undefined);
-    sessionStorage.setItem("restID", undefined);
-    sessionStorage.setItem("login", undefined);
+    sessionStorage.setItem("userID", 0);
+    sessionStorage.setItem("restID", 0);
+    sessionStorage.setItem("login", "");
     window.location.assign('/');
+    // console.log("SS login", sessionStorage.getItem("login"))
   };
 
   render() {
@@ -30,4 +31,4 @@ class LoginButton extends Component {
   }
 }
 
-export default LoginButton;
+export default LogoutButton;
