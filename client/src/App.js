@@ -13,7 +13,7 @@ import NavBar from "./components/NavBar";
 import RestaurantHome from "./pages/no-login/RestaurantHome";
 
 class App extends Component {
-  render () {
+  render() {
     return (
       <Router>
         <div>

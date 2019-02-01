@@ -1,34 +1,32 @@
 .round {
   border-radius: 60%;
-  height: 5.5rem;
-  width: 5.5rem;
-  font-size: 3rem;
-  margin: 20px;
+  height: 3rem;
+  width: 3rem;
+  font-size: 1.5rem;
+  margin: 10px;
 }
 
 .square {
-  height: 4rem;
-  width: 4rem;
-  font-size: 2rem;
+  height: 2.8rem;
+  width: 2.8rem;
+  font-size: 1.3rem;
+  margin: 8px;
   position: relative;
-  top: 1.2rem;
-  /* margin-right: 20rem; */
-  margin: 25px;
+  top: -1rem;
 }
 
 .rounded-corner {
   border-radius: 20%;
-  height: 8rem;
-  width: 8rem;
-  font-size: 5rem;
-  margin: 40px;
+  height: 4rem;
+  width: 4rem;
+  font-size: 2.5rem;
+  margin: 15px;
 }
 
 .round,
 .square,
 .rounded-corner {
   text-align: center;
-  /* font-size: 2rem; */
 }
 
 .server-1 {
@@ -53,9 +51,9 @@ body:hover {
 }
 
 .n8 {
-  margin-right: 50px;
+  margin-right: 22px;
 }
 
 .n10 {
-  margin-right: 50px;
+  margin-right: 22px;
 }
