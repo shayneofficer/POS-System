@@ -18,11 +18,16 @@ class Navbar extends Component {
   state = {
     login: false,
   }
+  componentDidMount = () => {
+    if (sessionStorage.getItem("login") !== this.state.login) {
+      let localLogin = sessionStorage.getItem("login");
+      this.setState({
+        login: localLogin
+      })
+    }
+  }
 
   render() {
-    if(sessionStorage.getItem("login") != this.state.login) {
-      this.setState({ login: sessionStorage.getItem("login") })
-    }
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <a className="navbar-brand" href="/">
