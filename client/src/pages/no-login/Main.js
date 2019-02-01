@@ -30,7 +30,9 @@ const section = {
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundImage: `url(${Background})`,
-    backgroundPosition: "center"
+    backgroundPosition: "center",
+    overflow: "hidden"
+   
   }
 };
 
