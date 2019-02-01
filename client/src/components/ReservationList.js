@@ -3,12 +3,11 @@ import ReservationRows from "./ReservationRows";
 import API from "../utils/API";
 import Table from "react-bootstrap/Table";
 
-const styles = {
-    list: {
-        aligItems: "center",
-        width: "40%"
-    }
-};
+// const styles = {
+//   list: {
+//     alignItems: "center"
+//   }
+// };
 
 const reservation = [
     {
