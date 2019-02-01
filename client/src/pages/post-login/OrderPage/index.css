@@ -30,3 +30,6 @@ th {
   padding-bottom: 0.5em;
   border-bottom: solid #EDEDED 2px;
 }
+#addItemBtn {
+  width: 100%;
+}

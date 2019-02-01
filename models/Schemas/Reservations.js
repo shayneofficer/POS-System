@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const ReservationSchema = new Schema({
-    restaurantID: { type: String },
     name: { type: String },
     email: { type: String },
     phone: { type: Number },
@@ -11,6 +10,4 @@ const ReservationSchema = new Schema({
     partySize: { type: Number }
 });
 
-const Reservation = mongoose.model("Reservation", ReservationSchema);
-
-module.exports = Reservation;
+module.exports = ReservationSchema;
