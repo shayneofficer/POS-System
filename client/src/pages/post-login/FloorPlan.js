@@ -8,26 +8,17 @@ import Button from "react-bootstrap/Button";
 import ServerKey from "../../components/ServerKey";
 import API from "../../utils/API";
 import ReservationList from "../../components/ReservationList";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 const style = {
-  tables: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center"
-  },
   links: {
     margin: "50px"
   },
   buttons: {
     margin: "10px",
-    fontSize: "1.3rem",
-    display: "flex",
-    justifyContent: "center"
-  },
-  colorKey: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "center"
+    fontSize: "1.3rem"
   }
 };
 
@@ -164,9 +155,16 @@ class FloorPlan extends React.Component {
 
   render() {
     return (
-      <div className="wrapper">
-        <div>
-          <div style={{ display: "flex", flexDirection: "row" }}>
+      //
+      //     <div>
+      //
+      //     </div>
+      //   </div>
+      // </div>
+
+      <Container>
+        <Row>
+          <Col md={12} lg={12}>
             <Button
               onClick={() => this.changeRole("manager")}
               style={style.buttons}
@@ -189,34 +187,28 @@ class FloorPlan extends React.Component {
               Server
             </Button>
             <FloorPlanLinks roleView={this.state.role} />
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "flex-start"
-            }}
-          >
+          </Col>
+        </Row>
+        <Row>
+          <Col md={3} lg={3}>
             <ServerKey />
-            <div style={style.tables}>
-              {this.state.tables
-                .filter(table => table.tableShape !== "round")
-                .map(table => {
-                  return (
-                    <Table
-                      key={table.tableNumber}
-                      roleView={this.state.role}
-                      tableNumber={table.tableNumber}
-                      tableShape={table.tableShape}
-                      serverNumber={table.server}
-                      tableNo={table.tableNo}
-                    />
-                  );
-                })}
-            </div>
-            <FloorPlanDesc roleView={this.state.role} />
-          </div>
-          <div style={style.tables}>
+          </Col>
+          <Col xs={8} md={6} lg={6} style={{ justifyContent: "center" }}>
+            {this.state.tables
+              .filter(table => table.tableShape !== "round")
+              .map(table => {
+                return (
+                  <Table
+                    key={table.tableNumber}
+                    roleView={this.state.role}
+                    tableNumber={table.tableNumber}
+                    tableShape={table.tableShape}
+                    serverNumber={table.server}
+                    tableNo={table.tableNo}
+                  />
+                );
+              })}
+            <br />
             {this.state.tables
               .filter(table => table.tableShape === "round")
               .map(table => {
@@ -231,25 +223,32 @@ class FloorPlan extends React.Component {
                   />
                 );
               })}
-          </div>
-          <ReservationBtn
-            roleView={this.state.role}
-            changeReservations={this.changeReservation}
-          />
-          <OrderCheckBtns
-            roleView={this.state.role}
-            tables={this.state.dbTables}
-          />
-          <br />
-          <div>
+          </Col>
+
+          <Col md={3} lg={3}>
+            <FloorPlanDesc roleView={this.state.role} />
+          </Col>
+        </Row>
+        <Row>
+          <Col md={12} lg={12}>
+            <OrderCheckBtns
+              roleView={this.state.role}
+              tables={this.state.dbTables}
+            />
+            <ReservationBtn
+              roleView={this.state.role}
+              changeReservations={this.changeReservation}
+            />
+          </Col>
+        </Row>
+        <Row>
+          <Col md={12} lg={12}>
             {this.state.displayReservations && (
-              <div>
-                <ReservationList roleView={this.state.role} />
-              </div>
+              <ReservationList roleView={this.state.role} />
             )}
-          </div>
-        </div>
-      </div>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

@@ -5,7 +5,7 @@ import FormControl from "react-bootstrap/FormControl";
 
 const styles = {
   input: {
-    width: "200px"
+    width: "150px"
   }
 };
 
@@ -22,10 +22,7 @@ class ReservationRows extends Component {
         <td>{this.props.partySize}</td>
         <td>
           <InputGroup className="mb-3" size="md" style={styles.input}>
-            <FormControl
-              placeholder="table #"
-              aria-describedby="basic-addon2"
-            />
+            <FormControl placeholder="table#" aria-describedby="basic-addon2" />
             <InputGroup.Append>
               <Button variant="warning" type="submit">
                 Submit

@@ -4,36 +4,39 @@ import Table from "react-bootstrap/Table";
 
 const myStyles = {
   key: {
-    width: "15%",
+    // width: "15%",
     marginLeft: "40px",
     marginRight: "40px",
-    marginTop: "50px",
+    // marginTop: "50px",
     fontSize: "1.2rem",
-    fontWeight: "500",
+    fontWeight: "300",
     textAlign: "center"
   }
 };
 
 class FloorPlan_desc extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.state = {};
   }
 
-  render () {
+  render() {
     let hidden = false;
     if (this.props.roleView === "host") {
       hidden = true;
     }
     return (
-      <Table style={myStyles.key} className={`${hidden ? "d-none" : ""}`}>
-          <thead
-            style={{
-              backgroundColor: "lightgrey",
-              fontWeight: "bold"
-            }}>
-            <tr><th>Table Status</th></tr>
-          </thead>
+      <Table className={`${hidden ? "d-none" : ""}`}>
+        <thead
+          style={{
+            backgroundColor: "lightgrey",
+            fontWeight: "bold"
+          }}
+        >
+          <tr>
+            <th>Table Status</th>
+          </tr>
+        </thead>
         <tbody>
           <tr style={{ backgroundColor: "#00A82E" }}>
             <td>Table Available</td>
