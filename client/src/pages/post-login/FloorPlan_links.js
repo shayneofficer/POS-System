@@ -32,9 +32,6 @@ class FloorPlan_links extends React.Component {
             Create New User
           </Button>
         </Link>
-        <Button variant="link" style={{ color: "black", fontSize: "1.3rem" }}>
-          Delete User
-        </Button>
       </div>
     );
   }
