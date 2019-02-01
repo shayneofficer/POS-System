@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import LoginButton from "./NavBarButtons/LoginButton";
 import LogoutButton from "./NavBarButtons/LogoutButton";
+import FloorPlan from "./NavBarButtons/FloorPlanButton"
 import logo from "../Images/WHlogo.jpg";
 
 const style = {
@@ -30,11 +31,13 @@ class Navbar extends Component {
   };
 
   render () {
+    let Floor = <div/>
     let Logged = <LoginButton/>
     // console.log("state login if", this.state.login)
     if(this.state.login) {
       // console.log("out")
       Logged = <LogoutButton />
+      Floor = <FloorPlan />
     } else {
       // console.log("in")
       Logged = <LoginButton />
@@ -58,6 +61,7 @@ class Navbar extends Component {
           aria-label="Toggle navigation">
           <span className="navbar-toggler-icon" />
         </button>
+        {Floor}
 
         <div className="ml-auto">
           {Logged}
