@@ -14,6 +14,7 @@ const style = {
     margin: "0 auto"
   },
   header: {
+    marginTop: "2%",
     color: "white",
     fontSize: "2.5rem",
     textAlign: "center"

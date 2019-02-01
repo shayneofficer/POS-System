@@ -43,7 +43,12 @@ class Reservations extends React.Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-
+        if (event) {
+            alert("Yay! You are officially booked!");
+        }
+        else {
+            alert("Sorry you are on the wait list");
+        }
         console.log("handleFormSubmit");
         const submit = {
             restaurantID: this.state.restaurantID,
