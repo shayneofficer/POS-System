@@ -1,5 +1,14 @@
 import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
+import FormControl from "react-bootstrap/FormControl";
+
+const styles = {
+  input: {
+    width: "200px"
+  }
+};
 
 class ReservationRows extends Component {
   render() {
@@ -13,20 +22,30 @@ class ReservationRows extends Component {
         <td>{this.props.time}</td>
         <td>{this.props.partySize}</td>
         <td>
-          <form>
-            <input type="number" />
-            <Button type="submit" variant="warning">
-              Submit
-            </Button>
-          </form>
+          <InputGroup className="mb-3" size="md" style={styles.input}>
+            <FormControl
+              placeholder="table #"
+              aria-describedby="basic-addon2"
+            />
+            <InputGroup.Append>
+              <Button variant="warning" type="submit">
+                Submit
+              </Button>
+            </InputGroup.Append>
+          </InputGroup>
         </td>
         <td>
-          <form>
-            <input type="name" />
-            <Button type="submit" variant="warning">
-              Submit
-            </Button>
-          </form>
+          <InputGroup className="mb-3" size="md" style={styles.input}>
+            <FormControl
+              placeholder="Server Name"
+              aria-describedby="basic-addon2"
+            />
+            <InputGroup.Append>
+              <Button variant="warning" type="submit">
+                Submit
+              </Button>
+            </InputGroup.Append>
+          </InputGroup>
         </td>
       </tr>
     );

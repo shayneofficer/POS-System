@@ -12,6 +12,7 @@ import ReservationList from "../../components/ReservationList";
 const style = {
   tables: {
     display: "flex",
+    flexDirection: "row",
     justifyContent: "center"
   },
   links: {
@@ -25,7 +26,8 @@ const style = {
   },
   colorKey: {
     display: "flex",
-    flexDirection: "row"
+    flexDirection: "row",
+    justifyContent: "center"
   }
 };
 
@@ -129,7 +131,7 @@ class FloorPlan extends React.Component {
   };
 
   getTables = () => {
-    this.getRestaurant((result) => {
+    this.getRestaurant(result => {
       const Restaurant = result;
       let tableArr = [];
       Restaurant.Tables.map((table, i) => {
@@ -143,8 +145,8 @@ class FloorPlan extends React.Component {
     });
   };
 
-  getRestaurant = (callback) => {
-    API.getRestaurants().then((restaurants) => {
+  getRestaurant = callback => {
+    API.getRestaurants().then(restaurants => {
       const restaurant = restaurants.data[0];
       callback(restaurant);
     });
@@ -164,7 +166,7 @@ class FloorPlan extends React.Component {
     return (
       <div className="wrapper">
         <div>
-          <div style={{ display: "inline-flex" }}>
+          <div style={{ display: "flex", flexDirection: "row" }}>
             <Button
               onClick={() => this.changeRole("manager")}
               style={style.buttons}
@@ -186,23 +188,33 @@ class FloorPlan extends React.Component {
             >
               Server
             </Button>
+            <FloorPlanLinks roleView={this.state.role} />
           </div>
-          <FloorPlanLinks roleView={this.state.role} />
-          <div style={style.tables}>
-            {this.state.tables
-              .filter(table => table.tableShape !== "round")
-              .map(table => {
-                return (
-                  <Table
-                    key={table.tableNumber}
-                    roleView={this.state.role}
-                    tableNumber={table.tableNumber}
-                    tableShape={table.tableShape}
-                    serverNumber={table.server}
-                    tableNo={table.tableNo}
-                  />
-                );
-              })}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "flex-start"
+            }}
+          >
+            <ServerKey />
+            <div style={style.tables}>
+              {this.state.tables
+                .filter(table => table.tableShape !== "round")
+                .map(table => {
+                  return (
+                    <Table
+                      key={table.tableNumber}
+                      roleView={this.state.role}
+                      tableNumber={table.tableNumber}
+                      tableShape={table.tableShape}
+                      serverNumber={table.server}
+                      tableNo={table.tableNo}
+                    />
+                  );
+                })}
+            </div>
+            <FloorPlanDesc roleView={this.state.role} />
           </div>
           <div style={style.tables}>
             {this.state.tables
@@ -220,21 +232,23 @@ class FloorPlan extends React.Component {
                 );
               })}
           </div>
-        </div>
-        <ReservationBtn
-          roleView={this.state.role}
-          changeReservations={this.changeReservation}
-        />
-        <OrderCheckBtns roleView={this.state.role} tables={this.state.dbTables} />
-        <div style={style.colorKey}>
-          <ServerKey />
-          <FloorPlanDesc roleView={this.state.role} />
-        </div>
-        {this.state.displayReservations && (
+          <ReservationBtn
+            roleView={this.state.role}
+            changeReservations={this.changeReservation}
+          />
+          <OrderCheckBtns
+            roleView={this.state.role}
+            tables={this.state.dbTables}
+          />
+          <br />
           <div>
-            <ReservationList roleView={this.state.role} />
+            {this.state.displayReservations && (
+              <div>
+                <ReservationList roleView={this.state.role} />
+              </div>
+            )}
           </div>
-        )}
+        </div>
       </div>
     );
   }
