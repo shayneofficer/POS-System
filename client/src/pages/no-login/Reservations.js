@@ -2,7 +2,7 @@ import React from "react";
 import { Input, FormBtn } from "../../components/Form";
 import API from "../../utils/API";
 import { distanceInWordsToNow } from "date-fns";
-
+// style
 const style = {
     input: {
         width: "50%",
