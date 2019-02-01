@@ -14,11 +14,11 @@ import RestaurantHome from "./pages/no-login/RestaurantHome";
 import ShineMenu from "./pages/no-login/PublicMenu/index";
 
 class App extends Component {
-  render() {
+  render () {
     return (
       <Router>
         <div>
-          {/* <NavBar /> */}
+          <NavBar />
           <Route exact path="/" component={Main} />
           <Route exact path="/login" component={Login} />
           <Route
