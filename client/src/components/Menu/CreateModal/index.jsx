@@ -8,8 +8,12 @@ import "./index.css";
 
 class CreateModal extends React.Component {
   state = {
-    show: false
+    show: false,
+    itemName: "",
+    itemPrice: 0,
+    catName: ""
   };
+  
   handleSubmit = (e) => {
     e.preventDefault();
     if (this.props.createType === "Item") {
@@ -29,6 +33,13 @@ class CreateModal extends React.Component {
   };
   handleHide = () => {
     this.setState({ show: false });
+  };
+
+  handleInputChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
   };
 
   render () {
@@ -68,17 +79,36 @@ class CreateModal extends React.Component {
           <Modal.Body>
             <Form>
               {this.props.createType === "Item" ? (
-                <Row className="pv-0">
-                  <Col>
-                    <Form.Control placeholder="Item Name" />
-                  </Col>
-                  <Col>
-                    <Form.Control type="number" placeholder="Item Price" />
-                  </Col>
-                </Row>
+                  <Row className="pv-0">
+                    <Col sm={8}>
+                      <Form.Control
+                        type="input"
+                        value={this.state.itemName}
+                        name="itemName"
+                        onChange={this.handleInputChange}
+                        placeholder="Item Name"
+                      />
+                    </Col>
+                    <Col sm={4}>
+                      <Form.Control
+                        value={this.state.itemPrice}
+                        name="itemPrice"
+                        onChange={this.handleInputChange}
+                        type="number"
+                        placeholder="Item Price"
+                        className="text-right"
+                      />
+                    </Col>
+                  </Row>
               ) : (
                 <Row className="pv-0">
-                  <Form.Control placeholder="Category Name" />
+                    <Form.Control
+                      type="input"
+                      value={this.state.catName}
+                      name="catName"
+                      onChange={this.handleInputChange}
+                      placeholder="Category Name"
+                    />
                 </Row>
               )}
             </Form>
@@ -91,7 +121,10 @@ class CreateModal extends React.Component {
                 onClick={() => this.handleHide()}>
                 Close
               </Button>
-              <Button type="submit" variant="warning" onClick={(e) => this.handleSubmit(e)}>
+              <Button
+                type="submit"
+                variant="warning"
+                onClick={(e) => this.handleSubmit(e)}>
                 Submit
               </Button>
             </div>

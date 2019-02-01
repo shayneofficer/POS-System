@@ -12,23 +12,23 @@ class BillModal extends React.Component {
     show: false
   };
 
-  componentDidMount = () => {
-    if (this.props.activeTable) {
-      this.setState({ activeTable: this.props.activeTable });
-    }
-    if (this.props.tables) {
-      this.setState({ tables: this.props.tables });
-    }
-  };
+  // componentDidMount = () => {
+  //   if (this.props.activeTable) {
+  //     this.setState({ activeTable: this.props.activeTable });
+  //   }
+  //   if (this.props.tables) {
+  //     this.setState({ tables: this.props.tables });
+  //   }
+  // };
 
-  componentDidUpdate = (prevProps) => {
-    if (prevProps.tables !== this.props.tables) {
-      this.setState({ tables: this.props.tables });
-    }
-    if (prevProps.activeTable !== this.props.activeTable) {
-      this.setState({ activeTable: this.props.activeTable });
-    }
-  };
+  // componentDidUpdate = (prevProps) => {
+  //   if (prevProps.tables !== this.props.tables) {
+  //     this.setState({ tables: this.props.tables });
+  //   }
+  //   if (prevProps.activeTable !== this.props.activeTable) {
+  //     this.setState({ activeTable: this.props.activeTable });
+  //   }
+  // };
 
   saveTicket = (tableIndex, newBill) => {
     if (tableIndex < 0) {
@@ -53,7 +53,6 @@ class BillModal extends React.Component {
     API.archiveBill(restId, tableIndex, newBill);
     API.getRestaurants().then((restaurants) => {
       const restaurant = restaurants.data[0];
-      console.log(restaurant);
       this.setState({
         tables: restaurant.Tables
       });
@@ -84,12 +83,13 @@ class BillModal extends React.Component {
           variant="warning"
           type="button"
           style={myStyles.buttons}
-          onClick={() => this.handleShow()}>
+          onClick={() => this.handleShow()}
+          >
           Get Check
         </Button>
         <Modal
           show={this.state.show}
-          onHide={this.handleHide()}
+          onHide={this.handleHide}
           size="lg"
           aria-labelledby="contained-modal-title-vcenter"
           centered>

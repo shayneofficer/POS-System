@@ -14,7 +14,7 @@ import RestaurantHome from "./pages/no-login/RestaurantHome";
 import ShineMenu from "./pages/no-login/PublicMenu/index";
 
 class App extends Component {
-  render() {
+  render () {
     return (
       <Router>
         <div>

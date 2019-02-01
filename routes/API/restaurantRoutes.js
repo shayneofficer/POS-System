@@ -32,7 +32,9 @@ router
 
 // Matches with "/api/&rest/=:id/&menus"
 // router.use("/=:id/&menus", menuRoutes);
-router.route("/=:id/&menus").put(menuController.updateCategories);
+router.route("/=:id/&menus/&cat=:catIndex/&items").post(menuController.addItem);
+router.route("/=:id/&menus/&cat").post(menuController.addCategory);
+
 
 router
   .route("/=:id/&tables/=:tableIndex")

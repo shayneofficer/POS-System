@@ -46,8 +46,11 @@ export default {
   removeRestaurant: function(restId) {
     return axios.delete(`${base}&rest/=${restId}`);
   },
-  updateMenuCategories: function (restId, data) {
-    return axios.put(`${base}&rest/=${restId}/&menus, data`)
+  addMenuCategory: function (restId, data) {
+    return axios.post(`${base}&rest/=${restId}/&menus/&cat`, data)
+  },
+  addMenuItem: function (restId, catIndex, data) {
+    return axios.post(`${base}&rest/=${restId}/&menus/&cat=${catIndex}/&items`, data)
   },
   updateTableBill: function(restId, tableIndex, ticket) {
     console.log(restId, tableIndex);
