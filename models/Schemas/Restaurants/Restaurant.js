@@ -31,7 +31,7 @@ const RestaurantSchema = new Schema({
   },
   // Hours of Operation (array of objects most likely)
   hours: {
-    type: [ Object ]
+    type: [ String ]
   },
   // Special conditions
   flags: {

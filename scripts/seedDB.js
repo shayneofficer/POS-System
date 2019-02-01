@@ -76,7 +76,6 @@ function seedUsers (restId) {
 db.Restaurant
   .deleteMany({})
   .then(() => {
-    console.log(RestaurantSeed);
     RestaurantSeed.save((err, result) => {
       console.log("---------------------------------------------------");
       console.log('"Shine" Restaurant added.');
