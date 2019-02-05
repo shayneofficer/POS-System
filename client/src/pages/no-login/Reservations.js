@@ -44,6 +44,14 @@ class Reservations extends React.Component {
   handleFormSubmit = (event) => {
     event.preventDefault();
 
+    if (event) {
+      window.location.assign('/');
+      alert("Yay! You are officially booked!");
+    }
+    else {
+      alert("Please input all fields!");
+    }
+
     console.log("handleFormSubmit");
     const submit = {
       name: this.state.name,
@@ -75,7 +83,7 @@ class Reservations extends React.Component {
     // API.getReservation().then(res => console.log("res", res)).catch(err => console.log("err", err));
   };
 
-  render () {
+  render() {
     const restID = sessionStorage.getItem("restID");
 
     if (restID && typeof restID == "string") {
