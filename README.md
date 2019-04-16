@@ -2,9 +2,9 @@ This app is designed to be a restaurant POS system. The app was developed to imp
 
 
 Developers:
-Hannah Willis
-Andrea Minhas
-Kathy Zhang
-Steve Lucas
-Ryan Brode
+Hannah Willis,
+Andrea Minhas,
+Kathy Zhang,
+Steve Lucas,
+Ryan BrodeFrank,
 Shayne Officer
